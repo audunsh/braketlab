@@ -100,19 +100,7 @@ def construct_basis(p):
     
 
 
-def translate_sympy_expression(sympy_expression, translation_vector):
-    symbols = np.array(list(sympy_expression.free_symbols))
-    l_symbols = np.argsort([i.name for i in symbols])
-    shifts = symbols[l_symbols]
 
-    assert(len(shifts)==len(translation_vector)), "Incorrect length of translation vector"
-
-    return_expression = sympy_expression*1
-
-    for i in range(len(shifts)):
-        return_expression = return_expression.subs(shifts[i], shifts[i]-translation_vector[i])
-
-    return return_expression
 
 
                     
@@ -249,7 +237,7 @@ def get_solid_harmonic_gaussian(a,l,m, position = [0,0,0]):
                 
 class operator():
     """
-    A class for quantum mechanical operators
+    A parent class for quantum mechanical operators
     """
     def __init__(self, operator_action, prefactor = 1):
         self.operator_actions = [operator_action]
@@ -265,7 +253,22 @@ class operator():
                 return_ket = operator_actions[-i-1](other)
             return self.prefactor*return_ket
 
-                    
+
+def translate_sympy_expression(sympy_expression, translation_vector):
+    symbols = np.array(list(sympy_expression.free_symbols))
+    l_symbols = np.argsort([i.name for i in symbols])
+    shifts = symbols[l_symbols]
+
+    assert(len(shifts)==len(translation_vector)), "Incorrect length of translation vector"
+
+    return_expression = sympy_expression*1
+
+    for i in range(len(shifts)):
+        return_expression = return_expression.subs(shifts[i], shifts[i]-translation_vector[i])
+
+    return return_expression
+
+
 # Operators
 class kinetic_operator():
     def __init__(self):
@@ -707,7 +710,7 @@ def onebody(integrand, sigma, loc, n_samples, control_variate = lambda *r : 0, g
         
         control_variate, I0, t = get_control_variate(integrand, loc, a = .6, tmin = 1e-5, extent = 6, grid = grid)
 
-    print("sigma:", sigma)
+    #print("sigma:", sigma)
     #R = np.random.multivariate_normal(loc, np.eye(len(loc))*sigma, n_samples)
     #R = np.random.Generator.multivariate_normal(loc, np.eye(len(loc))*sigma, size=n_samples)
     R = np.random.default_rng().multivariate_normal(loc, np.eye(len(loc))*sigma, n_samples)
