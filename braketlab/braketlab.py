@@ -234,24 +234,143 @@ class basisfunction:
 def get_solid_harmonic_gaussian(a,l,m, position = [0,0,0]):
     return basisfunction(solid_harmonics.get_Nao(a,l,m), position = position)                
                 
-                
 class operator():
     """
     A parent class for quantum mechanical operators
+
+    Operators acts on kets
+
+    An "operator action" may only act on a basis function directly
     """
-    def __init__(self, operator_action, prefactor = 1):
-        self.operator_actions = [operator_action]
+    def __init__(self, operator_action, prefactor = 1, special_operator = False):
+        if type(operator_action) is list:
+            self.operator_actions = operator_action
+        else:
+            if special_operator:
+                self.operator_actions = [[operator_action]]
+            
+            else:
+                # assume operator action is a sympy expression
+
+                self.operator_actions = [[sympy_operator_action(operator_action)]]
         self.prefactor = prefactor
 
     def __mul__(self, other):
-        assert(type(other) in [ket, float, int]), "operator cannot act on %s" % type(other)
+        """
+        Multiplication is interpreted as an action on the ket on its right
+        """
+        assert(type(other) in [operator, ket, float, int]), "operator cannot act on %s" % type(other)
         if type(other) in [float, int]:
             self.prefactor *= other
+        if type(other) is operator:
+            operator_actions = []
+            for i in range(len(self.operator_actions)):
+                for j in range(len(other.operator_actions)):
+                    operator_actions.append(self.operator_actions[i] + other.operator_actions[j])
+            return operator(operator_actions, self.prefactor*other.prefactor)
         else:
-            return_ket = self.operator_actions[-1](other)
-            for i in range(1,len(self.operator_actions)):
-                return_ket = operator_actions[-i-1](other)
-            return self.prefactor*return_ket
+            new_basis = []
+            for k in range(len(other.basis)):
+                # Let the operator act on each basisfunction [k] independently
+
+
+
+                return_basis_function = 0
+
+                basis_function = other.basis[k]
+
+                if type(basis_function) is basisfunction:
+                    for i in range(len(self.operator_actions)):
+                        # The operator may be the sum of several constituent operators [i]
+
+                        product_basisfunction = self.operator_actions[i][-1]*basis_function #.ket_sympy_expression
+
+                        for j in range(1,len(self.operator_actions[i])):
+                            # sequence product from the rightmost operator[i][-1-j] in the product
+                            product_basisfunction = self.operator_actions[i][-1-j]*product_basisfunction
+                        if type(return_basis_function) is int:
+                            return_basis_function =  product_basisfunction
+                        else:
+                            return_basis_function = return_basis_function + product_basisfunction
+                else:
+                    return_basis_function = self.__mul__(basis_function)
+
+                        
+                #print(return_basis_function, basis_function.position)
+                
+                #bf = basisfunction(return_basis_function)
+                #bf.position = basis_function.position
+
+                new_basis.append(return_basis_function)
+            
+            return ket(other.coefficients, basis = new_basis)
+        
+
+
+    def __add__(self, other):
+        """
+        Add operators together
+        """
+        return operator(self.operator_actions + other.operator_actions, self.prefactor)
+
+
+class sympy_operator_action:
+    def __init__(self, sympy_expression):
+        self.sympy_expression = sympy_expression
+    
+    def __mul__(self, other):
+        assert(type(other) is basisfunction), "cannot operate on %s" %type(other)
+        bs = basisfunction(self.sympy_expression*other.ket_sympy_expression)
+        bs.position = other.position
+        return bs
+        
+class translation:
+    def __init__(self, translation_vector):
+        self.translation_vector = np.array(translation_vector)
+        
+    def __mul__(self, other):
+        assert(type(other) is basisfunction), "cannot translate %s" %type(other)
+        new_expression = translate_sympy_expression(other.ket_sympy_expression, self.translation_vector)
+        bs = basisfunction(new_expression)
+        bs.position = other.position + self.translation_vector
+        return bs
+    
+    
+class differential:
+    def __init__(self, order):
+        self.order = order
+        
+    def __mul__(self, other):
+        assert(type(other) is basisfunction), "cannot differentiate %s" %type(other)
+        
+        new_expression = 0
+        symbols = np.array(list(other.ket_sympy_expression.free_symbols))
+        l_symbols = np.argsort([i.name for i in symbols])
+        symbols = symbols[l_symbols]
+        
+        for i in range(len(symbols)):
+            new_expression += sp.diff(other.ket_sympy_expression, symbols[i], self.order[i])
+        
+        bs = basisfunction(new_expression)
+        bs.position = other.position
+        
+        return bs
+        
+    
+    
+def get_translation_operator(pos):
+    return operator(translation(pos), special_operator = True)
+
+def get_sympy_operator(sympy_expression):
+    return operator(sympy_expression)
+
+def get_differential_operator(order):
+    return operator(differential(order),special_operator = True)
+        
+
+    
+
+
 
 
 def translate_sympy_expression(sympy_expression, translation_vector):
@@ -348,6 +467,9 @@ def get_standard_basis(n):
         basis.append(ket(b[i], basis = b))
     return basis
 
+
+
+
 class ket(object):
     """
     A class for vectors defined on general vector spaces
@@ -429,11 +551,11 @@ class ket(object):
                                     
                                 if other.basis[j] is ket:
                                     # (basisfunction | ket )
-                                    metric[i,j] = ket(coefficients = [1.0], basis = [self.basis[i]]).bra@other.basis[j]
+                                    metric[i,j] = ket([1.0], basis = [self.basis[i]]).bra@other.basis[j]
                             else:
                                 if type(other.basis[j]) is basisfunction:
                                     # ( ket | basisfunction )
-                                    metric[i,j] = self.basis[i].bra@ket(coefficients = [1.0], basis = [other.basis[j]])
+                                    metric[i,j] = self.basis[i].bra@ket([1.0], basis = [other.basis[j]])
                                 
                                 else:
                                     # ( ket | ket )
