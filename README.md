@@ -1,4 +1,4 @@
-<img src="https://github.uio.no/audunsh/bubblebox/blob/master/graphics/logobox.png" width = 250px>
+<img src="https://github.uio.no/audunsh/braketlab/blob/master/graphics/braketlab_logo.png" width = 250px>
 
 ## BraketLab - 21st century educational toys for jedi-minded scientists
 
