@@ -1,6 +1,6 @@
 <img src="https://github.uio.no/audunsh/braketlab/blob/master/graphics/braketlab_logo.png" width = 100px>
 
-## BraketLab - out-of-the-box outside-of-the-box-thinking
+## BraketLab - out-of-the-box outside-of-the-box thinking
 
 BraketLab is a pure Python-code for doing quantum theory in Jupyter Notebooks.
 
