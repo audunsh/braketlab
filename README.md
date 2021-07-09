@@ -1,6 +1,3 @@
-# BraketLab
-21st century educational toys for jedi-minded scientists
-
 <img src="graphics/logobox.png" width = 250px>
 
 ## BraketLab - 21st century educational toys for jedi-minded scientists
