@@ -1,2 +1,2 @@
-# braketlab
-Educational quantum theory toy
+# BraketLab
+21st century educational toys for jedi-minded scientists
