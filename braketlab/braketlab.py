@@ -536,7 +536,7 @@ class ket(object):
             if self.bra_state:
                 # Compute < self | other >
                 if type(self.basis) is np.ndarray:
-                    # Cartesian basis
+                    # Euclidean basis
                     metric = self.basis.T.dot(other.basis)
                 else:
                     # L2 basis
@@ -559,6 +559,9 @@ class ket(object):
                                 
                                 else:
                                     # ( ket | ket )
+                                    print("self.bra", type(self.basis[i].bra), self.basis[i].bra)
+                                    print("self", type(self), self.basis[i])
+                                    print("other", type(other.basis[j]), other.basis[j])
                                     metric[i,j] = self.basis[i].bra@other.basis[j]
                                 
                                 
@@ -592,7 +595,8 @@ class ket(object):
         for i in range(len(other.basis)):
             found = False
             for j in range(len(self.basis)):
-                if self.basis[j] == other.basis[i]:
+                if np.all(self.basis[j] == other.basis[i]):
+                    #print(new_coefficients[j],other.coefficients[i])
                     new_coefficients[j] += other.coefficients[i]
                     found = True
             if not found:
