@@ -1,4 +1,4 @@
-<img src="https://github.uio.no/audunsh/braketlab/blob/master/graphics/braketlab_logo.png" width = 250px>
+<img src="https://raw.githubusercontent.com/audunsh/braketlab/master/graphics/braketlab_logo.png" width = 250px>
 
 ## Out-of-the-box outside-of-the-box thinking
 
