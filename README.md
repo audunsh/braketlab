@@ -8,4 +8,4 @@ BraketLab is being developed by Audun Skau Hansen (a.s.hansen@kjemi.uio.no) at t
 
 ## Installation
 
-You may install the BraketLab-module using <code>pip install braketlab</code>
+Install the BraketLab-module using <code>pip install braketlab</code> from your terminal.
