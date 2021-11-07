@@ -185,7 +185,7 @@ def get_contracted(a,w,l,m, representation = "numeric"):
         return CGO
 
 
-def get_sto(a,w,l,m, representation = "numeric"):
+def get_sto(a,w,l,m, representation = "sympy"):
     S = np.sqrt(a**3/np.pi)
 
     x,y,z = sp.symbols("x y z")

@@ -7,12 +7,15 @@ import copy
 
 
 
-from scipy.interpolate import interp1d
+
 import sympy as sp
 
-import braketlab.solid_harmonics as solid_harmonics
 
-from scipy.stats import multivariate_normal
+
+#import braketlab.solid_harmonics as solid_harmonics
+#import braketlab.hydrogen as hydrogen
+import braketlab.basisbank as basisbank
+
 
 
 
@@ -22,6 +25,9 @@ import warnings
 
 from scipy.interpolate import LinearNDInterpolator
 from scipy.interpolate import RegularGridInterpolator
+from scipy import integrate
+from scipy.stats import multivariate_normal
+from scipy.interpolate import interp1d
 
 
 def plot(*p):
@@ -43,13 +49,17 @@ def show(*p):
     """
     try:
         Nt = 200
-        t = np.linspace(-4,4,200)
+        t = np.linspace(-8,8,200)
         Z = np.zeros((Nt, Nt, 3), dtype = float)
         colors = np.random.uniform(0,1,(len(list(p)), 3))
         plt.figure(figsize=(6,6))
         for i in list(p):
-            plt.contour(t,t,i(t[:, None], t[None,:]))
+            try:
+                plt.contour(t,t,i(t[:, None], t[None,:]))
+            except:
+                plt.plot(t,i(t) , label=i.__name__)
         plt.grid()
+        plt.legend()
         plt.show()
             
 
@@ -57,7 +67,7 @@ def show(*p):
         mv = 1
         plt.figure(figsize = (6,6))
         for i in list(p):
-            vec_R2 = i.coefficients[0]*i.basis[0].coefficients + i.coefficients[1]*i.basis[1].coefficients
+            vec_R2 = i.coefficients[0]*i.basis[0] + i.coefficients[1]*i.basis[1]
             plt.plot([0, vec_R2[0]], [0, vec_R2[1]], "-")
             
             plt.plot([vec_R2[0]], [vec_R2[1]], "o", color = (0,0,0))
@@ -405,7 +415,7 @@ class kinetic_operator():
             for j in variables:
                 new_basis_ += sp.diff(i.ket_sympy_expression,j, 2)
             new_basis.append(basisfunction(new_basis_, position = i.position))
-        return ket(-.5*new_coefficients, basis = new_basis)
+        return ket([-.5*i for i in new_coefficients], basis = new_basis)
 
     def _repr_html_(self):
         return "$ -\\frac{1}{2} \\nabla^2 $" 
@@ -429,7 +439,7 @@ class onebody_coulomb_operator():
         new_basis = []
         for i in other.basis:
             new_basis.append(basisfunction(r_inv*i.ket_sympy_expression, position = i.position))
-        return ket(-new_coefficients, basis = new_basis)
+        return ket([-1*i for i in new_coefficients], basis = new_basis)
 
     def _repr_html_(self):
         return "$ -\\frac{1}{\\mathbf{r}} $"   
@@ -468,9 +478,212 @@ def get_standard_basis(n):
     return basis
 
 
-
-
 class ket(object):
+    """
+    A class for vectors defined on general vector spaces
+    Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)
+
+    Keyword arguments:
+    generic_input        -- if list or numpy.ndarray:
+                               if basis is None, returns a cartesian vector
+                               else, assumes input to contain coefficients
+                            if sympy expression, returns ket([1], basis = [basisfunction(generic_input)])
+    name                 -- string, used for labelling and plotting, visual aids
+    basis                -- a list of basisfunctions
+    position             -- assumed centre of function < |R| > 
+
+    Available operations
+    Addition, subtraction, scalar multiplication, inner products, evaluation 
+
+    """
+    def __init__(self, generic_input, name = "", basis = None, position = None):
+        self.position = position
+        if type(generic_input) in [np.ndarray, list]:
+            
+            self.coefficients = list(generic_input) 
+            self.basis = [i for i in np.eye(len(self.coefficients))]
+            if basis is not None:
+                self.basis = basis
+                
+        else:
+            # assume sympy expression
+            if position is None:
+                position = np.zeros(len(generic_input.free_symbols), dtype = float)
+            self.coefficients = [1.0]
+            self.basis = [basisfunction(generic_input, position = position)]
+            
+        self.ket_sympy_expression = self.get_ket_sympy_expression()
+        self.bra_sympy_expression = self.get_bra_sympy_expression()
+
+        
+        self.__name__ = name
+        self.bra_state = False
+        self.a = None
+        
+        
+        
+        
+    """
+    Algebraic operators
+    """
+    def __add__(self, other):
+        new_basis = self.basis + other.basis  
+        
+        new_coefficients = self.coefficients + other.coefficients
+        ret = ket(new_coefficients, basis = new_basis)
+        ret.flatten()
+        return ret
+    
+    def __sub__(self, other):
+        new_basis = self.basis + other.basis  
+        
+        new_coefficients = self.coefficients + [-i for i in other.coefficients]
+        ret = ket(new_coefficients, basis = new_basis)
+        ret.flatten()
+        return ret
+    
+    def __mul__(self, other):
+        if type(other) is ket:
+            return self.__matmul__(other)
+        else:
+            return ket([other*i for i in self.coefficients], basis = self.basis)
+
+    def __rmul__(self, other):
+        return ket([other*i for i in self.coefficients], basis = self.basis)
+    
+    def __truediv__(self, other):
+        return ket([i/other for i in self.coefficients], basis = self.basis)
+    
+    def __matmul__(self, other):
+        """
+        Inner- and Cartesian products
+        """
+        if type(other) in [float, int]:
+            return self*other
+        
+        if type(other) is ket:
+            if self.bra_state:
+                # Compute inner product: < self | other >
+                metric = np.zeros((len(self.basis), len(other.basis)), dtype = np.complex)
+
+                for i in range(len(self.basis)):
+                    for j in range(len(other.basis)):
+                        if type(self.basis[i]) is np.ndarray and type(other.basis[j]) is np.ndarray:
+                                metric[i,j] = np.dot(self.basis[i], other.basis[j])
+
+                        else:
+                            if type(self.basis[i]) is basisfunction:
+                                if type(other.basis[j]) is basisfunction:
+                                    # (basisfunction | basisfunction)
+                                    metric[i,j] = inner_product(self.basis[i], other.basis[j])
+
+                                if other.basis[j] is ket:
+                                    # (basisfunction | ket )
+                                    metric[i,j] = ket([1.0], basis = [self.basis[i]]).bra@other.basis[j]
+                            else:
+                                if type(other.basis[j]) is basisfunction:
+                                    # ( ket | basisfunction )
+                                    metric[i,j] = self.basis[i].bra@ket([1.0], basis = [other.basis[j]])
+
+                                else:
+                                    # ( ket | ket )
+                                    metric[i,j] = self.basis[i].bra@other.basis[j]
+                
+                if np.linalg.norm(metric.imag)<=1e-10:
+                    metric = metric.real
+                return np.array(self.coefficients).T.dot(metric.dot(np.array(other.coefficients)))
+            
+            
+            else:
+                #if type(other) is ket:
+                #assert(False), "not implemented"
+                new_coefficients = []
+                new_basis = []
+                for i in range(len(self.basis)):
+                    for j in range(len(other.basis)):
+                        new_basis.append(self.basis[i]*other.basis[j])
+                        new_coefficients.append(self.coefficients[i]*other.coefficients[j])
+                ret = ket(new_coefficients, basis = new_basis)
+                ret.flatten()
+                return ret
+    
+    
+    def flatten(self):
+        """
+        Remove redundancies in the expansion of self
+        """
+        new_coefficients = []
+        new_basis = []
+        found = []
+        for i in range(len(self.basis)):
+            if i not in found:
+                new_coefficients.append(self.coefficients[i])
+                new_basis.append(self.basis[i])
+            
+                for j in range(i+1, len(self.basis)):
+                    #print(i,j,type(self.basis[i]), type(self.basis[j]))
+                    if type(self.basis[i]) is np.ndarray:
+                        if type(self.basis[j]) is np.ndarray:
+                            if np.all(self.basis[i]==self.basis[j]):
+                                new_coefficients[i] += self.coefficients[j]
+                                found.append(j)
+                    else:
+                        if self.basis[i].ket_sympy_expression == self.basis[j].ket_sympy_expression:
+                            if np.all(self.basis[i].position == self.basis[j].position):
+                                new_coefficients[i] += self.coefficients[j]
+                                found.append(j)
+        self.basis = new_basis
+        self.coefficients = new_coefficients
+        
+    def get_ket_sympy_expression(self):
+        ret = 0
+        for i in range(len(self.coefficients)):
+            
+            if type(self.basis[i]) in [basisfunction, ket]:
+                ret += self.coefficients[i]*self.basis[i].ket_sympy_expression
+
+            else:
+                ret += self.coefficients[i]*self.basis[i]
+        return ret
+    
+    def get_bra_sympy_expression(self):
+        ret = 0
+        for i in range(len(self.coefficients)):
+            
+            if type(self.basis[i]) in [basisfunction, ket]:
+                ret += self.coefficients[i]*self.basis[i].bra_sympy_expression
+
+            else:
+                ret += self.coefficients[i]*self.basis[i]
+        return ret
+    
+    def __call__(self, *R):
+        result = 0
+        if self.bra_state:
+            for i in range(len(self.basis)):
+                result += self.coefficients[i]*self.basis[i](*R)
+        else:
+            for i in range(len(self.basis)):
+                result += self.coefficients[i]*self.basis[i](*R)
+        return result
+
+    @property
+    def bra(self):
+        return self.__a
+
+    @bra.setter
+    def a(self, var):
+        self.__a = copy.copy(self)
+        self.__a.bra_state = True
+        
+
+    def _repr_html_(self):
+        if self.bra_state:
+            return "$\\langle %s \\vert$" % self.__name__
+        else:
+            return "$\\vert %s \\rangle$" % self.__name__
+
+class ket_old(object):
     """
     A class for vectors defined on general vector spaces
     Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)
@@ -515,7 +728,8 @@ class ket(object):
         self.a = None
 
 
-
+    def flatten(self):
+        pass
 
 
     def __mul__(self, other):
@@ -678,15 +892,23 @@ def inner_product(b1, b2, operator = None, n_samples = int(1e6), grid = 101):
                        f1(*np.array([R[i] - ri[i] for i in range(len(ri))]))*f2(*np.array([R[i] - rj[i] for i in range(len(rj))]))
 
 
-
-    ai,aj = b1.decay, b2.decay
-    ri,rj = b1.position, b2.position
-
-    R = (ai*ri + aj*rj)/(ai+aj)
-    sigma = ai + aj
+    variables_b1 = b1.bra_sympy_expression.free_symbols
+    variables_b2 = b2.ket_sympy_expression.free_symbols
+    if len(variables_b1) == 1 and len(variables_b2) == 1:
+        return integrate.quad(integrand, -10,10)[0]
 
 
-    return onebody(integrand, np.ones(len(R))*sigma, R, n_samples) #, control_variate = "spline", grid = grid) 
+
+
+    else:
+        ai,aj = b1.decay, b2.decay
+        ri,rj = b1.position, b2.position
+
+        R = (ai*ri + aj*rj)/(ai+aj)
+        sigma = ai + aj
+
+
+        return onebody(integrand, np.ones(len(R))*sigma, R, n_samples) #, control_variate = "spline", grid = grid) 
         
 
 def compose_basis(p):
