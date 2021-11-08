@@ -49,12 +49,13 @@ def show(*p, t=None):
 
     plot(a, b)
     """
+    plt.figure(figsize=(6,6))
     try:
         Nx = 200
         x = np.linspace(-8,8,200)
         Z = np.zeros((Nx, Nx, 3), dtype = float)
         colors = np.random.uniform(0,1,(len(list(p)), 3))
-        plt.figure(figsize=(6,6))
+        
         for i in list(p):
             try:
                 plt.contour(x,x,i(x[:, None], x[None,:]))
@@ -62,12 +63,12 @@ def show(*p, t=None):
                 plt.plot(x,i(x) , label=i.__name__)
         plt.grid()
         plt.legend()
-        plt.show()
+        #plt.show()
             
 
     except:
         mv = 1
-        plt.figure(figsize = (6,6))
+        #plt.figure(figsize = (6,6))
         for i in list(p):
             vec_R2 = i.coefficients[0]*i.basis[0] + i.coefficients[1]*i.basis[1]
             plt.plot([0, vec_R2[0]], [0, vec_R2[1]], "-")
@@ -81,7 +82,7 @@ def show(*p, t=None):
         plt.grid()
         plt.xlim(-mv-1,mv+1)
         plt.ylim(-mv-1,mv+1)
-        plt.show()
+    plt.show()
 
     
 def construct_basis(p):
@@ -632,7 +633,7 @@ class ket(object):
                         variable_identities = [] #for potential two-body interactions
                         for i in range(len(self.basis)):
                             for j in range(len(other.basis)):
-                                bij, sep = split_variables(self.basis[i].ket_sympy_expression, self.basis[j].ket_sympy_expression)
+                                bij, sep = split_variables(self.basis[i].ket_sympy_expression, other.basis[j].ket_sympy_expression)
                                 bij = ket(bij)
                                 new_basis.append(bij)
                                 new_coefficients.append(self.coefficients[i]*other.coefficients[j])
