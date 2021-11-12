@@ -103,11 +103,11 @@ def construct_basis(p):
                     bf = w[0]*get_solid_harmonic_gaussian(a[0],l,m, position = [0,0,0])
                     for weights in range(1,len(w)):
                         bf +=  w[i]*get_solid_harmonic_gaussian(a[i],l,m, position = [0,0,0])
-                    #print(pos, m, l, a, w)
+                    
                     #get_solid_harmonic_gaussian(a,l,m, position = [0,0,0])
                     basis.append( bf )
 
-        #print(" ")
+        
     return basis
     
     
@@ -309,7 +309,7 @@ class operator():
                     return_basis_function = self.__mul__(basis_function)
 
                         
-                #print(return_basis_function, basis_function.position)
+                
                 
                 #bf = basisfunction(return_basis_function)
                 #bf.position = basis_function.position
@@ -436,7 +436,6 @@ class onebody_coulomb_operator():
         for j in variables:
             r += j**2
         r_inv = r**-.5
-        #print(r_inv)
         
         new_coefficients = other.coefficients
         new_basis = []
@@ -448,19 +447,41 @@ class onebody_coulomb_operator():
         return "$ -\\frac{1}{\\mathbf{r}} $"   
 
 class twobody_coulomb_operator():
+    def __init__(self, p1 = 0, p2 = 1):
+        self.p1 = p1
+        self.p2 = p2
+    
+    
+    def __mul__(self, other):
+        vid = other.variable_identities 
+        if vid is None:
+            assert(False), "unable to determine variables of ket"
+        new_basis = 0
+        for i in range(len(other.basis)):
+            new_basis += other.coefficients[i]*apply_twobody_operator(other.basis[i].ket_sympy_expression, self.p1, self.p2)
+        
+        return ket(new_basis)
+
+    def _repr_html_(self):
+        return "$ -\\frac{1}{\\vert \\mathbf{r}_1 - \\mathbf{r}_2 \\vert} $" 
+
+class twobody_coulomb_operator_older():
     def __init__(self):
         pass
     
     
     def __mul__(self, other):
         vid = other.variable_identities 
+        if vid is None:
+            assert(False), "unable to determine variables of ket"
         new_basis = []
         for i in range(len(other.basis)):
             fs1, fs2 = vid[i]
             denom = 0
             for k,l in zip(list(fs1), list(fs2)):
-                denom += sp.sqrt((k - l)**2)
-            new_basis.append( ket(other.basis[i].ket_sympy_expression/denom) )
+                denom += (k - l)**2
+
+            new_basis.append( ket(other.basis[i].ket_sympy_expression/np.sqrt(denom) ) )
         return ket(other.coefficients, basis = new_basis)
 
     def _repr_html_(self):
@@ -478,7 +499,7 @@ class twobody_coulomb_operator_old():
         for j in variables:
             r += j**2
         r_inv = r**-.5
-        #print(r_inv)
+        
         
         new_coefficients = other.coefficients
         new_basis = []
@@ -639,6 +660,7 @@ class ket(object):
                                 new_coefficients.append(self.coefficients[i]*other.coefficients[j])
                                 variable_identities.append(sep)
 
+
                         ret = ket(new_coefficients, basis = new_basis)
                         ret.flatten()
                         ret.__name__ = self.__name__ + other.__name__
@@ -662,7 +684,7 @@ class ket(object):
                 new_energies.append(self.energy[i])
             
                 for j in range(i+1, len(self.basis)):
-                    #print(i,j,type(self.basis[i]), type(self.basis[j]))
+                    
                     if type(self.basis[i]) is np.ndarray:
                         if type(self.basis[j]) is np.ndarray:
                             if np.all(self.basis[i]==self.basis[j]):
@@ -777,7 +799,7 @@ def metropolis_hastings(f, N, x0, a):
     
     for i in range(1000):
         dx = np.random.multivariate_normal(x0, a*0.01, N)
-        #print(dx.shape)
+        
         accept = f(x+dx)/f(x) > np.random.uniform(0,1,N)
         x[accept] += dx[accept]
     return x
@@ -789,14 +811,72 @@ def split_variables(s1,s2):
     # split variables of two sympy expressions
     s1s = list(s1.free_symbols)
     for i in range(len(s1s)):
-        s1 = s1.subs(s1s[i], sp.Symbol("x_{1, %i}" % i))
+        s1 = s1.subs(s1s[i], sp.Symbol("x_{0; %i}" % i))
 
     s2s = list(s2.free_symbols)
     for i in range(len(s2s)):
-        s2 = s2.subs(s2s[i], sp.Symbol("x_{2, %i}" % i))
+        s2 = s2.subs(s2s[i], sp.Symbol("x_{1; %i}" % i))
         
     return s1*s2, [s1.free_symbols, s2.free_symbols]
         
+
+def parse_symbol(x):
+    """
+    Parse a symbol of the form 
+    
+    x_{i;j}
+    
+    Return a list
+    
+    [i,j]
+    """
+    strspl = str(x).split("{")[1].split("}")[0].split(";")
+    return [int(i) for i in strspl]
+
+def map_expression(sympy_expression, x1=0, x2=1):
+    """
+    Map out the free symbols of sympy_expressions
+    in order to determine 
+    
+    z[p, x] 
+    
+    where p = [0,1] is particle x1 and x2, while
+    x is their cartesian component
+    """
+    map_ = {x1:0, x2:1}
+    s = sympy_expression.free_symbols
+    n = int(len(s)/2)
+    z = np.zeros((2, n), dtype = object)
+    for i in s:
+        j,k = parse_symbol(i) #particle, coordinate
+        z[map_[j], k] = i
+    return z, n
+
+def get_twobody_denominator(sympy_expression, p1, p2):
+    """
+    For a sympy_expression of arbitrary dimensionality,
+    generate the coulomb operator
+    
+    1/sqrt( r_{p1, p2} )
+    
+    assuming that the symbols are of the form "x_{pn, x_i}"
+    where x_i is the cartesian vector component
+    """
+    mex, n = map_expression(sympy_expression, p1, p2)
+
+    denom = 0
+    for i in range(n):
+        denom += (mex[0,i] - mex[1,i])**2
+        
+    return sp.sqrt(denom)
+
+def apply_twobody_operator(sympy_expression, p1, p2):
+    """
+    Generate the sympy expression 
+    
+    sympy_expression / | x_p1 - x_p2 |
+    """
+    return sympy_expression/get_twobody_denominator(sympy_expression, p1, p2)
 
 
 
@@ -1041,7 +1121,7 @@ def onebody(integrand, sigma, loc, n_samples, control_variate = lambda *r : 0, g
         
         control_variate, I0, t = get_control_variate(integrand, loc, a = .6, tmin = 1e-5, extent = 6, grid = grid)
 
-    #print("sigma:", sigma)
+    
     #R = np.random.multivariate_normal(loc, np.eye(len(loc))*sigma, n_samples)
     #R = np.random.Generator.multivariate_normal(loc, np.eye(len(loc))*sigma, size=n_samples)
     R = np.random.default_rng().multivariate_normal(loc, np.eye(len(loc))*sigma, n_samples)
