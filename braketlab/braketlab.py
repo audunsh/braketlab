@@ -246,8 +246,92 @@ class basisfunction:
     
 def get_solid_harmonic_gaussian(a,l,m, position = [0,0,0]):
     return basisfunction(solid_harmonics.get_Nao(a,l,m), position = position)                
+
+class operator_expression(object):
+    """
+    A class for algebraic operator manipulations
+
+    instantiate with a list of list of operators
+
+    example:
+
+    operator([[a, b], [c,d]], [1,2]]) = 1*ab + 2*cd
+
+    """
+    def __init__(self, ops, coefficients = None):
+        self.ops = ops
+        if issubclass(type(ops),operator):
+            self.ops = [[ops]]
+
+        self.coefficients = coefficients
+        if coefficients is None:
+            self.coefficients = np.ones(len(self.ops))
+    
+    def __mul__(self, other):
+        if type(other) is operator:
+            new_ops = []
+            for i in self.ops:
+                for j in other.ops:
+                    new_ops.append(i+j)
+            return operator(new_ops).flatten()
+        else:
+            return self.apply(other)
+    
+    def __add__(self, other):
+        new_ops = self.ops + other.ops
+        new_coeffs = self.coefficients + other.coefficients
+        return operator_expression(new_ops, new_coeffs).flatten()
+    
+    def flatten(self):
+        new_ops = []
+        new_coeffs = []
+        found = []
+        for i in range(len(self.ops)):
+            if i not in found:
+                new_ops.append(self.ops[i])
+                new_coeffs.append(1)
+                for j in range(i+1, len(self.ops)):
+                    if self.ops[i]==self.ops[j]:
+                        print("flatten:", i,j, self.ops[i], self.ops[j])
+                        #self.coefficients[i] += 1
+                        found.append(j)
+                        new_coeffs[-1] += self.coefficients[j]
+
+        return operator_expression(new_ops, new_coeffs)
+    
+    def apply(self, other_ket):
+        ret = 0
+        for i in range(len(self.ops)):
+            ret_term = other_ket*1
+            for j in range(len(self.ops[i])):
+                ret_term = self.ops[i][-j]*ret_term
+            if i==0:
+                ret = ret_term
+            else:
+                ret = ret + ret_term
+        return ret
+    
+    def _repr_html_(self):
+        ret = ""
+        for i in range(len(self.ops)):
+            
+            if np.abs(self.coefficients[i]) == 1:
+                if self.coefficients[i]>0:
+                    ret += "+" 
+                else:
+                    ret += "-"
+            else:
+                if self.coefficients[i]>0:
+                    ret += "+ %.2f" % self.coefficients[i]
+                else:
+                    ret += "%.2f" % self.coefficients[i]
+            for j in range(len(self.ops[i])):
+                ret += "$\\big{(}$" + self.ops[i][j]._repr_html_() + "$\\big{)}$"
                 
-class operator():
+                
+        return ret
+
+class operator_old():
     """
     A parent class for quantum mechanical operators
 
@@ -370,15 +454,16 @@ class differential:
         return bs
         
     
+
     
 def get_translation_operator(pos):
-    return operator(translation(pos), special_operator = True)
+    return operator_expression(translation(pos), special_operator = True)
 
 def get_sympy_operator(sympy_expression):
-    return operator(sympy_expression)
+    return operator_expression(sympy_expression)
 
 def get_differential_operator(order):
-    return operator(differential(order),special_operator = True)
+    return operator_expression(differential(order),special_operator = True)
         
 
     
@@ -400,9 +485,13 @@ def translate_sympy_expression(sympy_expression, translation_vector):
 
     return return_expression
 
+class operator(object):
+    def __init__(self):
+        pass
+
 
 # Operators
-class kinetic_operator():
+class kinetic_operator(operator):
     def __init__(self):
         pass
     
@@ -417,36 +506,51 @@ class kinetic_operator():
             new_basis_ = 0
             for j in variables:
                 new_basis_ += sp.diff(i.ket_sympy_expression,j, 2)
-            new_basis.append(basisfunction(new_basis_, position = i.position))
+            new_basis.append(basisfunction(new_basis_))
+            new_basis[-1].position = i.position
         return ket([-.5*i for i in new_coefficients], basis = new_basis)
 
     def _repr_html_(self):
         return "$ -\\frac{1}{2} \\nabla^2 $" 
+
+
+def get_onebody_coulomb_operator(position = np.array([0,0,0.0])):
+    return operator_expression(onebody_coulomb_operator(position))
                     
-        
-class onebody_coulomb_operator():
-    def __init__(self):
-        pass
+
+def get_kinetic_operator():
+    return operator_expression(kinetic_operator())
+
+
+class onebody_coulomb_operator(operator):
+    def __init__(self, position = np.array([0.0,0,0])):
+        self.position = position
     
     
     def __mul__(self, other, r = None):
-        variables = other.basis[0].ket_sympy_expression.free_symbols
+        #variables = other.basis[0].ket_sympy_expression.free_symbols
+        symbols = np.array(list(other.basis[0].ket_sympy_expression.free_symbols))
+        l_symbols = np.argsort([i.name for i in symbols])
+        variables = symbols[l_symbols]
         
         r = 0
-        for j in variables:
-            r += j**2
+        for j in range(len(variables)):
+            r += (variables[j]-self.position[j])**2
         r_inv = r**-.5
         
         new_coefficients = other.coefficients
         new_basis = []
         for i in other.basis:
-            new_basis.append(basisfunction(r_inv*i.ket_sympy_expression, position = i.position))
+            new_basis.append(basisfunction(r_inv*i.ket_sympy_expression))#, position = i.position+self.position))
         return ket([-1*i for i in new_coefficients], basis = new_basis)
 
     def _repr_html_(self):
-        return "$ -\\frac{1}{\\mathbf{r}} $"   
+        if self.position is None:
+            return "$ -\\frac{1}{\\mathbf{r}} $"   
+        else:
+            return "$ -\\frac{1}{\\vert \\mathbf{r} - (%f, %f, %f) \\vert }$" % (self.position[0], self.position[1], self.position[2]) 
 
-class twobody_coulomb_operator():
+class twobody_coulomb_operator(operator):
     def __init__(self, p1 = 0, p2 = 1):
         self.p1 = p1
         self.p2 = p2
@@ -465,7 +569,7 @@ class twobody_coulomb_operator():
     def _repr_html_(self):
         return "$ -\\frac{1}{\\vert \\mathbf{r}_1 - \\mathbf{r}_2 \\vert} $" 
 
-class twobody_coulomb_operator_older():
+class twobody_coulomb_operator_older(operator):
     def __init__(self):
         pass
     
@@ -666,6 +770,10 @@ class ket(object):
                         ret.__name__ = self.__name__ + other.__name__
                         ret.variable_identities = variable_identities
                         return ret
+
+    def set_position(self, position):
+        for i in range(len(self.basis)):
+            pass
             
     
     
@@ -722,6 +830,11 @@ class ket(object):
         return ret
     
     def __call__(self, *R, t = None):
+
+        #Ri = *np.array([R[i] - self.position[i] for i in range(len(self.position))])
+
+        #Ri = np.array([R[i] - self.position[i] for i in range(len(self.position))], dtype = object)
+        
         if t is None:
             result = 0
             if self.bra_state:
@@ -930,7 +1043,7 @@ class projector(object):
             return ket(coefficients, basis = copy.copy(self.ket.basis), energy = copy.copy(self.ket.energy))
         
 @lru_cache(maxsize=100)
-def inner_product(b1, b2, operator = None, n_samples = int(1e7), grid = 101):
+def inner_product(b1, b2, operator = None, n_samples = int(1e6), grid = 101):
     """
     Computes the inner product < b1 | b2 >, where bn are instances of basisfunction
 
@@ -945,14 +1058,15 @@ def inner_product(b1, b2, operator = None, n_samples = int(1e7), grid = 101):
     The inner product as a float
 
     """
-    ri = b1.position
-    rj = b2.position
+    ri = b1.position*0
+    rj = b2.position*0
 
     integrand = lambda *R, \
                        f1 = b1.bra_numeric_expression, \
                        f2 = b2.ket_numeric_expression, \
                        ri = ri, rj = rj:  \
                        f1(*np.array([R[i] - ri[i] for i in range(len(ri))]))*f2(*np.array([R[i] - rj[i] for i in range(len(rj))]))
+                       #f1(*np.array([R[i] - ri[i] for i in range(len(ri))]))*f2(*np.array([R[i] - rj[i] for i in range(len(rj))]))
 
 
     variables_b1 = b1.bra_sympy_expression.free_symbols
