@@ -1,0 +1,7 @@
+sympy
+bubblebox
+numba
+py3Dmol
+numpy
+matplotlib
+scipy

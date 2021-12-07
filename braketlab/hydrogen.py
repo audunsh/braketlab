@@ -27,8 +27,8 @@ def spherical_harmonics(l,m):
 def solid_harmonic(l,m):
     ylm = spherical_harmonics(l,m)
     theta_,phi_,x,y,z = sp.symbols("theta phi x y z")
-    theta = sp.atan2(y,x)
-    phi = sp.acos(z / sp.sqrt(x**2 + y**2 + z**2))
+    phi = sp.atan2(y,x)
+    theta = sp.acos(z / sp.sqrt(x**2 + y**2 + z**2))
     return ylm.subs(theta_, theta).subs(phi_, phi)
 
 def associated_laguerre_polynomial(x, i,alpha):

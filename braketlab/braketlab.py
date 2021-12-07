@@ -1,3 +1,4 @@
+from operator import ne
 import matplotlib.pyplot as plt
 
 import numpy as np
@@ -5,7 +6,7 @@ import os
 import sys
 import copy
 from scipy.interpolate.fitpack import splint 
-
+import py3Dmol
 
 
 
@@ -36,9 +37,116 @@ def plot(*p):
     warnings.warn("replaced by show( ... )", DeprecationWarning, stacklevel=2)
     show(*p)
 
+def get_cubefile(p):
+    Nx = 60
+    t = np.linspace(-20,20,Nx)
+    cubic = p(t[:,None,None], t[None,:,None], t[None,None,:])
+    if cubic.dtype == np.complex128:
+        cubic = cubic.real
 
+    cube = """CUBE FILE.
+     OUTER LOOP: X, MIDDLE LOOP: Y, INNER LOOP: Z
+        3    0.000000    0.000000    0.000000
+       %i    1    0.000000    0.000000
+       %i    0.000000    1    0.000000
+       %i    0.000000    0.000000    1
+        """ % (Nx,Nx,Nx)
+
+    for i in range(Nx):
+        for j in range(Nx):
+            for k in range(Nx):
+                cube += "%.4f     " % cubic[i,j,k].real
+            cube += "\n"
+    #print(cube)
+    #f = open("cubeworld.cube", "w")
+    #f.write(cube)
+    #f.close()
+    return cube, cubic.mean(), cubic.max(), cubic.min()
 
 def show(*p, t=None):
+    """
+    all-purpose vector visualization
+    
+    Example usage to show the vectors as an image
+
+    a = ket( ... ) 
+    b = ket( ... )
+
+    show(a, b)
+    """
+    mpfig = False
+    mv = 1
+
+    
+    for i in list(p):
+        spe = i.get_ket_sympy_expression()
+        if type(spe) in [np.array, list, np.ndarray]:
+            # 1d vector
+            if not mpfig:
+                mpfig = True
+                plt.figure(figsize=(6,6))
+            
+            
+            vec_R2 = i.coefficients[0]*i.basis[0] + i.coefficients[1]*i.basis[1]
+            plt.plot([0, vec_R2[0]], [0, vec_R2[1]], "-")
+            
+            plt.plot([vec_R2[0]], [vec_R2[1]], "o", color = (0,0,0))
+            plt.text(vec_R2[0]+.1, vec_R2[1], "%s" % i.__name__)
+
+            mv = max( mv, max(vec_R2[1], vec_R2[0]) ) 
+            
+                
+                
+            
+            
+        else:
+            vars = list(spe.free_symbols)
+            nd = len(vars)
+            Nx = 200
+            x = np.linspace(-8,8,200)
+            mv = 8
+            if nd == 1:
+                if not mpfig:
+                    mpfig = True
+                    plt.figure(figsize=(6,6))
+                
+                plt.plot(x,i(x) , label=i.__name__)
+                mpfig = True
+                
+            
+            if nd == 2:
+                if not mpfig:
+                    mpfig = True
+                    plt.figure(figsize=(6,6))
+                plt.contour(x,x,i(x[:, None], x[None,:]))
+                
+            
+            if nd == 3:
+                cube, cm, cmax, cmin = get_cubefile(i)
+                v = py3Dmol.view()
+                #cm = cube.mean()
+                offs = cmax*.05
+                bins = np.linspace(cm-offs,cm+offs, 2)
+
+                for i in range(len(bins)):
+
+                    di = int((255*i/len(bins)))
+                    
+                    v.addVolumetricData(cube, "cube", {'isoval':bins[i], 'color': '#%02x%02x%02x' % (255 - di, di, di), 'opacity': 1.0})
+                v.zoomTo()
+                v.show()
+    if mpfig:
+        plt.grid()
+        plt.xlim(-mv-1,mv+1)
+        plt.ylim(-mv-1,mv+1)
+        plt.legend()
+        plt.show()
+        
+
+    
+
+
+def show_old(*p, t=None):
     """
     all-purpose vector visualization
     
@@ -410,6 +518,9 @@ class operator_old():
         """
         return operator(self.operator_actions + other.operator_actions, self.prefactor)
 
+class operator(object):
+    def __init__(self):
+        pass
 
 class sympy_operator_action:
     def __init__(self, sympy_expression):
@@ -419,51 +530,52 @@ class sympy_operator_action:
         assert(type(other) is basisfunction), "cannot operate on %s" %type(other)
         bs = basisfunction(self.sympy_expression*other.ket_sympy_expression)
         bs.position = other.position
-        return bs
+        return ket( bs) 
         
-class translation:
+class translation(operator):
     def __init__(self, translation_vector):
         self.translation_vector = np.array(translation_vector)
         
     def __mul__(self, other):
-        assert(type(other) is basisfunction), "cannot translate %s" %type(other)
-        new_expression = translate_sympy_expression(other.ket_sympy_expression, self.translation_vector)
-        bs = basisfunction(new_expression)
-        bs.position = other.position + self.translation_vector
-        return bs
+        #assert(type(other) is basisfunction), "cannot translate %s" %type(other)
+        new_expression = translate_sympy_expression(other.get_ket_sympy_expression(), self.translation_vector)
+        #bs = basisfunction(new_expression)
+        #if other.position is not None:
+        #    bs.position = other.position + self.translation_vector
+        return ket( new_expression )
     
     
-class differential:
+class differential(operator):
     def __init__(self, order):
         self.order = order
         
     def __mul__(self, other):
-        assert(type(other) is basisfunction), "cannot differentiate %s" %type(other)
+        #assert(type(other) is basisfunction), "cannot differentiate %s" %type(other)
         
         new_expression = 0
-        symbols = np.array(list(other.ket_sympy_expression.free_symbols))
+        symbols = np.array(list(other.get_ket_sympy_expression().free_symbols))
         l_symbols = np.argsort([i.name for i in symbols])
         symbols = symbols[l_symbols]
         
         for i in range(len(symbols)):
-            new_expression += sp.diff(other.ket_sympy_expression, symbols[i], self.order[i])
+            new_expression += sp.diff(other.get_ket_sympy_expression(), symbols[i], self.order[i])
         
         bs = basisfunction(new_expression)
-        bs.position = other.position
+        #bs.position = other.position
         
-        return bs
+        return ket( new_expression)
         
     
 
     
 def get_translation_operator(pos):
-    return operator_expression(translation(pos), special_operator = True)
+    return operator_expression(translation(pos))# , special_operator = True)
 
 def get_sympy_operator(sympy_expression):
     return operator_expression(sympy_expression)
 
 def get_differential_operator(order):
-    return operator_expression(differential(order),special_operator = True)
+    return operator_expression(differential(order)) #,special_operator = True)
         
 
     
@@ -485,26 +597,27 @@ def translate_sympy_expression(sympy_expression, translation_vector):
 
     return return_expression
 
-class operator(object):
-    def __init__(self):
-        pass
+
 
 
 # Operators
 class kinetic_operator(operator):
-    def __init__(self):
-        pass
+    def __init__(self, p = None):
+        self.p = p
+        if p is not None:
+            self.variables = get_default_variables(p)
     
     
     def __mul__(self, other):
-        variables = other.basis[0].ket_sympy_expression.free_symbols
+        if self.p is None:
+            self.variables = other.basis[0].ket_sympy_expression.free_symbols
         
         #ret = 0
         new_coefficients = other.coefficients
         new_basis = []
         for i in other.basis:
             new_basis_ = 0
-            for j in variables:
+            for j in self.variables:
                 new_basis_ += sp.diff(i.ket_sympy_expression,j, 2)
             new_basis.append(basisfunction(new_basis_))
             new_basis[-1].position = i.position
@@ -514,35 +627,70 @@ class kinetic_operator(operator):
         return "$ -\\frac{1}{2} \\nabla^2 $" 
 
 
-def get_onebody_coulomb_operator(position = np.array([0,0,0.0])):
-    return operator_expression(onebody_coulomb_operator(position))
+def get_onebody_coulomb_operator(position = np.array([0,0,0.0]), Z = 1.0, p = None, variables = None):
+    return operator_expression(onebody_coulomb_operator(position, Z = Z, p = p, variables = variables))
                     
+def get_twobody_coulomb_operator(p1=0,p2=1):
+    return operator_expression(twobody_coulomb_operator(p1,p2))
 
-def get_kinetic_operator():
-    return operator_expression(kinetic_operator())
+
+def get_kinetic_operator(p = None):
+    return operator_expression(kinetic_operator(p = p))
+
+def get_default_variables(p, n = 3):
+    variables = []
+    for i in range(n):
+        variables.append(sp.Symbol("x_{%i; %i}" % (p, i)))
+    return variables
+
 
 
 class onebody_coulomb_operator(operator):
-    def __init__(self, position = np.array([0.0,0,0])):
+    def __init__(self, position = np.array([0.0,0,0]), Z = 1.0, p = None, variables = None):
         self.position = position
+        self.Z = Z
+        self.p = p
+        self.variables = variables
+        if p is not None:
+            self.variables = get_default_variables(self.p, len(position))
+            r = 0
+            for j in range(len(self.variables)):
+                r += (self.variables[j]-self.position[j])**2
+            self.r_inv = r**-.5
+        
     
     
     def __mul__(self, other, r = None):
-        #variables = other.basis[0].ket_sympy_expression.free_symbols
-        symbols = np.array(list(other.basis[0].ket_sympy_expression.free_symbols))
-        l_symbols = np.argsort([i.name for i in symbols])
-        variables = symbols[l_symbols]
+        variables = self.variables
+        if self.variables is None:
+            #variables = other.basis[0].ket_sympy_expression.free_symbols
+            symbols = np.array(list(other.basis[0].ket_sympy_expression.free_symbols))
+            
+            """
+            symbols_particles = [int(x.name.split("{")[1].split(";")[0]) for x in symbols]
+            particle_symbols = []
+            for i in range(len(symbols)):
+                if symbols_particles[i] == self.p:
+                    particle_symbols.append(symbols[i])
+            print("part_s:", particle_symbols)
+            symbols = particle_symbols        
+            """
+            l_symbols = np.argsort([i.name for i in symbols])
+            variables = symbols[l_symbols]
+
         
-        r = 0
-        for j in range(len(variables)):
-            r += (variables[j]-self.position[j])**2
-        r_inv = r**-.5
+
+        
+            r = 0
+            for j in range(len(variables)):
+                r += (variables[j]-self.position[j])**2
+            self.r_inv = r**-.5
         
         new_coefficients = other.coefficients
         new_basis = []
         for i in other.basis:
-            new_basis.append(basisfunction(r_inv*i.ket_sympy_expression))#, position = i.position+self.position))
-        return ket([-1*i for i in new_coefficients], basis = new_basis)
+            new_basis.append(basisfunction(self.r_inv*i.ket_sympy_expression))#, position = i.position+self.position))
+        return ket([-self.Z*i for i in new_coefficients], basis = new_basis)
 
     def _repr_html_(self):
         if self.position is None:
@@ -550,19 +698,31 @@ class onebody_coulomb_operator(operator):
         else:
             return "$ -\\frac{1}{\\vert \\mathbf{r} - (%f, %f, %f) \\vert }$" % (self.position[0], self.position[1], self.position[2]) 
 
+def twobody_denominator(p1, p2, ndim):
+    v_1 = get_default_variables(p1, ndim)
+    v_2 = get_default_variables(p2, ndim)
+    ret = 0
+    for i in range(ndim):
+        ret += (v_1[i] - v_2[i])**2
+    return ret**.5
+    
+
 class twobody_coulomb_operator(operator):
-    def __init__(self, p1 = 0, p2 = 1):
+    def __init__(self, p1 = 0, p2 = 1, ndim = 3):
         self.p1 = p1
         self.p2 = p2
+        self.ndim = ndim
+
     
     
     def __mul__(self, other):
-        vid = other.variable_identities 
-        if vid is None:
-            assert(False), "unable to determine variables of ket"
+        #vid = other.variable_identities 
+        #if vid is None:
+        #    assert(False), "unable to determine variables of ket"
         new_basis = 0
         for i in range(len(other.basis)):
-            new_basis += other.coefficients[i]*apply_twobody_operator(other.basis[i].ket_sympy_expression, self.p1, self.p2)
+            #new_basis += other.coefficients[i]*apply_twobody_operator(other.basis[i].ket_sympy_expression, self.p1, self.p2)
+            new_basis += other.coefficients[i]*other.basis[i].ket_sympy_expression/twobody_denominator(self.p1, self.p2, self.ndim)
         
         return ket(new_basis)
 
@@ -614,7 +774,7 @@ class twobody_coulomb_operator_old():
     def _repr_html_(self):
         return "$ -\\frac{1}{\\mathbf{r}} $"  
     
-                
+
 
 def get_standard_basis(n):
     b = np.eye(n)
@@ -638,8 +798,17 @@ class ket(object):
     basis                -- a list of basisfunctions
     position             -- assumed centre of function < |R| > 
 
-    Available operations
-    Addition, subtraction, scalar multiplication, inner products, evaluation 
+    Available operations for kets B and A and scalar c
+    A + B     addition
+    A - C     subtraction
+    A * c     scalar multiplication 
+    A / c     division by a scalar
+    A * B     pointwise product 
+    A.bra*B   inner product
+    A.bra@B   inner product
+    A @ B     cartesian product
+    A(x)      \int_R^n \delta(x - x') f(x') dx' evaluate function at x
+    
 
     """
     def __init__(self, generic_input, name = "", basis = None, position = None, energy = None):
@@ -696,7 +865,17 @@ class ket(object):
     
     def __mul__(self, other):
         if type(other) is ket:
-            return self.__matmul__(other)
+            new_basis = []
+            new_coefficients = []
+            for i in range(len(self.basis)):
+                for j in range(len(other.basis)):
+                    new_basis.append(self.basis[i]*other.basis[j])
+                    new_coefficients.append(self.coefficients[i]*other.coefficients[j])
+
+
+
+            #return self.__matmul__(other)
+            return ket(new_coefficients, basis = new_basis)
         else:
             return ket([other*i for i in self.coefficients], basis = self.basis)
 
@@ -704,6 +883,7 @@ class ket(object):
         return ket([other*i for i in self.coefficients], basis = self.basis)
     
     def __truediv__(self, other):
+        assert(type(other) in [float, int]), "Divisor must be float or int"
         return ket([i/other for i in self.coefficients], basis = self.basis)
     
     def __matmul__(self, other):
@@ -758,8 +938,11 @@ class ket(object):
                         variable_identities = [] #for potential two-body interactions
                         for i in range(len(self.basis)):
                             for j in range(len(other.basis)):
-                                bij, sep = split_variables(self.basis[i].ket_sympy_expression, other.basis[j].ket_sympy_expression)
-                                bij = ket(bij)
+                                #bij, sep = split_variables(self.basis[i].ket_sympy_expression, other.basis[j].ket_sympy_expression)
+                                bij, sep = relabel_direct(self.basis[i].ket_sympy_expression, other.basis[j].ket_sympy_expression)
+                                #bij = ket(bij)
+                                bij = basisfunction(bij) #, position = other.basis[j].position)
+                                bij.position = np.append(self.basis[i].position, other.basis[j].position)
                                 new_basis.append(bij)
                                 new_coefficients.append(self.coefficients[i]*other.coefficients[j])
                                 variable_identities.append(sep)
@@ -882,11 +1065,13 @@ class ket(object):
     def measure(self, observable = None, repetitions = 1):
         """
         Make a mesaurement of the observable (hermitian operator)
+    
+        Measures by default the continuous distribution as defined by self.bra*self
         """
         if observable is None:
             # Measure position
             P = self.get_bra_sympy_expression()*self.get_ket_sympy_expression()
-            symbols = P.free_symbols
+            symbols = get_ordered_symbols(P)
             P = sp.lambdify(symbols, P, "numpy")
             nd = len(symbols)
             sig = .1 #variance of initial distribution
@@ -901,7 +1086,48 @@ class ket(object):
                 accept = P(r+dr)/P(r) > np.random.uniform(0,1,nd)
                 r[accept] += dr[accept]
             return r
+        else:
+            #assert(False), "Arbitrary measurements not yet implemented"
 
+            # get coefficients 
+            P = np.zeros(len(observable.eigenstates), dtype = float)
+            for i in range(len(observable.eigenstates)):
+                P[i] = (observable.eigenstates[i].bra@self)**2
+
+            distribution = discrete_metropolis_hastings(P, n_samples = repetitions)
+            return observable.eigenvalues[distribution]
+
+
+def discrete_metropolis_hastings(P, n_samples = 10000, n_iterations = 10000, stepsize = None):
+    """
+    Perform a random walk in the discrete distribution P (array)
+    """
+    #ensure normality
+    n = np.sum(P)
+    
+    Px = interp1d(np.linspace(0,1,len(P)), P/n)
+    
+    x = np.random.uniform(0,1,n_samples)
+    
+    if stepsize is None:
+        #set stepsize proportional to discretization
+        
+        stepsize = .5*len(P)**-1
+        print("stepsize:", stepsize)
+    
+    for i in range(n_iterations):
+        dx = np.random.normal(0,stepsize, n_samples)
+        xdx = x + dx
+
+        # periodic boundaries
+        xdx[xdx<0] += 1
+        xdx[xdx>1] -= 1
+        
+        accept = Px(xdx)/Px(x) > np.random.uniform(0,1,n_samples)
+        
+        x[accept] = xdx[accept]
+        
+    return np.array(x*len(P), dtype = int)
 
 def metropolis_hastings(f, N, x0, a):
     """
@@ -917,20 +1143,55 @@ def metropolis_hastings(f, N, x0, a):
         x[accept] += dx[accept]
     return x
 
+def get_particles_in_expression(s):
+    symbols = get_ordered_symbols(s)
+    particles = []
+    for i in symbols:
+        particles.append( int(i.name.split("{")[1].split(";")[0] ) )
+    particles = np.array(particles)
+    return np.unique(particles)
+
+def get_ordered_symbols(sympy_expression):
+    symbols = np.array(list(sympy_expression.free_symbols))
+    l_symbols = np.argsort([i.name for i in symbols])
+    return symbols[l_symbols]
+
+def substitute_sequence(s, var_i, var_f):
+    for i in range(len(var_i)):
+        s = s.subs(var_i[i], var_f[i])
+
+    return s
+
+def relabel_direct(s1,s2):
+    p1 = get_particles_in_expression(s1)
+    p_max = p1.max() + 1
+    p2 = get_particles_in_expression(s2)
+    for i in p2:
+        if i in p1:
+            
+            s2 = substitute_sequence(s2, get_default_variables(i), get_default_variables(p_max))
+            p_max += 1
+    return s1*s2, get_ordered_symbols(s1*s2)
+
+
 
 
 
 def split_variables(s1,s2):
-    # split variables of two sympy expressions
-    s1s = list(s1.free_symbols)
+    """
+    make a product where 
+    """
+
+    # gather particles in first symbols
+    s1s = get_ordered_symbols(s1)
     for i in range(len(s1s)):
         s1 = s1.subs(s1s[i], sp.Symbol("x_{0; %i}" % i))
 
-    s2s = list(s2.free_symbols)
+    s2s = get_ordered_symbols(s2)
     for i in range(len(s2s)):
         s2 = s2.subs(s2s[i], sp.Symbol("x_{1; %i}" % i))
         
-    return s1*s2, [s1.free_symbols, s2.free_symbols]
+    return s1*s2, get_ordered_symbols(s1*s2)
         
 
 def parse_symbol(x):
@@ -982,6 +1243,9 @@ def get_twobody_denominator(sympy_expression, p1, p2):
         denom += (mex[0,i] - mex[1,i])**2
         
     return sp.sqrt(denom)
+
+
+
 
 def apply_twobody_operator(sympy_expression, p1, p2):
     """
@@ -1043,7 +1307,7 @@ class projector(object):
             return ket(coefficients, basis = copy.copy(self.ket.basis), energy = copy.copy(self.ket.energy))
         
 @lru_cache(maxsize=100)
-def inner_product(b1, b2, operator = None, n_samples = int(1e6), grid = 101):
+def inner_product(b1, b2, operator = None, n_samples = int(1e6), grid = 101, sigma = None):
     """
     Computes the inner product < b1 | b2 >, where bn are instances of basisfunction
 
@@ -1082,7 +1346,10 @@ def inner_product(b1, b2, operator = None, n_samples = int(1e6), grid = 101):
         ri,rj = b1.position, b2.position
 
         R = (ai*ri + aj*rj)/(ai+aj)
-        sigma = ai + aj
+        if sigma is None:
+            sigma = .5*(ai + aj)
+        #print("R, sigma:", R, sigma)
+    
 
 
         return onebody(integrand, np.ones(len(R))*sigma, R, n_samples) #, control_variate = "spline", grid = grid) 
@@ -1212,6 +1479,20 @@ def rgrid_integrate_nd(points, values):
         wd *= 2
     
     return np.sum(v*w/wd)
+
+def sphere_distribution(N_samples, scale = 1):
+    theta = np.random.uniform(0,2*np.pi, N_samples)
+    phi = np.arccos(np.random.uniform(-1,1, N_samples))
+    r = np.random.exponential(scale, N_samples)
+    
+    x = r*np.sin(phi)*np.cos(theta)
+    y = r*np.sin(phi)*np.sin(theta)
+    z = r*np.cos(phi)
+    return np.array([x,y,z])
+
+def sphere_pdf(x, scale =1):
+    r = np.sqrt(np.sum(x**2, axis= 0))
+    return np.exp(-x/scale)/scale #/scale
 
 
 def onebody(integrand, sigma, loc, n_samples, control_variate = lambda *r : 0, grid = 101, I0 = 0):
