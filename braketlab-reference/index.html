@@ -1,0 +1,2423 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.3">
+    
+    
+      
+        <title>braketlab - BraketLab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f7f47774.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basisbank-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="BraketLab" class="md-header__button md-logo" aria-label="BraketLab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BraketLab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              braketlab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="BraketLab" class="md-nav__button md-logo" aria-label="BraketLab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    BraketLab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.md" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation.md" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Code Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Code Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          braketlab
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        braketlab
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab" class="md-nav__link">
+    braketlab.braketlab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction" class="md-nav__link">
+    basisfunction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket" class="md-nav__link">
+    ket
+  </a>
+  
+    <nav class="md-nav" aria-label="ket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.__matmul__" class="md-nav__link">
+    __matmul__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.flatten" class="md-nav__link">
+    flatten()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.measure" class="md-nav__link">
+    measure()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression" class="md-nav__link">
+    operator_expression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_old" class="md-nav__link">
+    operator_old
+  </a>
+  
+    <nav class="md-nav" aria-label="operator_old">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_old.__add__" class="md-nav__link">
+    __add__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_old.__mul__" class="md-nav__link">
+    __mul__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.apply_twobody_operator" class="md-nav__link">
+    apply_twobody_operator()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.compose_basis" class="md-nav__link">
+    compose_basis()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.construct_basis" class="md-nav__link">
+    construct_basis()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.discrete_metropolis_hastings" class="md-nav__link">
+    discrete_metropolis_hastings()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.eri_mci" class="md-nav__link">
+    eri_mci()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.get_control_variate" class="md-nav__link">
+    get_control_variate()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.get_twobody_denominator" class="md-nav__link">
+    get_twobody_denominator()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.inner_product" class="md-nav__link">
+    inner_product()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.map_expression" class="md-nav__link">
+    map_expression()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.metropolis_hastings" class="md-nav__link">
+    metropolis_hastings()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.onebody" class="md-nav__link">
+    onebody()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.parse_symbol" class="md-nav__link">
+    parse_symbol()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.rgrid_integrate_3d" class="md-nav__link">
+    rgrid_integrate_3d()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.rgrid_integrate_nd" class="md-nav__link">
+    rgrid_integrate_nd()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.show" class="md-nav__link">
+    show()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.show_old" class="md-nav__link">
+    show_old()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.split_variables" class="md-nav__link">
+    split_variables()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basisbank-reference/" class="md-nav__link">
+        basisbank
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solid_harmonics-reference/" class="md-nav__link">
+        solid_harmonics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hydrogen-reference/" class="md-nav__link">
+        hydrogen
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hamonic_oscillator-reference.md" class="md-nav__link">
+        harmonic_oscillator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../animate-reference/" class="md-nav__link">
+        animate
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab" class="md-nav__link">
+    braketlab.braketlab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction" class="md-nav__link">
+    basisfunction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket" class="md-nav__link">
+    ket
+  </a>
+  
+    <nav class="md-nav" aria-label="ket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.__matmul__" class="md-nav__link">
+    __matmul__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.flatten" class="md-nav__link">
+    flatten()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.measure" class="md-nav__link">
+    measure()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression" class="md-nav__link">
+    operator_expression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_old" class="md-nav__link">
+    operator_old
+  </a>
+  
+    <nav class="md-nav" aria-label="operator_old">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_old.__add__" class="md-nav__link">
+    __add__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_old.__mul__" class="md-nav__link">
+    __mul__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.apply_twobody_operator" class="md-nav__link">
+    apply_twobody_operator()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.compose_basis" class="md-nav__link">
+    compose_basis()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.construct_basis" class="md-nav__link">
+    construct_basis()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.discrete_metropolis_hastings" class="md-nav__link">
+    discrete_metropolis_hastings()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.eri_mci" class="md-nav__link">
+    eri_mci()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.get_control_variate" class="md-nav__link">
+    get_control_variate()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.get_twobody_denominator" class="md-nav__link">
+    get_twobody_denominator()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.inner_product" class="md-nav__link">
+    inner_product()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.map_expression" class="md-nav__link">
+    map_expression()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.metropolis_hastings" class="md-nav__link">
+    metropolis_hastings()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.onebody" class="md-nav__link">
+    onebody()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.parse_symbol" class="md-nav__link">
+    parse_symbol()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.rgrid_integrate_3d" class="md-nav__link">
+    rgrid_integrate_3d()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.rgrid_integrate_nd" class="md-nav__link">
+    rgrid_integrate_nd()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.show" class="md-nav__link">
+    show()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.show_old" class="md-nav__link">
+    show_old()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.split_variables" class="md-nav__link">
+    split_variables()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="basisbank-module">Basisbank module</h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="braketlab.braketlab"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.basisfunction">
+        <code>
+basisfunction        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>A general class for a basis function in R^n</p>
+      <p>sympy_expression -- A sympy expression
+position         -- assumed center of basis function (defaults to vec(0) )
+name             -- (unused)
+domain           -- if None, the domain is R^n
+                    if [ [x0, x1], [ y0, y1], ... ] , the domain is finite</p>
+<p>Methods
+normalize        -- Perform numerical normalization of self
+estimate_decay   -- Estimate decay of self, used for importance sampling (currently inactive)
+get_domain(other)-- Returns the intersecting domain of two basis functions</p>
+<p>Example usage:</p>
+<p>x = sympy.Symbol("x")</p>
+<p>x2 = basisfunction(x**2)</p>
+<p>x2.normalize()</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.ket">
+        <code>
+ket        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>A class for vectors defined on general vector spaces
+Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
+      <p>generic_input        -- if list or numpy.ndarray:
+                           if basis is None, returns a cartesian vector
+                           else, assumes input to contain coefficients
+                        if sympy expression, returns ket([1], basis = [basisfunction(generic_input)])
+name                 -- string, used for labelling and plotting, visual aids
+basis                -- a list of basisfunctions
+position             -- assumed centre of function &lt; |R| &gt; </p>
+<p>Available operations for kets B and A and scalar c
+A + B     addition
+A - C     subtraction
+A * c     scalar multiplication 
+A / c     division by a scalar
+A * B     pointwise product 
+A.bra*B   inner product
+A.bra@B   inner product
+A @ B     cartesian product
+A(x)      \int_R^n \delta(x - x') f(x') dx' evaluate function at x</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="braketlab.braketlab.ket.__matmul__">
+<code class="highlight language-python"><span class="fm">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Inner- and Cartesian products</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Inner- and Cartesian products</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">*</span><span class="n">other</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="n">ket</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bra_state</span><span class="p">:</span>
+            <span class="c1"># Compute inner product: &lt; self | other &gt;</span>
+            <span class="n">metric</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">)),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">complex</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+                            <span class="n">metric</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="ow">is</span> <span class="n">basisfunction</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="ow">is</span> <span class="n">basisfunction</span><span class="p">:</span>
+                                <span class="c1"># (basisfunction | basisfunction)</span>
+                                <span class="n">metric</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">inner_product</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+
+                            <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">is</span> <span class="n">ket</span><span class="p">:</span>
+                                <span class="c1"># (basisfunction | ket )</span>
+                                <span class="n">metric</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">ket</span><span class="p">([</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">basis</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span><span class="o">.</span><span class="n">bra</span><span class="nd">@other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="ow">is</span> <span class="n">basisfunction</span><span class="p">:</span>
+                                <span class="c1"># ( ket | basisfunction )</span>
+                                <span class="n">metric</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">bra</span><span class="nd">@ket</span><span class="p">([</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">basis</span> <span class="o">=</span> <span class="p">[</span><span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">]])</span>
+
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="c1"># ( ket | ket )</span>
+                                <span class="n">metric</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">bra</span><span class="nd">@other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">metric</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span><span class="o">&lt;=</span><span class="mf">1e-10</span><span class="p">:</span>
+                <span class="n">metric</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">real</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">metric</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">coefficients</span><span class="p">)))</span>
+
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="n">ket</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="n">bra_state</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">outerprod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+                <span class="k">else</span><span class="p">:</span>
+
+                    <span class="n">new_coefficients</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="n">new_basis</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="n">variable_identities</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#for potential two-body interactions</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">)):</span>
+                        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">)):</span>
+                            <span class="c1">#bij, sep = split_variables(self.basis[i].ket_sympy_expression, other.basis[j].ket_sympy_expression)</span>
+                            <span class="n">bij</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="n">relabel_direct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ket_sympy_expression</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">ket_sympy_expression</span><span class="p">)</span>
+                            <span class="c1">#bij = ket(bij)</span>
+                            <span class="n">bij</span> <span class="o">=</span> <span class="n">basisfunction</span><span class="p">(</span><span class="n">bij</span><span class="p">)</span> <span class="c1">#, position = other.basis[j].position)</span>
+                            <span class="n">bij</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+                            <span class="n">new_basis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bij</span><span class="p">)</span>
+                            <span class="n">new_coefficients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+                            <span class="n">variable_identities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sep</span><span class="p">)</span>
+
+
+                    <span class="n">ret</span> <span class="o">=</span> <span class="n">ket</span><span class="p">(</span><span class="n">new_coefficients</span><span class="p">,</span> <span class="n">basis</span> <span class="o">=</span> <span class="n">new_basis</span><span class="p">)</span>
+                    <span class="n">ret</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+                    <span class="n">ret</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="vm">__name__</span>
+                    <span class="n">ret</span><span class="o">.</span><span class="n">variable_identities</span> <span class="o">=</span> <span class="n">variable_identities</span>
+                    <span class="k">return</span> <span class="n">ret</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="braketlab.braketlab.ket.flatten">
+<code class="highlight language-python"><span class="n">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Remove redundancies in the expansion of self</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Remove redundancies in the expansion of self</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">new_coefficients</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">new_basis</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">new_energies</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">found</span><span class="p">:</span>
+            <span class="n">new_coefficients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">new_basis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">new_energies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">)):</span>
+
+                <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="ow">is</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">]):</span>
+                            <span class="n">new_coefficients</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                            <span class="n">found</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ket_sympy_expression</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">ket_sympy_expression</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">position</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
+                            <span class="n">new_coefficients</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                            <span class="n">found</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="o">=</span> <span class="n">new_basis</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span> <span class="o">=</span> <span class="n">new_coefficients</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="n">new_energies</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="braketlab.braketlab.ket.measure">
+<code class="highlight language-python"><span class="n">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observable</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Make a mesaurement of the observable (hermitian operator)</p>
+<p>Measures by default the continuous distribution as defined by self.bra*self</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observable</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">repetitions</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a mesaurement of the observable (hermitian operator)</span>
+
+<span class="sd">    Measures by default the continuous distribution as defined by self.bra*self</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">observable</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Measure position</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_bra_sympy_expression</span><span class="p">()</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">get_ket_sympy_expression</span><span class="p">()</span>
+        <span class="n">symbols</span> <span class="o">=</span> <span class="n">get_ordered_symbols</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="s2">&quot;numpy&quot;</span><span class="p">)</span>
+        <span class="n">nd</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
+        <span class="n">sig</span> <span class="o">=</span> <span class="mf">.1</span> <span class="c1">#variance of initial distribution</span>
+
+
+        <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nd</span><span class="p">),</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nd</span><span class="p">),</span> <span class="n">repetitions</span> <span class="p">)</span>
+
+        <span class="c1"># Metropolis-Hastings </span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+            <span class="n">dr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nd</span><span class="p">),</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">nd</span><span class="p">),</span> <span class="n">repetitions</span><span class="p">)</span>
+
+            <span class="n">accept</span> <span class="o">=</span> <span class="n">P</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="n">dr</span><span class="p">)</span><span class="o">/</span><span class="n">P</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">nd</span><span class="p">)</span>
+            <span class="n">r</span><span class="p">[</span><span class="n">accept</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dr</span><span class="p">[</span><span class="n">accept</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">r</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1">#assert(False), &quot;Arbitrary measurements not yet implemented&quot;</span>
+
+        <span class="c1"># get coefficients </span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">observable</span><span class="o">.</span><span class="n">eigenstates</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">observable</span><span class="o">.</span><span class="n">eigenstates</span><span class="p">)):</span>
+            <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">observable</span><span class="o">.</span><span class="n">eigenstates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">bra</span><span class="nd">@self</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+        <span class="n">distribution</span> <span class="o">=</span> <span class="n">discrete_metropolis_hastings</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">repetitions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">observable</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">[</span><span class="n">distribution</span><span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.operator_expression">
+        <code>
+operator_expression        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>A class for algebraic operator manipulations</p>
+<p>instantiate with a list of list of operators</p>
+
+<p><strong>Examples:</strong></p>
+    
+      <p>operator([[a, b], [c,d]], [1,2]]) = 1<em>ab + 2</em>cd</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.operator_old">
+        <code>
+operator_old        </code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>A parent class for quantum mechanical operators</p>
+<p>Operators acts on kets</p>
+<p>An "operator action" may only act on a basis function directly</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="braketlab.braketlab.operator_old.__add__">
+<code class="highlight language-python"><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Add operators together</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Add operators together</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">operator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operator_actions</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">operator_actions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefactor</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="braketlab.braketlab.operator_old.__mul__">
+<code class="highlight language-python"><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Multiplication is interpreted as an action on the ket on its right</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Multiplication is interpreted as an action on the ket on its right</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">operator</span><span class="p">,</span> <span class="n">ket</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]),</span> <span class="s2">&quot;operator cannot act on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefactor</span> <span class="o">*=</span> <span class="n">other</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="n">operator</span><span class="p">:</span>
+        <span class="n">operator_actions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operator_actions</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">operator_actions</span><span class="p">)):</span>
+                <span class="n">operator_actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operator_actions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">operator_actions</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">operator</span><span class="p">(</span><span class="n">operator_actions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefactor</span><span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">prefactor</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_basis</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">)):</span>
+            <span class="c1"># Let the operator act on each basisfunction [k] independently</span>
+
+
+
+            <span class="n">return_basis_function</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="n">basis_function</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">basis_function</span><span class="p">)</span> <span class="ow">is</span> <span class="n">basisfunction</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operator_actions</span><span class="p">)):</span>
+                    <span class="c1"># The operator may be the sum of several constituent operators [i]</span>
+
+                    <span class="n">product_basisfunction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator_actions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">basis_function</span> <span class="c1">#.ket_sympy_expression</span>
+
+                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operator_actions</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+                        <span class="c1"># sequence product from the rightmost operator[i][-1-j] in the product</span>
+                        <span class="n">product_basisfunction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator_actions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">product_basisfunction</span>
+                    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">return_basis_function</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+                        <span class="n">return_basis_function</span> <span class="o">=</span>  <span class="n">product_basisfunction</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">return_basis_function</span> <span class="o">=</span> <span class="n">return_basis_function</span> <span class="o">+</span> <span class="n">product_basisfunction</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">return_basis_function</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="n">basis_function</span><span class="p">)</span>
+
+
+
+
+            <span class="c1">#bf = basisfunction(return_basis_function)</span>
+            <span class="c1">#bf.position = basis_function.position</span>
+
+            <span class="n">new_basis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">return_basis_function</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ket</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">basis</span> <span class="o">=</span> <span class="n">new_basis</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.apply_twobody_operator">
+<code class="highlight language-python"><span class="n">apply_twobody_operator</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate the sympy expression </p>
+<p>sympy_expression / | x_p1 - x_p2 |</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">apply_twobody_operator</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate the sympy expression </span>
+
+<span class="sd">    sympy_expression / | x_p1 - x_p2 |</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">sympy_expression</span><span class="o">/</span><span class="n">get_twobody_denominator</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.compose_basis">
+<code class="highlight language-python"><span class="n">compose_basis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>generate a list of basis functions 
+corresponding to the AO-basis 
+(same ordering and so on)</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compose_basis</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    generate a list of basis functions </span>
+<span class="sd">    corresponding to the AO-basis </span>
+<span class="sd">    (same ordering and so on)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">basis</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">charge</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">charges</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+
+
+        <span class="n">atomic_number</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">charges</span><span class="p">[</span><span class="n">charge</span><span class="p">]</span>
+        <span class="n">atom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">atomic_numbers</span><span class="o">==</span><span class="n">atomic_number</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#index of basis function</span>
+
+
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">atoms</span><span class="p">[</span><span class="n">charge</span><span class="p">]</span>
+
+
+
+
+        <span class="k">for</span> <span class="n">shell</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">basis_set</span><span class="p">[</span><span class="n">atom</span><span class="p">])):</span>
+            <span class="k">for</span> <span class="n">contracted</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">basis_set</span><span class="p">[</span><span class="n">atom</span><span class="p">][</span><span class="n">shell</span><span class="p">])):</span>
+                <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">basis_set</span><span class="p">[</span><span class="n">atom</span><span class="p">][</span><span class="n">shell</span><span class="p">][</span><span class="n">contracted</span><span class="p">])</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="n">W</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">W</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">shell</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]):</span>
+                        <span class="n">basis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">basis_function</span><span class="p">([</span><span class="n">shell</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">w</span><span class="p">],</span> <span class="n">basis_type</span> <span class="o">=</span> <span class="s2">&quot;cgto&quot;</span><span class="p">,</span><span class="n">domain</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">]],</span> <span class="n">position</span> <span class="o">=</span> <span class="n">pos</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">shell</span><span class="p">,</span> <span class="n">shell</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                        <span class="n">basis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">basis_function</span><span class="p">([</span><span class="n">shell</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">w</span><span class="p">],</span> <span class="n">basis_type</span> <span class="o">=</span> <span class="s2">&quot;cgto&quot;</span><span class="p">,</span><span class="n">domain</span> <span class="o">=</span> <span class="p">[[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">]],</span> <span class="n">position</span> <span class="o">=</span> <span class="n">pos</span><span class="p">))</span>
+
+
+
+    <span class="k">return</span> <span class="n">basis</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.construct_basis">
+<code class="highlight language-python"><span class="n">construct_basis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Build basis from prism object</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">construct_basis</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build basis from prism object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">basis</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">atom</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">basis_set</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">atoms</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">shell</span> <span class="ow">in</span> <span class="n">atom</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">contracted</span> <span class="ow">in</span> <span class="n">shell</span><span class="p">:</span>
+                <span class="n">contracted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">contracted</span><span class="p">)</span>
+                <span class="n">l</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">contracted</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">contracted</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="n">contracted</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">l</span><span class="p">,</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="n">bf</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">get_solid_harmonic_gaussian</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="k">for</span> <span class="n">weights</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)):</span>
+                        <span class="n">bf</span> <span class="o">+=</span>  <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">get_solid_harmonic_gaussian</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+                    <span class="c1">#get_solid_harmonic_gaussian(a,l,m, position = [0,0,0])</span>
+                    <span class="n">basis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">bf</span> <span class="p">)</span>
+
+
+    <span class="k">return</span> <span class="n">basis</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.discrete_metropolis_hastings">
+<code class="highlight language-python"><span class="n">discrete_metropolis_hastings</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_iterations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">stepsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Perform a random walk in the discrete distribution P (array)</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">discrete_metropolis_hastings</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">n_iterations</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">stepsize</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform a random walk in the discrete distribution P (array)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#ensure normality</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+
+    <span class="n">Px</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)),</span> <span class="n">P</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">n_samples</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">stepsize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#set stepsize proportional to discretization</span>
+
+        <span class="n">stepsize</span> <span class="o">=</span> <span class="mf">.5</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)</span><span class="o">**-</span><span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stepsize:&quot;</span><span class="p">,</span> <span class="n">stepsize</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">):</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">stepsize</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+        <span class="n">xdx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span>
+
+        <span class="c1"># periodic boundaries</span>
+        <span class="n">xdx</span><span class="p">[</span><span class="n">xdx</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">xdx</span><span class="p">[</span><span class="n">xdx</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="n">accept</span> <span class="o">=</span> <span class="n">Px</span><span class="p">(</span><span class="n">xdx</span><span class="p">)</span><span class="o">/</span><span class="n">Px</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">n_samples</span><span class="p">)</span>
+
+        <span class="n">x</span><span class="p">[</span><span class="n">accept</span><span class="p">]</span> <span class="o">=</span> <span class="n">xdx</span><span class="p">[</span><span class="n">accept</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.eri_mci">
+<code class="highlight language-python"><span class="n">eri_mci</span><span class="p">(</span><span class="n">phi_p</span><span class="p">,</span> <span class="n">phi_q</span><span class="p">,</span> <span class="n">phi_r</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">pq</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">pr</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">ps</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">N_samples</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">Pr</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">Qr</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">zeta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">control_variate</span><span class="o">=&lt;</span><span class="n">function</span> <span class="o">&lt;</span><span class="k">lambda</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x7fde9efce0e0</span><span class="o">&gt;</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Electron repulsion integral estimate using zero-variance Monte Carlo</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">eri_mci</span><span class="p">(</span><span class="n">phi_p</span><span class="p">,</span> <span class="n">phi_q</span><span class="p">,</span> <span class="n">phi_r</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">,</span> 
+            <span class="n">pp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+            <span class="n">pq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+            <span class="n">pr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+            <span class="n">ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+            <span class="n">N_samples</span> <span class="o">=</span> <span class="mi">1000000</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">,</span> 
+            <span class="n">Pr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+            <span class="n">Qr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> 
+            <span class="n">zeta</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> 
+            <span class="n">eta</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> 
+            <span class="n">auto</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="n">control_variate</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">x3</span><span class="p">,</span><span class="n">x4</span><span class="p">,</span><span class="n">x5</span><span class="p">,</span><span class="n">x6</span> <span class="p">:</span> <span class="mi">0</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Electron repulsion integral estimate using zero-variance Monte Carlo</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">N_samples</span><span class="p">)</span>
+
+    <span class="n">P</span> <span class="o">=</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">pdf</span> 
+
+    <span class="k">if</span> <span class="n">auto</span><span class="p">:</span>
+        <span class="c1"># estimate mean and variance of orbitals</span>
+        <span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span>
+        <span class="n">P_1</span> <span class="o">=</span> <span class="n">phi_p</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span><span class="o">*</span><span class="n">phi_q</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span>
+        <span class="n">P_2</span> <span class="o">=</span> <span class="n">phi_r</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span><span class="o">*</span><span class="n">phi_s</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span>
+
+
+
+        <span class="n">Pr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">P_1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">Pr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">P_1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">Y</span><span class="p">)</span>
+        <span class="n">Pr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">P_1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">Z</span><span class="p">)</span>
+
+        <span class="n">Qr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">P_2</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">Qr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">P_2</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">Y</span><span class="p">)</span>
+        <span class="n">Qr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">P_2</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">Z</span><span class="p">)</span>
+
+    <span class="n">integrand</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">R</span><span class="p">,</span> \
+                       <span class="n">phi_p</span> <span class="o">=</span> <span class="n">phi_p</span><span class="p">,</span> \
+                       <span class="n">phi_q</span> <span class="o">=</span> <span class="n">phi_q</span><span class="p">,</span> \
+                       <span class="n">phi_r</span> <span class="o">=</span> <span class="n">phi_r</span><span class="p">,</span> \
+                       <span class="n">phi_s</span> <span class="o">=</span> <span class="n">phi_s</span><span class="p">,</span> \
+                       <span class="n">rp</span> <span class="o">=</span> <span class="n">pp</span><span class="p">,</span> <span class="n">rq</span> <span class="o">=</span> <span class="n">pq</span><span class="p">,</span> <span class="n">rr</span> <span class="o">=</span> <span class="n">pq</span><span class="p">,</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">ps</span> <span class="p">:</span>  \
+                       <span class="n">phi_p</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">rp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">rp</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">*</span> \
+                       <span class="n">phi_q</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">rq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">rq</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">*</span> \
+                       <span class="n">phi_r</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">rr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">rr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">rr</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">*</span> \
+                       <span class="n">phi_s</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">rs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">rs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">rs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> 
+
+
+
+
+
+
+
+
+
+    <span class="k">if</span> <span class="n">control_variate</span> <span class="o">==</span> <span class="s2">&quot;spline&quot;</span><span class="p">:</span>
+
+
+
+        <span class="n">control_variate</span><span class="p">,</span>  <span class="n">I0</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">get_control_variate</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">.6</span><span class="p">,</span> <span class="n">tmin</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="mi">11</span><span class="p">)</span>
+
+
+
+
+
+    <span class="n">u1</span> <span class="o">=</span>  <span class="n">x</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="n">zeta</span><span class="o">**-</span><span class="mf">.5</span> <span class="o">+</span> <span class="n">Pr</span><span class="p">[:]</span>
+    <span class="n">u2</span> <span class="o">=</span>  <span class="n">x</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:]</span><span class="o">*</span><span class="n">eta</span><span class="o">**-</span><span class="mf">.5</span>  <span class="o">+</span> <span class="n">Qr</span><span class="p">[:]</span>
+    <span class="n">r12</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">u1</span> <span class="o">-</span> <span class="n">u2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">phi_p</span><span class="p">(</span><span class="n">u1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">u1</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> 
+                    <span class="n">phi_q</span><span class="p">(</span><span class="n">u1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pq</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">u1</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">pq</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span>
+                    <span class="n">phi_r</span><span class="p">(</span><span class="n">u2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">u2</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">pr</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span>
+                    <span class="n">phi_s</span><span class="p">(</span><span class="n">u2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">ps</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ps</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">u2</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">ps</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> 
+                    <span class="n">control_variate</span><span class="p">(</span><span class="n">u1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">u1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span><span class="n">u1</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span><span class="n">u2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span><span class="n">u2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span><span class="n">u2</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span> <span class="p">)</span> <span class="o">/</span> 
+                   <span class="p">(</span><span class="n">P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">r12</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">zeta</span><span class="o">*</span><span class="n">eta</span><span class="p">)</span><span class="o">**-</span><span class="mf">1.5</span> 
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.get_control_variate">
+<code class="highlight language-python"><span class="n">get_control_variate</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">tmin</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Generate an nd interpolated control variate</p>
+<p>returns RegularGridInterpolator, definite integral on mesh, mesh points</p>
+<p>Keyword arguments
+integrand    -- an evaluateable function
+loc          -- position offset for integrand
+a            -- grid density decay, 
+tmin         -- 
+extent       --
+grid         -- number of grid points</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_control_variate</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">.6</span><span class="p">,</span> <span class="n">tmin</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="mi">101</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate an nd interpolated control variate</span>
+
+<span class="sd">    returns RegularGridInterpolator, definite integral on mesh, mesh points</span>
+
+
+<span class="sd">    Keyword arguments</span>
+<span class="sd">    integrand    -- an evaluateable function</span>
+<span class="sd">    loc          -- position offset for integrand</span>
+<span class="sd">    a            -- grid density decay, </span>
+<span class="sd">    tmin         -- </span>
+<span class="sd">    extent       --</span>
+<span class="sd">    grid         -- number of grid points</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">tmin</span><span class="p">,</span><span class="n">extent</span><span class="o">**</span><span class="n">a</span><span class="p">,</span><span class="n">grid</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">a</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="n">R_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">loc</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">*</span><span class="n">t</span><span class="p">[</span><span class="kc">None</span><span class="p">,:]</span>
+
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">R_</span> <span class="o">-</span> <span class="n">loc</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]),</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">integrand</span><span class="p">(</span><span class="o">*</span><span class="n">R</span><span class="p">)</span>
+
+
+    <span class="c1"># Integrate</span>
+    <span class="n">I0</span> <span class="o">=</span> <span class="n">rgrid_integrate_nd</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+
+    <span class="c1">#return RegularGridInterpolator(R_, data, bounds_error = False, fill_value = 0), I0, t</span>
+    <span class="k">return</span> <span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">R_</span><span class="o">-</span><span class="n">loc</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">data</span><span class="p">,</span> <span class="n">bounds_error</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fill_value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">),</span> <span class="n">I0</span><span class="p">,</span> <span class="n">t</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.get_twobody_denominator">
+<code class="highlight language-python"><span class="n">get_twobody_denominator</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>For a sympy_expression of arbitrary dimensionality,
+generate the coulomb operator</p>
+<p>1/sqrt( r_{p1, p2} )</p>
+<p>assuming that the symbols are of the form "x_{pn, x_i}"
+where x_i is the cartesian vector component</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_twobody_denominator</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    For a sympy_expression of arbitrary dimensionality,</span>
+<span class="sd">    generate the coulomb operator</span>
+
+<span class="sd">    1/sqrt( r_{p1, p2} )</span>
+
+<span class="sd">    assuming that the symbols are of the form &quot;x_{pn, x_i}&quot;</span>
+<span class="sd">    where x_i is the cartesian vector component</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mex</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">map_expression</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
+
+    <span class="n">denom</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">denom</span> <span class="o">+=</span> <span class="p">(</span><span class="n">mex</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">mex</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="k">return</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">denom</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.inner_product">
+<code class="highlight language-python"><span class="n">inner_product</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Computes the inner product &lt; b1 | b2 &gt;, where bn are instances of basisfunction</p>
+      <p>b1, b2    -- basisfunction objects
+operator  -- obsolete
+n_samples -- number of Monte Carlo samples
+grid      -- number of grid-points in every direction for the 
+             spline control variate</p>
+      <p>The inner product as a float</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">inner_product</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">operator</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e6</span><span class="p">),</span> <span class="n">grid</span> <span class="o">=</span> <span class="mi">101</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the inner product &lt; b1 | b2 &gt;, where bn are instances of basisfunction</span>
+
+<span class="sd">    Keyword arguments:</span>
+<span class="sd">    b1, b2    -- basisfunction objects</span>
+<span class="sd">    operator  -- obsolete</span>
+<span class="sd">    n_samples -- number of Monte Carlo samples</span>
+<span class="sd">    grid      -- number of grid-points in every direction for the </span>
+<span class="sd">                 spline control variate</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    The inner product as a float</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ri</span> <span class="o">=</span> <span class="n">b1</span><span class="o">.</span><span class="n">position</span><span class="o">*</span><span class="mi">0</span>
+    <span class="n">rj</span> <span class="o">=</span> <span class="n">b2</span><span class="o">.</span><span class="n">position</span><span class="o">*</span><span class="mi">0</span>
+
+    <span class="n">integrand</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">R</span><span class="p">,</span> \
+                       <span class="n">f1</span> <span class="o">=</span> <span class="n">b1</span><span class="o">.</span><span class="n">bra_numeric_expression</span><span class="p">,</span> \
+                       <span class="n">f2</span> <span class="o">=</span> <span class="n">b2</span><span class="o">.</span><span class="n">ket_numeric_expression</span><span class="p">,</span> \
+                       <span class="n">ri</span> <span class="o">=</span> <span class="n">ri</span><span class="p">,</span> <span class="n">rj</span> <span class="o">=</span> <span class="n">rj</span><span class="p">:</span>  \
+                       <span class="n">f1</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">ri</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ri</span><span class="p">))]))</span><span class="o">*</span><span class="n">f2</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">rj</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rj</span><span class="p">))]))</span>
+                       <span class="c1">#f1(*np.array([R[i] - ri[i] for i in range(len(ri))]))*f2(*np.array([R[i] - rj[i] for i in range(len(rj))]))</span>
+
+
+    <span class="n">variables_b1</span> <span class="o">=</span> <span class="n">b1</span><span class="o">.</span><span class="n">bra_sympy_expression</span><span class="o">.</span><span class="n">free_symbols</span>
+    <span class="n">variables_b2</span> <span class="o">=</span> <span class="n">b2</span><span class="o">.</span><span class="n">ket_sympy_expression</span><span class="o">.</span><span class="n">free_symbols</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">variables_b1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">variables_b2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+
+
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ai</span><span class="p">,</span><span class="n">aj</span> <span class="o">=</span> <span class="n">b1</span><span class="o">.</span><span class="n">decay</span><span class="p">,</span> <span class="n">b2</span><span class="o">.</span><span class="n">decay</span>
+        <span class="n">ri</span><span class="p">,</span><span class="n">rj</span> <span class="o">=</span> <span class="n">b1</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">b2</span><span class="o">.</span><span class="n">position</span>
+
+        <span class="n">R</span> <span class="o">=</span> <span class="p">(</span><span class="n">ai</span><span class="o">*</span><span class="n">ri</span> <span class="o">+</span> <span class="n">aj</span><span class="o">*</span><span class="n">rj</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ai</span><span class="o">+</span><span class="n">aj</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sigma</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">sigma</span> <span class="o">=</span> <span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">ai</span> <span class="o">+</span> <span class="n">aj</span><span class="p">)</span>
+        <span class="c1">#print(&quot;R, sigma:&quot;, R, sigma)</span>
+
+
+
+        <span class="k">return</span> <span class="n">onebody</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">))</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span> <span class="c1">#, control_variate = &quot;spline&quot;, grid = grid) </span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.map_expression">
+<code class="highlight language-python"><span class="n">map_expression</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Map out the free symbols of sympy_expressions
+in order to determine </p>
+<p>z[p, x] </p>
+<p>where p = [0,1] is particle x1 and x2, while
+x is their cartesian component</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">map_expression</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x2</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Map out the free symbols of sympy_expressions</span>
+<span class="sd">    in order to determine </span>
+
+<span class="sd">    z[p, x] </span>
+
+<span class="sd">    where p = [0,1] is particle x1 and x2, while</span>
+<span class="sd">    x is their cartesian component</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">map_</span> <span class="o">=</span> <span class="p">{</span><span class="n">x1</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="n">x2</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sympy_expression</span><span class="o">.</span><span class="n">free_symbols</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">object</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">j</span><span class="p">,</span><span class="n">k</span> <span class="o">=</span> <span class="n">parse_symbol</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1">#particle, coordinate</span>
+        <span class="n">z</span><span class="p">[</span><span class="n">map_</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">z</span><span class="p">,</span> <span class="n">n</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.metropolis_hastings">
+<code class="highlight language-python"><span class="n">metropolis_hastings</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Metropolis-Hastings random walk in the function f</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">metropolis_hastings</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Metropolis-Hastings random walk in the function f</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">a</span><span class="o">*</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+        <span class="n">accept</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">dx</span><span class="p">)</span><span class="o">/</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">accept</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dx</span><span class="p">[</span><span class="n">accept</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.onebody">
+<code class="highlight language-python"><span class="n">onebody</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">control_variate</span><span class="o">=&lt;</span><span class="n">function</span> <span class="o">&lt;</span><span class="k">lambda</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x7fde9efcdf80</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">I0</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Monte Carlo (MC) estimate of integral</p>
+      <p>integrand       -- evaluatable function
+sigma           -- standard deviation of normal distribution used
+                   for importance sampling
+loc             -- centre used for control variate and importance sampling
+n_sampes        -- number of MC-samples
+control_variate -- evaluatable function
+grid            -- sampling density of spline control variate
+I0              -- analytical integral of control variate</p>
+      <p>Estimated integral (float)</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">onebody</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">control_variate</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">r</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="mi">101</span><span class="p">,</span> <span class="n">I0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Monte Carlo (MC) estimate of integral</span>
+
+<span class="sd">    Keyword arguments:</span>
+<span class="sd">    integrand       -- evaluatable function</span>
+<span class="sd">    sigma           -- standard deviation of normal distribution used</span>
+<span class="sd">                       for importance sampling</span>
+<span class="sd">    loc             -- centre used for control variate and importance sampling</span>
+<span class="sd">    n_sampes        -- number of MC-samples</span>
+<span class="sd">    control_variate -- evaluatable function</span>
+<span class="sd">    grid            -- sampling density of spline control variate</span>
+<span class="sd">    I0              -- analytical integral of control variate</span>
+
+<span class="sd">    returns:</span>
+<span class="sd">    Estimated integral (float)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">control_variate</span> <span class="o">==</span> <span class="s2">&quot;spline&quot;</span><span class="p">:</span>
+
+        <span class="n">control_variate</span><span class="p">,</span> <span class="n">I0</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">get_control_variate</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">.6</span><span class="p">,</span> <span class="n">tmin</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">)</span>
+
+
+    <span class="c1">#R = np.random.multivariate_normal(loc, np.eye(len(loc))*sigma, n_samples)</span>
+    <span class="c1">#R = np.random.Generator.multivariate_normal(loc, np.eye(len(loc))*sigma, size=n_samples)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">loc</span><span class="p">))</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">loc</span><span class="p">))</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">I0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">integrand</span><span class="p">(</span><span class="o">*</span><span class="n">R</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">-</span><span class="n">control_variate</span><span class="p">(</span><span class="n">R</span><span class="p">))</span> <span class="o">*</span> <span class="n">P</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.parse_symbol">
+<code class="highlight language-python"><span class="n">parse_symbol</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Parse a symbol of the form </p>
+<p>x_{i;j}</p>
+<p>Return a list</p>
+<p>[i,j]</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">parse_symbol</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse a symbol of the form </span>
+
+<span class="sd">    x_{i;j}</span>
+
+<span class="sd">    Return a list</span>
+
+<span class="sd">    [i,j]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">strspl</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;{&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">strspl</span><span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.rgrid_integrate_3d">
+<code class="highlight language-python"><span class="n">rgrid_integrate_3d</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>regular grid integration, 3D</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rgrid_integrate_3d</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    regular grid integration, 3D</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># volume per cell</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+    <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:,</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="kc">None</span><span class="p">,:,</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">,:]</span>
+
+    <span class="c1"># weight per cell</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">values</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">:]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">/</span><span class="mi">8</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">v</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.rgrid_integrate_nd">
+<code class="highlight language-python"><span class="n">rgrid_integrate_nd</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Integrate over n dimensions as linear polynomials on a grid</p>
+      <p>points     -- cartesian coordinates of gridpoints
+values     -- values of integrand at gridpoints</p>
+      <p>Integral of linearly interpolated integrand</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rgrid_integrate_nd</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Integrate over n dimensions as linear polynomials on a grid</span>
+
+<span class="sd">    Keyword arguments:</span>
+<span class="sd">    points     -- cartesian coordinates of gridpoints</span>
+<span class="sd">    values     -- values of integrand at gridpoints</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    Integral of linearly interpolated integrand</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">)):</span>
+        <span class="n">cycle</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="n">i</span><span class="p">:</span>
+                <span class="n">cycle</span><span class="o">+=</span><span class="s2">&quot;:,&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cycle</span><span class="o">+=</span><span class="s2">&quot;None,&quot;</span>
+
+        <span class="n">w</span> <span class="o">+=</span><span class="s2">&quot;points[</span><span class="si">%s</span><span class="s2">] * &quot;</span> <span class="o">%</span> <span class="n">cycle</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">w</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="n">w</span> <span class="o">=</span> <span class="n">values</span>
+    <span class="n">wd</span><span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">)):</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="s2">&quot;w[</span><span class="si">%s</span><span class="s2">:-1] + w[</span><span class="si">%s</span><span class="s2">1:]&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="s2">&quot;:,&quot;</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="s2">&quot;:,&quot;</span><span class="p">))</span>
+        <span class="n">wd</span> <span class="o">*=</span> <span class="mi">2</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">v</span><span class="o">*</span><span class="n">w</span><span class="o">/</span><span class="n">wd</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.show">
+<code class="highlight language-python"><span class="n">show</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>all-purpose vector visualization</p>
+<p>Example usage to show the vectors as an image</p>
+<p>a = ket( ... ) 
+b = ket( ... )</p>
+<p>show(a, b)</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    all-purpose vector visualization</span>
+
+<span class="sd">    Example usage to show the vectors as an image</span>
+
+<span class="sd">    a = ket( ... ) </span>
+<span class="sd">    b = ket( ... )</span>
+
+<span class="sd">    show(a, b)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mpfig</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">mv</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+        <span class="n">spe</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">get_ket_sympy_expression</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">spe</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+            <span class="c1"># 1d vector</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">mpfig</span><span class="p">:</span>
+                <span class="n">mpfig</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+
+            <span class="n">vec_R2</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">i</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">i</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">vec_R2</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">vec_R2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">vec_R2</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">vec_R2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">vec_R2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">.1</span><span class="p">,</span> <span class="n">vec_R2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+            <span class="n">mv</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="n">mv</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">vec_R2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vec_R2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span> 
+
+
+
+
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">spe</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)</span>
+            <span class="n">nd</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">vars</span><span class="p">)</span>
+            <span class="n">Nx</span> <span class="o">=</span> <span class="mi">200</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+            <span class="n">mv</span> <span class="o">=</span> <span class="mi">8</span>
+            <span class="k">if</span> <span class="n">nd</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">mpfig</span><span class="p">:</span>
+                    <span class="n">mpfig</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+                <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">i</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+                <span class="n">mpfig</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+            <span class="k">if</span> <span class="n">nd</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">mpfig</span><span class="p">:</span>
+                    <span class="n">mpfig</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">i</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="kc">None</span><span class="p">,:]))</span>
+
+
+            <span class="k">if</span> <span class="n">nd</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">cube</span><span class="p">,</span> <span class="n">cm</span><span class="p">,</span> <span class="n">cmax</span><span class="p">,</span> <span class="n">cmin</span> <span class="o">=</span> <span class="n">get_cubefile</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">py3Dmol</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+                <span class="c1">#cm = cube.mean()</span>
+                <span class="n">offs</span> <span class="o">=</span> <span class="n">cmax</span><span class="o">*</span><span class="mf">.05</span>
+                <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">cm</span><span class="o">-</span><span class="n">offs</span><span class="p">,</span><span class="n">cm</span><span class="o">+</span><span class="n">offs</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bins</span><span class="p">)):</span>
+
+                    <span class="n">di</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="mi">255</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">bins</span><span class="p">)))</span>
+
+                    <span class="n">v</span><span class="o">.</span><span class="n">addVolumetricData</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;isoval&#39;</span><span class="p">:</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#</span><span class="si">%02x%02x%02x</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">di</span><span class="p">,</span> <span class="n">di</span><span class="p">,</span> <span class="n">di</span><span class="p">),</span> <span class="s1">&#39;opacity&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">})</span>
+                <span class="n">v</span><span class="o">.</span><span class="n">zoomTo</span><span class="p">()</span>
+                <span class="n">v</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">mpfig</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="n">mv</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">mv</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="n">mv</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">mv</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.show_old">
+<code class="highlight language-python"><span class="n">show_old</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>all-purpose vector visualization</p>
+<p>Example usage to show the vectors as an image</p>
+<p>a = ket( ... ) 
+b = ket( ... )</p>
+<p>plot(a, b)</p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">show_old</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    all-purpose vector visualization</span>
+
+<span class="sd">    Example usage to show the vectors as an image</span>
+
+<span class="sd">    a = ket( ... ) </span>
+<span class="sd">    b = ket( ... )</span>
+
+<span class="sd">    plot(a, b)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">Nx</span> <span class="o">=</span> <span class="mi">200</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Nx</span><span class="p">,</span> <span class="n">Nx</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="p">)),</span> <span class="mi">3</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">i</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="kc">None</span><span class="p">,:]))</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">i</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="c1">#plt.show()</span>
+
+
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">mv</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1">#plt.figure(figsize = (6,6))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+            <span class="n">vec_R2</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">i</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">i</span><span class="o">.</span><span class="n">basis</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">vec_R2</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">vec_R2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">vec_R2</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">vec_R2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">vec_R2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">.1</span><span class="p">,</span> <span class="n">vec_R2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+            <span class="n">mv</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="n">mv</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">vec_R2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vec_R2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span> 
+
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="n">mv</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">mv</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="n">mv</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">mv</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="braketlab.braketlab.split_variables">
+<code class="highlight language-python"><span class="n">split_variables</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>make a product where </p>
+
+        <details class="quote">
+          <summary>Source code in <code>braketlab/braketlab.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">split_variables</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    make a product where </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># gather particles in first symbols</span>
+    <span class="n">s1s</span> <span class="o">=</span> <span class="n">get_ordered_symbols</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s1s</span><span class="p">)):</span>
+        <span class="n">s1</span> <span class="o">=</span> <span class="n">s1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">s1s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x_{0; </span><span class="si">%i</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">))</span>
+
+    <span class="n">s2s</span> <span class="o">=</span> <span class="n">get_ordered_symbols</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s2s</span><span class="p">)):</span>
+        <span class="n">s2</span> <span class="o">=</span> <span class="n">s2</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">s2s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sp</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x_{1; </span><span class="si">%i</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">s1</span><span class="o">*</span><span class="n">s2</span><span class="p">,</span> <span class="n">get_ordered_symbols</span><span class="p">(</span><span class="n">s1</span><span class="o">*</span><span class="n">s2</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+      
+        
+        <a href="../basisbank-reference/" class="md-footer__link md-footer__link--next" aria-label="Next: basisbank" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              basisbank
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.29db7785.min.js"></script>
+      
+    
+  </body>
+</html>
