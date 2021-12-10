@@ -1,9 +1,4 @@
 
-/* Don't capitalize names. */
-h5.doc-heading {
-  text-transform: none !important;
-}
-
 /* Avoid breaking parameters name, etc. in table cells. */
 .doc-contents td code {
   word-break: normal !important;
@@ -13,4 +8,21 @@ h5.doc-heading {
 .doc-contents td p {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+}
+
+/* Avoid breaking code headings. */
+.doc-heading code {
+  white-space: normal;
+}
+
+/* Improve rendering of parameters, returns and exceptions. */
+.doc-contents .field-name {
+  min-width: 100px;
+}
+.doc-contents .field-name, .field-body {
+  border: none !important;
+  padding: 0 !important;
+}
+.doc-contents .field-list {
+  margin: 0 !important;
 }
