@@ -229,28 +229,36 @@ def construct_basis(p):
 
 class basisfunction:
     """
-    A general class for a basis function in R^n
+    # A general class for a basis function in $\mathbb{R}^n$
     
-    Keyword arguments:
-    sympy_expression -- A sympy expression
-    position         -- assumed center of basis function (defaults to vec(0) )
-    name             -- (unused)
-    domain           -- if None, the domain is R^n
-                        if [ [x0, x1], [ y0, y1], ... ] , the domain is finite
+    ## Keyword arguments:
 
-    Methods
-    normalize        -- Perform numerical normalization of self
-    estimate_decay   -- Estimate decay of self, used for importance sampling (currently inactive)
-    get_domain(other)-- Returns the intersecting domain of two basis functions
+    | Argument      | Description |
+    | ----------- | ----------- |
+    | sympy_expression      | A sympy expression       |
+    | position   | assumed center of basis function (defaults to $\mathbf{0}$ )        |
+    | name   | (unused)        |
+    | domain   |if None, the domain is R^n, if [ [x0, x1], [ y0, y1], ... ] , the domain is finite      |
 
 
-    Example usage:
+    ## Methods
 
+    | Method      | Description |
+    | ----------- | ----------- |
+    | normalize      | Perform numerical normalization of self       |
+    | estimate_decay   | Estimate decay of self, used for importance sampling (currently inactive)        |
+    | get_domain(other)   | Returns the intersecting domain of two basis functions        |
+
+
+    ## Example usage:
+
+    ```
     x = sympy.Symbol("x")
-
     x2 = basisfunction(x**2)
-    
     x2.normalize()
+    ```
+
+        
     
     """
     position = None
@@ -290,6 +298,9 @@ class basisfunction:
         
             
     def normalize(self, domain = None):
+        """
+        Set normalization factor $N$ of self ($\chi$) so that $\langle \chi \\vert \chi \\rangle = 1$.
+        """
         s_12 = inner_product(self, self)
         self.normalization = s_12**-.5
     
@@ -319,13 +330,23 @@ class basisfunction:
             return domain
         
     def __call__(self, *r):
-        # Evaluate function in coordinates 
+        """
+        Evaluate function in coordinates ```*r``` (arbitrary dimensions).
+
+        ## Returns
+        The basisfunction $\chi$ evaluated in the coordinates provided in the array(s) ```*r```:
+        $\int_{\mathbb{R}^n} \delta(\mathbf{r} - \mathbf{r'}) \chi(\mathbf{r'}) d\mathbf{r'}$
+        """
 
         return self.normalization*self.ket_numeric_expression(*r) 
     
     
     
     def __mul__(self, other):
+        """
+        Returns a basisfunction $\chi_{a*b}(\mathbf{r})$, where
+        $\chi_{a*b}(\mathbf{r}) = \chi_a(\mathbf{r}) \chi_b(\mathbf{r})$
+        """
         return basisfunction(self.ket_sympy_expression * other.ket_sympy_expression, 
                    position = .5*(self.position + other.position),
                    domain = self.get_domain(other), name = self.__name__+other.__name__)
@@ -337,33 +358,43 @@ class basisfunction:
     
         
     def __add__(self, other):
+        """
+        Returns a basisfunction  $\chi_{a+b}(\mathbf{r})$, where
+        $\chi_{a+b}(\mathbf{r}) = \chi_a(\mathbf{r}) + \chi_b(\mathbf{r})$
+        """
         return basisfunction(self.ket_sympy_expression + other.ket_sympy_expression, 
                    position = .5*(self.position + other.position),
                    domain = self.get_domain(other))
     
     def __sub__(self, other):
+        """
+        Returns a basisfunction  $\chi_{a-b}(\mathbf{r})$, where
+        $\chi_{a-b}(\mathbf{r}) = \chi_a(\mathbf{r}) - \chi_b(\mathbf{r})$
+        """
         return basisfunction(self.ket_sympy_expression - other.ket_sympy_expression, 
                    position = .5*(self.position + other.position),
                    domain = self.get_domain(other))
     
     
     def _repr_html_(self):
-        
+        """
+        Returns a latex-formatted string to display the mathematical expression of the basisfunction. 
+        """
         return "$ %s $" % sp.latex(self.ket_sympy_expression)
     
     
-def get_solid_harmonic_gaussian(a,l,m, position = [0,0,0]):
-    return basisfunction(solid_harmonics.get_Nao(a,l,m), position = position)                
+#def get_solid_harmonic_gaussian(a,l,m, position = [0,0,0]):
+#    return basisfunction(solid_harmonics.get_Nao(a,l,m), position = position)                
 
 class operator_expression(object):
     """
-    A class for algebraic operator manipulations
+    # A class for algebraic operator manipulations
 
     instantiate with a list of list of operators
 
-    example:
+    ## Example
 
-    operator([[a, b], [c,d]], [1,2]]) = 1*ab + 2*cd
+    ```operator([[a, b], [c,d]], [1,2]]) = 1*ab + 2*cd ```
 
     """
     def __init__(self, ops, coefficients = None):
@@ -376,6 +407,9 @@ class operator_expression(object):
             self.coefficients = np.ones(len(self.ops))
     
     def __mul__(self, other):
+        """
+        # Operator multiplication
+        """
         if type(other) is operator:
             new_ops = []
             for i in self.ops:
@@ -386,11 +420,25 @@ class operator_expression(object):
             return self.apply(other)
     
     def __add__(self, other):
+        """
+        # Operator addition
+        """
         new_ops = self.ops + other.ops
         new_coeffs = self.coefficients + other.coefficients
         return operator_expression(new_ops, new_coeffs).flatten()
+
+    def __sub__(self, other):
+        """
+        # Operator subtraction
+        """
+        new_ops = self.ops + other.ops
+        new_coeffs = self.coefficients + [-1*i for i in other.coefficients]
+        return operator_expression(new_ops, new_coeffs).flatten()
     
     def flatten(self):
+        """
+        # Remove redundant terms
+        """
         new_ops = []
         new_coeffs = []
         found = []
@@ -408,6 +456,16 @@ class operator_expression(object):
         return operator_expression(new_ops, new_coeffs)
     
     def apply(self, other_ket):
+        """
+        # Apply operator to ket
+
+        $\hat{\Omega} \vert a \rangle =  \vert a' \rangle $
+
+        ## Returns
+
+        A new ket
+
+        """
         ret = 0
         for i in range(len(self.ops)):
             ret_term = other_ket*1
@@ -420,6 +478,9 @@ class operator_expression(object):
         return ret
     
     def _repr_html_(self):
+        """
+        Returns a latex-formatted string to display the mathematical expression of the operator. 
+        """
         ret = ""
         for i in range(len(self.ops)):
             
@@ -439,86 +500,10 @@ class operator_expression(object):
                 
         return ret
 
-class operator_old():
-    """
-    A parent class for quantum mechanical operators
-
-    Operators acts on kets
-
-    An "operator action" may only act on a basis function directly
-    """
-    def __init__(self, operator_action, prefactor = 1, special_operator = False):
-        if type(operator_action) is list:
-            self.operator_actions = operator_action
-        else:
-            if special_operator:
-                self.operator_actions = [[operator_action]]
-            
-            else:
-                # assume operator action is a sympy expression
-
-                self.operator_actions = [[sympy_operator_action(operator_action)]]
-        self.prefactor = prefactor
-
-    def __mul__(self, other):
-        """
-        Multiplication is interpreted as an action on the ket on its right
-        """
-        assert(type(other) in [operator, ket, float, int]), "operator cannot act on %s" % type(other)
-        if type(other) in [float, int]:
-            self.prefactor *= other
-        if type(other) is operator:
-            operator_actions = []
-            for i in range(len(self.operator_actions)):
-                for j in range(len(other.operator_actions)):
-                    operator_actions.append(self.operator_actions[i] + other.operator_actions[j])
-            return operator(operator_actions, self.prefactor*other.prefactor)
-        else:
-            new_basis = []
-            for k in range(len(other.basis)):
-                # Let the operator act on each basisfunction [k] independently
-
-
-
-                return_basis_function = 0
-
-                basis_function = other.basis[k]
-
-                if type(basis_function) is basisfunction:
-                    for i in range(len(self.operator_actions)):
-                        # The operator may be the sum of several constituent operators [i]
-
-                        product_basisfunction = self.operator_actions[i][-1]*basis_function #.ket_sympy_expression
-
-                        for j in range(1,len(self.operator_actions[i])):
-                            # sequence product from the rightmost operator[i][-1-j] in the product
-                            product_basisfunction = self.operator_actions[i][-1-j]*product_basisfunction
-                        if type(return_basis_function) is int:
-                            return_basis_function =  product_basisfunction
-                        else:
-                            return_basis_function = return_basis_function + product_basisfunction
-                else:
-                    return_basis_function = self.__mul__(basis_function)
-
-                        
-                
-                
-                #bf = basisfunction(return_basis_function)
-                #bf.position = basis_function.position
-
-                new_basis.append(return_basis_function)
-            
-            return ket(other.coefficients, basis = new_basis)
-        
-
-
-    def __add__(self, other):
-        """
-        Add operators together
-        """
-        return operator(self.operator_actions + other.operator_actions, self.prefactor)
-
 class operator(object):
+    """
+    Parent class for operators
+    """
     def __init__(self):
         pass
 
@@ -568,14 +553,7 @@ class differential(operator):
     
 
     
-def get_translation_operator(pos):
-    return operator_expression(translation(pos))# , special_operator = True)
 
-def get_sympy_operator(sympy_expression):
-    return operator_expression(sympy_expression)
-
-def get_differential_operator(order):
-    return operator_expression(differential(order)) #,special_operator = True)
         
 
     
@@ -626,13 +604,20 @@ class kinetic_operator(operator):
     def _repr_html_(self):
         return "$ -\\frac{1}{2} \\nabla^2 $" 
 
+def get_translation_operator(pos):
+    return operator_expression(translation(pos))# , special_operator = True)
+
+def get_sympy_operator(sympy_expression):
+    return operator_expression(sympy_expression)
+
+def get_differential_operator(order):
+    return operator_expression(differential(order)) #,special_operator = True)
 
 def get_onebody_coulomb_operator(position = np.array([0,0,0.0]), Z = 1.0, p = None, variables = None):
     return operator_expression(onebody_coulomb_operator(position, Z = Z, p = p, variables = variables))
                     
 def get_twobody_coulomb_operator(p1=0,p2=1):
     return operator_expression(twobody_coulomb_operator(p1,p2))
-
 
 def get_kinetic_operator(p = None):
     return operator_expression(kinetic_operator(p = p))
@@ -789,29 +774,41 @@ class ket(object):
     A class for vectors defined on general vector spaces
     Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)
 
-    Keyword arguments:
-    generic_input        -- if list or numpy.ndarray:
-                               if basis is None, returns a cartesian vector
-                               else, assumes input to contain coefficients
-                            if sympy expression, returns ket([1], basis = [basisfunction(generic_input)])
-    name                 -- string, used for labelling and plotting, visual aids
-    basis                -- a list of basisfunctions
-    position             -- assumed centre of function < |R| > 
+    ## Keyword arguments:
 
-    Available operations for kets B and A and scalar c
-    A + B     addition
-    A - C     subtraction
-    A * c     scalar multiplication 
-    A / c     division by a scalar
-    A * B     pointwise product 
-    A.bra*B   inner product
-    A.bra@B   inner product
-    A @ B     cartesian product
-    A(x)      \int_R^n \delta(x - x') f(x') dx' evaluate function at x
+    | Method      | Description |
+    | ----------- | ----------- |
+    | generic_input      | if list or numpy.ndarray:  if basis is None, returns a cartesian vector else, assumes input to contain coefficients. If sympy expression, returns ket([1], basis = [basisfunction(generic_input)])    |
+    | name   | a string, used for labelling and plotting, visual aids        |
+    | basis   | a list of basisfunctions       |
+    | position   | assumed centre of function $\langle  \\vert \hat{\mathbf{r}} \\vert \\rangle$.     |
+    | energy   | if this is an eigenstate of a Hamiltonian, it's eigenvalue may be fixed at initialization     |
+
+    ## Operations  
+    For kets B and A and scalar c
     
+    | Operation      | Description |
+    | ----------- | ----------- |
+    | A + B | addition |
+    | A - C | subtraction |
+    |  A * c   |  scalar multiplication   |
+    |  A / c  |   division by a scalar |
+    |  A * B   |  pointwise product   |
+    |  A.bra*B |  inner product  |
+    |  A.bra@B |  inner product  |
+    |  A @ B   |  cartesian product  |
+    |  A(x)   |   $\int_R^n \delta(x - x') f(x') dx'$ evaluate function at x  |    
 
     """
     def __init__(self, generic_input, name = "", basis = None, position = None, energy = None):
+        """
+        ## Initialization of a ket
+        
+
+
+
+
+        """
         self.position = position
         if type(generic_input) in [np.ndarray, list]:
             

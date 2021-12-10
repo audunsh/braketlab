@@ -1,0 +1,3 @@
+# Hydrogen module
+
+::: braketlab.hydrogen

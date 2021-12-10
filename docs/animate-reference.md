@@ -1,0 +1,3 @@
+# Animate module
+
+::: braketlab.animate
