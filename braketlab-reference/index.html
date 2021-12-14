@@ -1,252 +1,1334 @@
-<!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>braketlab - BraketLab</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../css/theme.css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
-  <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "braketlab";
-    var mkdocs_page_input_path = "braketlab-reference.md";
-    var mkdocs_page_url = null;
-  </script>
-  
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-</head>
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.3">
+    
+    
+      
+        <title>braketlab - BraketLab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f7f47774.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    
+      
 
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
 
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> BraketLab</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#braketlab-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="BraketLab" class="md-header__button md-logo" aria-label="BraketLab" data-md-component="logo">
+      
+  <img src="https://raw.githubusercontent.com/audunsh/braketlab/master/graphics/braketlab_dark.png" alt="logo">
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../tutorial_2/">Tutorial</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Code Reference</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">braketlab</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab">braketlab.braketlab</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.basisfunction">basisfunction</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.basisfunction--a-general-class-for-a-basis-function-in-mathbbrn">A general class for a basis function in \(\mathbb{R}^n\)</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.basisfunction--keyword-arguments">Keyword arguments:</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.basisfunction--methods">Methods</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.basisfunction--example-usage">Example usage:</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.basisfunction.__add__">__add__()</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.basisfunction.__call__">__call__()</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.basisfunction.__call__--returns">Returns</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.basisfunction.__mul__">__mul__()</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.basisfunction.__sub__">__sub__()</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.basisfunction.locate">locate()</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.basisfunction.normalize">normalize()</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.ket">ket</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.ket--keyword-arguments">Keyword arguments:</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.ket--operations">Operations</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.ket.__init__">__init__()</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.ket.__init__--initialization-of-a-ket">Initialization of a ket</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.ket.__matmul__">__matmul__()</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.ket.flatten">flatten()</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.ket.measure">measure()</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.operator">operator</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.operator_expression">operator_expression</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.operator_expression--a-class-for-algebraic-operator-manipulations">A class for algebraic operator manipulations</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.operator_expression--example">Example</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.operator_expression.__add__">__add__()</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.operator_expression.__add__--operator-addition">Operator addition</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.operator_expression.__mul__">__mul__()</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.operator_expression.__mul__--operator-multiplication">Operator multiplication</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.operator_expression.__sub__">__sub__()</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.operator_expression.__sub__--operator-subtraction">Operator subtraction</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.operator_expression.apply">apply()</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.operator_expression.apply--apply-operator-to-ket">Apply operator to ket</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.operator_expression.flatten">flatten()</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#braketlab.braketlab.operator_expression.flatten--remove-redundant-terms">Remove redundant terms</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.apply_twobody_operator">apply_twobody_operator()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.compose_basis">compose_basis()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.construct_basis">construct_basis()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.discrete_metropolis_hastings">discrete_metropolis_hastings()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.eri_mci">eri_mci()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.get_control_variate">get_control_variate()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.get_twobody_denominator">get_twobody_denominator()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.inner_product">inner_product()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.locate">locate()</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#braketlab.braketlab.locate--returns">Returns</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.map_expression">map_expression()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.metropolis_hastings">metropolis_hastings()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.onebody">onebody()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.parse_symbol">parse_symbol()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.rgrid_integrate_3d">rgrid_integrate_3d()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.rgrid_integrate_nd">rgrid_integrate_nd()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.show">show()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.show_old">show_old()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#braketlab.braketlab.split_variables">split_variables()</a>
-    </li>
-    </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../basisbank-reference/">basisbank</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../solid_harmonics-reference/">solid_harmonics</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../hydrogen-reference/">hydrogen</a>
-                    </li>
-                    <li class="toctree-l1"><a class="" href="../hamonic_oscillator-reference.md">harmonic_oscillator</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../animate-reference/">animate</a>
-                    </li>
-                </ul>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BraketLab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              braketlab
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">BraketLab</a>
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
       </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
 
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="BraketLab" class="md-nav__button md-logo" aria-label="BraketLab" data-md-component="logo">
       
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="..">Docs</a> &raquo;</li>
+  <img src="https://raw.githubusercontent.com/audunsh/braketlab/master/graphics/braketlab_dark.png" alt="logo">
+
+    </a>
+    BraketLab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
     
       
-        
-          <li>Code Reference &raquo;</li>
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_2/" class="md-nav__link">
+        Tutorial
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Code Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Code Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
         
       
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          braketlab
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        braketlab
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
     
-    <li>braketlab</li>
-    <li class="wy-breadcrumbs-aside">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab" class="md-nav__link">
+    braketlab.braketlab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction" class="md-nav__link">
+    basisfunction
+  </a>
+  
+    <nav class="md-nav" aria-label="basisfunction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction--a-general-class-for-a-basis-function-in-mathbbrn" class="md-nav__link">
+    A general class for a basis function in \(\mathbb{R}^n\)
+  </a>
+  
+    <nav class="md-nav" aria-label="A general class for a basis function in \(\mathbb{R}^n\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction--keyword-arguments" class="md-nav__link">
+    Keyword arguments:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction--methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction--example-usage" class="md-nav__link">
+    Example usage:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.__add__" class="md-nav__link">
+    __add__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+    <nav class="md-nav" aria-label="__call__()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.__call__--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.__mul__" class="md-nav__link">
+    __mul__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.__sub__" class="md-nav__link">
+    __sub__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.locate" class="md-nav__link">
+    locate()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.normalize" class="md-nav__link">
+    normalize()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket" class="md-nav__link">
+    ket
+  </a>
+  
+    <nav class="md-nav" aria-label="ket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket--keyword-arguments" class="md-nav__link">
+    Keyword arguments:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket--operations" class="md-nav__link">
+    Operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+    <nav class="md-nav" aria-label="__init__()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.__init__--initialization-of-a-ket" class="md-nav__link">
+    Initialization of a ket
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.__matmul__" class="md-nav__link">
+    __matmul__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.flatten" class="md-nav__link">
+    flatten()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.measure" class="md-nav__link">
+    measure()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator" class="md-nav__link">
+    operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression" class="md-nav__link">
+    operator_expression
+  </a>
+  
+    <nav class="md-nav" aria-label="operator_expression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression--a-class-for-algebraic-operator-manipulations" class="md-nav__link">
+    A class for algebraic operator manipulations
+  </a>
+  
+    <nav class="md-nav" aria-label="A class for algebraic operator manipulations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression--example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__add__" class="md-nav__link">
+    __add__()
+  </a>
+  
+    <nav class="md-nav" aria-label="__add__()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__add__--operator-addition" class="md-nav__link">
+    Operator addition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__mul__" class="md-nav__link">
+    __mul__()
+  </a>
+  
+    <nav class="md-nav" aria-label="__mul__()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__mul__--operator-multiplication" class="md-nav__link">
+    Operator multiplication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__sub__" class="md-nav__link">
+    __sub__()
+  </a>
+  
+    <nav class="md-nav" aria-label="__sub__()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__sub__--operator-subtraction" class="md-nav__link">
+    Operator subtraction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.apply" class="md-nav__link">
+    apply()
+  </a>
+  
+    <nav class="md-nav" aria-label="apply()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.apply--apply-operator-to-ket" class="md-nav__link">
+    Apply operator to ket
+  </a>
+  
+    <nav class="md-nav" aria-label="Apply operator to ket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.apply--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.flatten" class="md-nav__link">
+    flatten()
+  </a>
+  
+    <nav class="md-nav" aria-label="flatten()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.flatten--remove-redundant-terms" class="md-nav__link">
+    Remove redundant terms
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.apply_twobody_operator" class="md-nav__link">
+    apply_twobody_operator()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.compose_basis" class="md-nav__link">
+    compose_basis()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.construct_basis" class="md-nav__link">
+    construct_basis()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.discrete_metropolis_hastings" class="md-nav__link">
+    discrete_metropolis_hastings()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.eri_mci" class="md-nav__link">
+    eri_mci()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.get_control_variate" class="md-nav__link">
+    get_control_variate()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.get_twobody_denominator" class="md-nav__link">
+    get_twobody_denominator()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.inner_product" class="md-nav__link">
+    inner_product()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.locate" class="md-nav__link">
+    locate()
+  </a>
+  
+    <nav class="md-nav" aria-label="locate()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.locate--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.map_expression" class="md-nav__link">
+    map_expression()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.metropolis_hastings" class="md-nav__link">
+    metropolis_hastings()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.onebody" class="md-nav__link">
+    onebody()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.parse_symbol" class="md-nav__link">
+    parse_symbol()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.rgrid_integrate_3d" class="md-nav__link">
+    rgrid_integrate_3d()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.rgrid_integrate_nd" class="md-nav__link">
+    rgrid_integrate_nd()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.show" class="md-nav__link">
+    show()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.show_old" class="md-nav__link">
+    show_old()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.split_variables" class="md-nav__link">
+    split_variables()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
-  </ul>
   
-  <hr/>
-</div>
 
-          <div role="main">
-            <div class="section">
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basisbank-reference/" class="md-nav__link">
+        basisbank
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solid_harmonics-reference/" class="md-nav__link">
+        solid_harmonics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hydrogen-reference/" class="md-nav__link">
+        hydrogen
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hamonic_oscillator-reference.md" class="md-nav__link">
+        harmonic_oscillator
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../animate-reference/" class="md-nav__link">
+        animate
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
               
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab" class="md-nav__link">
+    braketlab.braketlab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction" class="md-nav__link">
+    basisfunction
+  </a>
+  
+    <nav class="md-nav" aria-label="basisfunction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction--a-general-class-for-a-basis-function-in-mathbbrn" class="md-nav__link">
+    A general class for a basis function in \(\mathbb{R}^n\)
+  </a>
+  
+    <nav class="md-nav" aria-label="A general class for a basis function in \(\mathbb{R}^n\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction--keyword-arguments" class="md-nav__link">
+    Keyword arguments:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction--methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction--example-usage" class="md-nav__link">
+    Example usage:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.__add__" class="md-nav__link">
+    __add__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+    <nav class="md-nav" aria-label="__call__()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.__call__--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.__mul__" class="md-nav__link">
+    __mul__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.__sub__" class="md-nav__link">
+    __sub__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.locate" class="md-nav__link">
+    locate()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.basisfunction.normalize" class="md-nav__link">
+    normalize()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket" class="md-nav__link">
+    ket
+  </a>
+  
+    <nav class="md-nav" aria-label="ket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket--keyword-arguments" class="md-nav__link">
+    Keyword arguments:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket--operations" class="md-nav__link">
+    Operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+    <nav class="md-nav" aria-label="__init__()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.__init__--initialization-of-a-ket" class="md-nav__link">
+    Initialization of a ket
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.__matmul__" class="md-nav__link">
+    __matmul__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.flatten" class="md-nav__link">
+    flatten()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.ket.measure" class="md-nav__link">
+    measure()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator" class="md-nav__link">
+    operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression" class="md-nav__link">
+    operator_expression
+  </a>
+  
+    <nav class="md-nav" aria-label="operator_expression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression--a-class-for-algebraic-operator-manipulations" class="md-nav__link">
+    A class for algebraic operator manipulations
+  </a>
+  
+    <nav class="md-nav" aria-label="A class for algebraic operator manipulations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression--example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__add__" class="md-nav__link">
+    __add__()
+  </a>
+  
+    <nav class="md-nav" aria-label="__add__()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__add__--operator-addition" class="md-nav__link">
+    Operator addition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__mul__" class="md-nav__link">
+    __mul__()
+  </a>
+  
+    <nav class="md-nav" aria-label="__mul__()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__mul__--operator-multiplication" class="md-nav__link">
+    Operator multiplication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__sub__" class="md-nav__link">
+    __sub__()
+  </a>
+  
+    <nav class="md-nav" aria-label="__sub__()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.__sub__--operator-subtraction" class="md-nav__link">
+    Operator subtraction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.apply" class="md-nav__link">
+    apply()
+  </a>
+  
+    <nav class="md-nav" aria-label="apply()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.apply--apply-operator-to-ket" class="md-nav__link">
+    Apply operator to ket
+  </a>
+  
+    <nav class="md-nav" aria-label="Apply operator to ket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.apply--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.flatten" class="md-nav__link">
+    flatten()
+  </a>
+  
+    <nav class="md-nav" aria-label="flatten()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.operator_expression.flatten--remove-redundant-terms" class="md-nav__link">
+    Remove redundant terms
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.apply_twobody_operator" class="md-nav__link">
+    apply_twobody_operator()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.compose_basis" class="md-nav__link">
+    compose_basis()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.construct_basis" class="md-nav__link">
+    construct_basis()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.discrete_metropolis_hastings" class="md-nav__link">
+    discrete_metropolis_hastings()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.eri_mci" class="md-nav__link">
+    eri_mci()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.get_control_variate" class="md-nav__link">
+    get_control_variate()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.get_twobody_denominator" class="md-nav__link">
+    get_twobody_denominator()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.inner_product" class="md-nav__link">
+    inner_product()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.locate" class="md-nav__link">
+    locate()
+  </a>
+  
+    <nav class="md-nav" aria-label="locate()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.braketlab.locate--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.map_expression" class="md-nav__link">
+    map_expression()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.metropolis_hastings" class="md-nav__link">
+    metropolis_hastings()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.onebody" class="md-nav__link">
+    onebody()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.parse_symbol" class="md-nav__link">
+    parse_symbol()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.rgrid_integrate_3d" class="md-nav__link">
+    rgrid_integrate_3d()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.rgrid_integrate_nd" class="md-nav__link">
+    rgrid_integrate_nd()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.show" class="md-nav__link">
+    show()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.show_old" class="md-nav__link">
+    show_old()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.braketlab.split_variables" class="md-nav__link">
+    split_variables()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
                 <h1 id="braketlab-module">Braketlab module</h1>
 
 
@@ -1466,7 +2548,7 @@ corresponding to the AO-basis
 
 
 <h2 class="doc doc-heading" id="braketlab.braketlab.eri_mci">
-<code class="highlight language-python"><span class="n">eri_mci</span><span class="p">(</span><span class="n">phi_p</span><span class="p">,</span> <span class="n">phi_q</span><span class="p">,</span> <span class="n">phi_r</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">pq</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">pr</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">ps</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">N_samples</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">Pr</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">Qr</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">zeta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">control_variate</span><span class="o">=&lt;</span><span class="n">function</span> <span class="o">&lt;</span><span class="k">lambda</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x7ffb4bff24d0</span><span class="o">&gt;</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">eri_mci</span><span class="p">(</span><span class="n">phi_p</span><span class="p">,</span> <span class="n">phi_q</span><span class="p">,</span> <span class="n">phi_r</span><span class="p">,</span> <span class="n">phi_s</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">pq</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">pr</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">ps</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">N_samples</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">Pr</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">Qr</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">zeta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">eta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">control_variate</span><span class="o">=&lt;</span><span class="n">function</span> <span class="o">&lt;</span><span class="k">lambda</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x7fd57c0334d0</span><span class="o">&gt;</span><span class="p">)</span></code>
 
 
 </h2>
@@ -1958,7 +3040,7 @@ x is their cartesian component</p>
 
 
 <h2 class="doc doc-heading" id="braketlab.braketlab.onebody">
-<code class="highlight language-python"><span class="n">onebody</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">control_variate</span><span class="o">=&lt;</span><span class="n">function</span> <span class="o">&lt;</span><span class="k">lambda</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x7ffb4bff23b0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">I0</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">onebody</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">control_variate</span><span class="o">=&lt;</span><span class="n">function</span> <span class="o">&lt;</span><span class="k">lambda</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x7fd57c0333b0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">I0</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
 
 
 </h2>
@@ -2426,61 +3508,87 @@ b = ket( ... )</p>
     </div>
 
   </div>
+                
               
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../tutorial_2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tutorial" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Tutorial
             </div>
           </div>
-          <footer>
+        </a>
+      
+      
+        
+        <a href="../basisbank-reference/" class="md-footer__link md-footer__link--next" aria-label="Next: basisbank" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              basisbank
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../basisbank-reference/" class="btn btn-neutral float-right" title="basisbank">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../tutorial_2/" class="btn btn-neutral" title="Tutorial"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
       
     </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
   </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
     
-      <span><a href="../tutorial_2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <script src="../assets/javascripts/bundle.29db7785.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
     
-    
-      <span><a href="../basisbank-reference/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
-</div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme_extra.js" defer></script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../javascripts/mathjax.js" defer></script>
-      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
-      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
-      <script src="../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
-
-</body>
+  </body>
 </html>
