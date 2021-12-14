@@ -33,6 +33,89 @@ from scipy.interpolate import interp1d
 from sympy.utilities.runtests import split_list
 
 
+def locate(f):
+    """
+    Determine (numerically) the center and spread of a sympy function
+    
+    ## Returns 
+    
+    position (numpy.array)
+    standard deviation (numpy.array)
+    
+    """
+    s = get_ordered_symbols(f)
+
+    nd = len(s)
+    fn = sp.lambdify(s, f, "numpy")
+    
+    xn = np.zeros(nd)
+    
+    ss = 100 # initial distribution
+
+    # qnd norm
+    n20 = 10000
+    x0 = np.random.multivariate_normal(xn, np.eye(nd)*ss, n20)
+    P = multivariate_normal(mean=xn, cov=np.eye(nd)*ss).pdf(x0)
+    n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
+
+    assert(n2>1e-15), "Unable to normalize function"
+    
+    n_tot = 0
+    mean_estimate = 0
+    
+    
+    for i in range(1,100):
+        
+        x0 = np.random.multivariate_normal(xn, np.eye(nd)*ss, n20)
+        P = multivariate_normal(mean=xn, cov=np.eye(nd)*ss).pdf(x0)
+        n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
+        assert(n2>1e-15), "Unable to normalize function"
+        x_ = np.mean(x0.T*n2*fn(*x0.T).real**2*P**-1, axis = -1)
+        
+        if i>50:
+            mean_old = mean_estimate
+            mean_estimate = (mean_estimate*n_tot + np.sum(x0.T*n2*fn(*x0.T).real**2*P**-1, axis = -1))/(n_tot+n20)
+            n_tot += n20
+        xn =   x_
+
+
+    # determine spread
+    n20 *= 100
+        
+    sig = .5
+    x0 = np.random.multivariate_normal(xn, np.eye(nd)*sig, n20)
+    P = multivariate_normal(mean=xn, cov=np.eye(nd)*sig).pdf(x0)
+
+    #first estimate of spread
+    n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
+    x_ = np.mean(x0.T**2*n2*fn(*x0.T).real**2*P**-1, axis = -1) - xn.T**2
+
+    # ensure positive non-zero standard-deviation
+    x_ = np.max(np.stack([np.zeros(3)+.0001,x_]), axis = 0  )
+
+    i = .5*(2*x_)**-1
+    sig = (2*i)**-.5
+
+    
+    
+    # recompute spread with better precision
+    x0 = np.random.multivariate_normal(xn, np.diag(sig), n20)
+    P = multivariate_normal(mean=xn, cov=np.diag(sig)).pdf(x0)
+
+    n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
+    x_ = np.mean(x0.T**2*n2*fn(*x0.T).real**2*P**-1, axis = -1) - xn.T**2
+
+    # ensure positive non-zero standard-deviation
+    x_ = np.max(np.stack([np.zeros(3)+.0001,x_]), axis = 0  )
+
+      
+    i = .5*(2*x_)**-1
+    sig = (2*i)**-.5
+
+
+    
+    return mean_estimate, sig
+
 def plot(*p):
     warnings.warn("replaced by show( ... )", DeprecationWarning, stacklevel=2)
     show(*p)
@@ -122,6 +205,7 @@ def show(*p, t=None):
                 
             
             if nd == 3:
+                """
                 cube, cm, cmax, cmin = get_cubefile(i)
                 v = py3Dmol.view()
                 #cm = cube.mean()
@@ -135,6 +219,40 @@ def show(*p, t=None):
                     v.addVolumetricData(cube, "cube", {'isoval':bins[i], 'color': '#%02x%02x%02x' % (255 - di, di, di), 'opacity': 1.0})
                 v.zoomTo()
                 v.show()
+                """
+
+                import k3d
+                import SimpleITK as sitk
+
+                #psi = bk.basisbank.get_hydrogen_function(5,2,2)
+                #psi = bk.basisbank.get_gto(4,2,0)
+                x = np.linspace(-1,1,100)*80
+                img = i(x[None,None,:], x[None,:,None], x[:,None,None])
+
+                #Nc = 3
+
+                #colormap = interp1d(np.linspace(0,1,Nc), np.random.uniform(0,1,(3, Nc)))
+                #embryo = k3d.volume(img.astype(np.float32), 
+                #                    color_map=np.array(k3d.basic_color_maps.BlackBodyRadiation, dtype=np.float32),
+                #                    opacity_function = np.linspace(0,1,30)[::-1]**.1)
+
+                orb_pos = k3d.volume(img.astype(np.float32), 
+                                    color_map=np.array(k3d.basic_color_maps.Gold, dtype=np.float32),
+                                    opacity_function = np.linspace(0,1,30)[::-1]**.2)
+
+                orb_neg = k3d.volume(-1*img.astype(np.float32), 
+                                    color_map=np.array(k3d.basic_color_maps.Blues, dtype=np.float32),
+                                    opacity_function = np.linspace(0,1,30)[::-1]**.2)
+                plot = k3d.plot()
+                plot += orb_pos
+                plot += orb_neg
+                plot.display()
+
+
+
+
+
+
     if mpfig:
         plt.grid()
         plt.xlim(-mv-1,mv+1)
@@ -303,6 +421,13 @@ class basisfunction:
         """
         s_12 = inner_product(self, self)
         self.normalization = s_12**-.5
+
+
+    def locate(self):
+        """
+        Locate and determine spread of self
+        """
+        self.position, self.decay = locate(self.ket_sympy_expression)
     
     def estimate_decay(self):
         # estimate standard deviation 
@@ -1334,10 +1459,6 @@ def inner_product(b1, b2, operator = None, n_samples = int(1e6), grid = 101, sig
     variables_b2 = b2.ket_sympy_expression.free_symbols
     if len(variables_b1) == 1 and len(variables_b2) == 1:
         return integrate.quad(integrand, -10,10)[0]
-
-
-
-
     else:
         ai,aj = b1.decay, b2.decay
         ri,rj = b1.position, b2.position
@@ -1347,10 +1468,15 @@ def inner_product(b1, b2, operator = None, n_samples = int(1e6), grid = 101, sig
             sigma = .5*(ai + aj)
         #print("R, sigma:", R, sigma)
     
+        return onebody(integrand, np.ones(len(R))*sigma, R, n_samples) #, control_variate = "spline", grid = grid) 
+    """
+    else:
 
+        R, sigma = locate(b1.bra_sympy_expression*b2.ket_sympy_expression)
 
         return onebody(integrand, np.ones(len(R))*sigma, R, n_samples) #, control_variate = "spline", grid = grid) 
-        
+
+    """
 
 def compose_basis(p):
     """
@@ -1516,8 +1642,11 @@ def onebody(integrand, sigma, loc, n_samples, control_variate = lambda *r : 0, g
     
     #R = np.random.multivariate_normal(loc, np.eye(len(loc))*sigma, n_samples)
     #R = np.random.Generator.multivariate_normal(loc, np.eye(len(loc))*sigma, size=n_samples)
-    R = np.random.default_rng().multivariate_normal(loc, np.eye(len(loc))*sigma, n_samples)
-    P = multivariate_normal(mean=loc, cov=np.eye(len(loc))*sigma).pdf(R)
+
+    #sig = np.eye(len(loc))*sigma
+    sig = np.diag(sigma)
+    R = np.random.default_rng().multivariate_normal(loc, sig, n_samples)
+    P = multivariate_normal(mean=loc, cov=sig).pdf(R)
 
     return I0+np.mean((integrand(*R.T)-control_variate(R)) * P**-1)
     
