@@ -158,7 +158,7 @@ def show(*p, t=None):
     show(a, b)
     """
     mpfig = False
-    mv = 1
+    mvx = 1
 
     
     for i in list(p):
@@ -176,7 +176,7 @@ def show(*p, t=None):
             plt.plot([vec_R2[0]], [vec_R2[1]], "o", color = (0,0,0))
             plt.text(vec_R2[0]+.1, vec_R2[1], "%s" % i.__name__)
 
-            mv = max( mv, max(vec_R2[1], vec_R2[0]) ) 
+            mvx = max( mvx, max(vec_R2[1], vec_R2[0]) ) 
             
                 
                 
@@ -186,8 +186,9 @@ def show(*p, t=None):
             vars = list(spe.free_symbols)
             nd = len(vars)
             Nx = 200
-            x = np.linspace(-8,8,200)
-            mv = 8
+            mvx = 8
+            x = np.linspace(-mvx, mvx, Nx)
+            
             if nd == 1:
                 if not mpfig:
                     mpfig = True
@@ -255,8 +256,13 @@ def show(*p, t=None):
 
     if mpfig:
         plt.grid()
-        plt.xlim(-mv-1,mv+1)
-        plt.ylim(-mv-1,mv+1)
+        mvx = max(x)
+        if nd == 1:
+            mvy = max(i(x))
+        if nd == 2:
+            mvy = mvx
+        plt.xlim(-1.1*mvx, 1.1*mvx)
+        plt.ylim(-1.1*mvy, 1.1*mvy)
         plt.legend()
         plt.show()
         
@@ -277,8 +283,9 @@ def show_old(*p, t=None):
     """
     plt.figure(figsize=(6,6))
     try:
+        mvx = 8
         Nx = 200
-        x = np.linspace(-8,8,200)
+        x = np.linspace(-mvx, mvx, Nx)
         Z = np.zeros((Nx, Nx, 3), dtype = float)
         colors = np.random.uniform(0,1,(len(list(p)), 3))
         
@@ -293,21 +300,21 @@ def show_old(*p, t=None):
             
 
     except:
-        mv = 1
+        mvx = 1
         #plt.figure(figsize = (6,6))
         for i in list(p):
             vec_R2 = i.coefficients[0]*i.basis[0] + i.coefficients[1]*i.basis[1]
             plt.plot([0, vec_R2[0]], [0, vec_R2[1]], "-")
             
             plt.plot([vec_R2[0]], [vec_R2[1]], "o", color = (0,0,0))
-            plt.text(vec_R2[0]+.1, vec_R2[1], "%s" % i.__name__)
+            plt.text(vec_R2[0]+.2, vec_R2[1], "%s" % i.__name__)
 
-            mv = max( mv, max(vec_R2[1], vec_R2[0]) ) 
+            mvx = max( mvx, max(vec_R2[1], vec_R2[0]) ) 
             
             
         plt.grid()
-        plt.xlim(-mv-1,mv+1)
-        plt.ylim(-mv-1,mv+1)
+        plt.xlim(-1.1*mvx, 1.1*mvx)
+        plt.ylim(-1.1*mvx, 1.1*mvx)
     plt.show()
 
     
