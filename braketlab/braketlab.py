@@ -43,76 +43,94 @@ def locate(f):
     standard deviation (numpy.array)
     
     """
-    s = get_ordered_symbols(f)
+    # Sometimes, values of x giving inf or NaN values of f(x) are generated.
+    # This reruns the code until valid results are found, up to 10 times
+    # There might be a better way to solve this...
+    trycounter = 0
+    valid_results = False
+    while valid_results == False and trycounter <= 10:
+        try:
+            trycounter += 1
+            s = get_ordered_symbols(f)
 
-    nd = len(s)
-    fn = sp.lambdify(s, f, "numpy")
+            nd = len(s)
+            fn = sp.lambdify(s, f, "numpy")
+            
+            xn = np.zeros(nd) # Initial guess of mean at 0
+            ss = 100 # initial distribution
+
+            # qnd norm. Draw n20 numbers around 0
+            n20 = 1000 # CSG: n20=1000 seems to give an accuracy of >99%
+            funcvals = np.array([0])
+
+            #While-loop increasing ss until non-zero values of f(x) are found
+            #Could be faster if previously sampled values of x were excluded
+            while funcvals.any(0) == False:
+                x0 = np.random.multivariate_normal(xn, np.eye(nd)*ss, n20)
+                funcvals = fn(*x0.T).real
+                ss *= 2 #Sample more broadly if only 0 values of function found
+            P = multivariate_normal(mean=xn, cov=np.eye(nd)*ss).pdf(x0)
+            n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
+            x_ = np.mean(x0.T*n2*fn(*x0.T).real**2*P**-1, axis = -1)
+            assert(n2>1e-15)
+            
+            n_tot = 0
+            mean_estimate = 0
+
+            for i in range(1,100):
+                x0 = np.random.multivariate_normal(xn, np.eye(nd)*ss, n20)   
+                P = multivariate_normal(mean=xn, cov=np.eye(nd)*ss).pdf(x0)
+                n2 = np.mean((fn(*x0.T).real)**2*P**-1, axis = -1)**-1
+
+                assert(n2>1e-15)
+                x_ = np.mean(x0.T*n2*fn(*x0.T).real**2*P**-1, axis = -1)
+
+                if i>50:
+                    mean_old = mean_estimate
+                    mean_estimate = (mean_estimate*n_tot + np.sum(x0.T*n2*fn(*x0.T).real**2*P**-1, axis = -1))/(n_tot+n20)
+                    n_tot += n20
+                xn = x_
+
+            # determine spread
+            n20 *= 1000
+                
+            sig = .5
+            x0 = np.random.multivariate_normal(xn, np.eye(nd)*sig, n20)
+            P = multivariate_normal(mean=xn, cov=np.eye(nd)*sig).pdf(x0)
+
+            #first estimate of spread
+            n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
+            x_ = np.mean(x0.T**2*n2*fn(*x0.T).real**2*P**-1, axis = -1) - xn.T**2
+            # ensure positive non-zero standard-deviation
+            # CSG: I did not understand the previous code for ensuring non-zero std dev 
+            # and it gave errors. This seems to work. 
+            x_ = np.abs(x_)
+            i = .5*(2*x_)**-1
+            sig = (2*i)**-.5
+
+            
+            # recompute spread with better precision
+            x0 = np.random.multivariate_normal(xn, np.diag(sig), n20)
+            P = multivariate_normal(mean=xn, cov=np.diag(sig)).pdf(x0)
+            if np.isnan(P[0]):
+                print("passing due to p = NaN, 2nd")
+                pass
+
+
+            n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
+            x_ = np.mean(x0.T**2*n2*fn(*x0.T).real**2*P**-1, axis = -1) - xn.T**2 
+            # ensure positive non-zero standard-deviation. 
+            # CSG: I did not understand the previous code for ensuring non-zero std dev 
+            # and it gave errors. This seems to work. 
+            x_ = np.abs(x_)
+            i = .5*(2*x_)**-1
+            sig = (2*i)**-.5
+            print(mean_estimate, sig)
+            valid_results = True
+        except: 
+            print("Error finding center of function. Trying again.")
+
     
-    xn = np.zeros(nd)
-    
-    ss = 100 # initial distribution
-
-    # qnd norm
-    n20 = 10000
-    x0 = np.random.multivariate_normal(xn, np.eye(nd)*ss, n20)
-    P = multivariate_normal(mean=xn, cov=np.eye(nd)*ss).pdf(x0)
-    n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
-
-    assert(n2>1e-15), "Unable to normalize function"
-    
-    n_tot = 0
-    mean_estimate = 0
-    
-    
-    for i in range(1,100):
-        
-        x0 = np.random.multivariate_normal(xn, np.eye(nd)*ss, n20)
-        P = multivariate_normal(mean=xn, cov=np.eye(nd)*ss).pdf(x0)
-        n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
-        assert(n2>1e-15), "Unable to normalize function"
-        x_ = np.mean(x0.T*n2*fn(*x0.T).real**2*P**-1, axis = -1)
-        
-        if i>50:
-            mean_old = mean_estimate
-            mean_estimate = (mean_estimate*n_tot + np.sum(x0.T*n2*fn(*x0.T).real**2*P**-1, axis = -1))/(n_tot+n20)
-            n_tot += n20
-        xn =   x_
-
-
-    # determine spread
-    n20 *= 100
-        
-    sig = .5
-    x0 = np.random.multivariate_normal(xn, np.eye(nd)*sig, n20)
-    P = multivariate_normal(mean=xn, cov=np.eye(nd)*sig).pdf(x0)
-
-    #first estimate of spread
-    n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
-    x_ = np.mean(x0.T**2*n2*fn(*x0.T).real**2*P**-1, axis = -1) - xn.T**2
-
-    # ensure positive non-zero standard-deviation
-    x_ = np.max(np.stack([np.zeros(3)+.0001,x_]), axis = 0  )
-
-    i = .5*(2*x_)**-1
-    sig = (2*i)**-.5
-
-    
-    
-    # recompute spread with better precision
-    x0 = np.random.multivariate_normal(xn, np.diag(sig), n20)
-    P = multivariate_normal(mean=xn, cov=np.diag(sig)).pdf(x0)
-
-    n2 = np.mean(fn(*x0.T).real**2*P**-1, axis = -1)**-1
-    x_ = np.mean(x0.T**2*n2*fn(*x0.T).real**2*P**-1, axis = -1) - xn.T**2
-
-    # ensure positive non-zero standard-deviation
-    x_ = np.max(np.stack([np.zeros(3)+.0001,x_]), axis = 0  )
-
-      
-    i = .5*(2*x_)**-1
-    sig = (2*i)**-.5
-
-
     
     return mean_estimate, sig
 
@@ -158,9 +176,10 @@ def show(*p, t=None):
     show(a, b)
     """
     mpfig = False
-    mvx = 1
-
-    
+    maxvx_vals = []
+    minvx_vals = []
+    mvy_vals = []
+    sigs = []
     for i in list(p):
         spe = i.get_ket_sympy_expression()
         if type(spe) in [np.array, list, np.ndarray]:
@@ -176,8 +195,7 @@ def show(*p, t=None):
             plt.plot([vec_R2[0]], [vec_R2[1]], "o", color = (0,0,0))
             plt.text(vec_R2[0]+.1, vec_R2[1], "%s" % i.__name__)
 
-            mvx = max( mvx, max(vec_R2[1], vec_R2[0]) ) 
-            
+            maxvx = max( maxvx, max(vec_R2[1], vec_R2[0]) ) 
                 
                 
             
@@ -186,19 +204,25 @@ def show(*p, t=None):
             vars = list(spe.free_symbols)
             nd = len(vars)
             Nx = 200
-            mvx = 8
-            x = np.linspace(-mvx, mvx, Nx)
+            
+            
             
             if nd == 1:
                 if not mpfig:
                     mpfig = True
                     plt.figure(figsize=(6,6))
-                
-                plt.plot(x,i(x) , label=i.__name__)
+                # 4 std. devs. cover the function area
+                #Save bounds for each function to find overall lower and upper bound of x-axis
+                mean, sig = locate(spe)
+                minvx_vals.append(mean-4*sig)
+                maxvx_vals.append(mean+4*sig)
+                sigs.append(sig)
+
                 mpfig = True
                 
             
             if nd == 2:
+                x = np.linspace(-8, 8, Nx)
                 if not mpfig:
                     mpfig = True
                     plt.figure(figsize=(6,6))
@@ -255,13 +279,24 @@ def show(*p, t=None):
 
 
     if mpfig:
-        plt.grid()
-        mvx = max(x)
+        plt.grid()        
         if nd == 1:
-            mvy = max(i(x))
+            minvx = min(minvx_vals)
+            maxvx = max(maxvx_vals)
+            # "mean(+/-)4*sig" determines x-axis length, so higher sig => more points needed
+            # A minimum of 200 points are plotted. Necessary in case of small sig
+            Nx = max([200, int(500*max(sigs))])       
+            x = np.linspace(minvx, maxvx, Nx)
+            for i in list(p):  
+                mvy_vals.append(abs(max(i(x))))
+                mvy_vals.append(abs(min(i(x))))
+                plt.plot(x,i(x), label=i.__name__)    
+            mvy = max(mvy_vals)
+            
         if nd == 2:
-            mvy = mvx
-        plt.xlim(-1.1*mvx, 1.1*mvx)
+            maxvx = max(x)
+            mvy = maxvx
+
         plt.ylim(-1.1*mvy, 1.1*mvy)
         plt.legend()
         plt.show()
@@ -283,9 +318,9 @@ def show_old(*p, t=None):
     """
     plt.figure(figsize=(6,6))
     try:
-        mvx = 8
+        maxvx = 8
         Nx = 200
-        x = np.linspace(-mvx, mvx, Nx)
+        x = np.linspace(-maxvx, maxvx, Nx)
         Z = np.zeros((Nx, Nx, 3), dtype = float)
         colors = np.random.uniform(0,1,(len(list(p)), 3))
         
@@ -300,7 +335,7 @@ def show_old(*p, t=None):
             
 
     except:
-        mvx = 1
+        maxvx = 1
         #plt.figure(figsize = (6,6))
         for i in list(p):
             vec_R2 = i.coefficients[0]*i.basis[0] + i.coefficients[1]*i.basis[1]
@@ -309,12 +344,12 @@ def show_old(*p, t=None):
             plt.plot([vec_R2[0]], [vec_R2[1]], "o", color = (0,0,0))
             plt.text(vec_R2[0]+.2, vec_R2[1], "%s" % i.__name__)
 
-            mvx = max( mvx, max(vec_R2[1], vec_R2[0]) ) 
+            maxvx = max( maxvx, max(vec_R2[1], vec_R2[0]) ) 
             
             
         plt.grid()
-        plt.xlim(-1.1*mvx, 1.1*mvx)
-        plt.ylim(-1.1*mvx, 1.1*mvx)
+        plt.xlim(-1.1*maxvx, 1.1*maxvx)
+        plt.ylim(-1.1*maxvx, 1.1*maxvx)
     plt.show()
 
     
