@@ -120,8 +120,7 @@ def plot(*p):
     warnings.warn("replaced by show( ... )", DeprecationWarning, stacklevel=2)
     show(*p)
 
-def get_cubefile(p):
-    Nx = 60
+def get_cubefile(p, Nx = 60):
     t = np.linspace(-20,20,Nx)
     cubic = p(t[:,None,None], t[None,:,None], t[None,None,:])
     if cubic.dtype == np.complex128:
@@ -932,7 +931,7 @@ class ket(object):
     |  A(x)   |   $\int_R^n \delta(x - x') f(x') dx'$ evaluate function at x  |    
 
     """
-    def __init__(self, generic_input, name = "", basis = None, position = None, energy = None):
+    def __init__(self, generic_input, name = "", basis = None, position = None, energy = None, autoflatten = True):
         """
         ## Initialization of a ket
         
@@ -941,6 +940,7 @@ class ket(object):
 
 
         """
+        self.autoflatten = autoflatten
         self.position = position
         if type(generic_input) in [np.ndarray, list]:
             
@@ -979,7 +979,8 @@ class ket(object):
         new_coefficients = self.coefficients + other.coefficients
         new_energies = self.energy + other.energy
         ret = ket(new_coefficients, basis = new_basis, energy = new_energies)
-        ret.flatten()
+        if self.autoflatten:
+            ret.flatten()
         ret.__name__ = "%s + %s" % (self.__name__, other.__name__)
         return ret
     
@@ -988,7 +989,8 @@ class ket(object):
         
         new_coefficients = self.coefficients + [-i for i in other.coefficients]
         ret = ket(new_coefficients, basis = new_basis)
-        ret.flatten()
+        if self.autoflatten:
+            ret.flatten()
         ret.__name__ = "%s - %s" % (self.__name__, other.__name__)
         return ret
     
@@ -1078,7 +1080,8 @@ class ket(object):
 
 
                         ret = ket(new_coefficients, basis = new_basis)
-                        ret.flatten()
+                        if self.autoflatten:
+                            ret.flatten()
                         ret.__name__ = self.__name__ + other.__name__
                         ret.variable_identities = variable_identities
                         return ret
@@ -1465,7 +1468,7 @@ def inner_product(b1, b2, operator = None, n_samples = int(1e6), grid = 101, sig
     variables_b1 = b1.bra_sympy_expression.free_symbols
     variables_b2 = b2.ket_sympy_expression.free_symbols
     if len(variables_b1) == 1 and len(variables_b2) == 1:
-        return integrate.quad(integrand, -10,10)[0]
+        return integrate.quad(integrand, -np.inf,np.inf)[0]
     else:
         ai,aj = b1.decay, b2.decay
         ri,rj = b1.position, b2.position

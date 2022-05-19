@@ -3,6 +3,8 @@ import numpy as np
 
 import sympy as sp
 
+    
+
 def get_Slm(l, m):
     """
     return the sympy real solid harmonic gaussian S_{lm}(r) 

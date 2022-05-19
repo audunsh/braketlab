@@ -6,6 +6,15 @@ import braketlab as bk
 import braketlab.hydrogen as hy
 import braketlab.harmonic_oscillator as ho
 
+
+def get_default_variables(p, n = 3):
+    variables = []
+    for i in range(n):
+        variables.append(sp.Symbol("x_{%i; %i}" % (p, i)))
+    return variables
+
+
+
 def get_hydrogen_function(n,l,m, position = np.array([0,0,0])):
     """
     Returns a ket containing the hydrogen eigenfunction with quantum numbers n,l,m
@@ -38,10 +47,16 @@ def get_gto(a,l,m, position = np.array([0,0,0])):
     located at position
     """
     psi = sh.get_Nao(a,l,m)
-    vars = list(psi.free_symbols)
-    symbols = bk.get_default_variables(0, len(vars))
+
+    symbols = np.array(list(psi.free_symbols))
+    l_symbols = np.argsort([i.name for i in symbols])
+    symbols = symbols[l_symbols]
+    #vars = list(psi.free_symbols)
+    vars = bk.get_default_variables(0, len(symbols))
     for i in range(len(vars)):
-        psi = psi.subs(vars[i], symbols[i])
+        psi = psi.subs(symbols[i], vars[i])
+
+
     return bk.ket(psi, name = "\chi_{%i,%i}^{%.2f}" % (l,m,a), position = position)
 
 def get_sto(a,w,l,m, position = np.array([0,0,0])):
@@ -52,9 +67,18 @@ def get_sto(a,w,l,m, position = np.array([0,0,0])):
     located at position
     """
     psi = sh.get_sto(a,w,l,m)
-    vars = list(psi.free_symbols)
-    symbols = bk.get_default_variables(0, len(vars))
+
+    symbols = np.array(list(psi.free_symbols))
+    l_symbols = np.argsort([i.name for i in symbols])
+    symbols = symbols[l_symbols]
+    #vars = list(psi.free_symbols)
+    vars = bk.get_default_variables(0, len(symbols))
     for i in range(len(vars)):
-        psi = psi.subs(vars[i], symbols[i])
+        psi = psi.subs(symbols[i], vars[i])
+
+    #vars = list(psi.free_symbols)
+    #symbols = bk.get_default_variables(0, len(vars))
+    #for i in range(len(vars)):
+    #    psi = psi.subs(vars[i], symbols[i])
     return bk.ket(psi, name  = "\chi_{%i,%i}^{%.2f}" % (l,m,a), position = position)
 

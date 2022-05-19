@@ -1,10 +1,20 @@
-<img src="https://raw.githubusercontent.com/audunsh/braketlab/master/graphics/braketlab_logo.png" width = 250px>
+<img src="https://raw.githubusercontent.com/audunsh/braketlab/master/graphics/braketlab_logo.png" width = 250pxi align=right>
 
 ## Out-of-the-box outside-of-the-box thinking
 
-BraketLab is a pure Python-code for doing quantum theory in Jupyter Notebooks.
+BraketLab is a Python-module for doing quantum theory in Jupyter Notebooks.
 
 BraketLab is being developed by Audun Skau Hansen (a.s.hansen@kjemi.uio.no) at the Department of Chemistry, Hylleraas Centre for Quantum Molecular Sciences, University of Oslo.
+
+## Background
+
+Quantum theory can be learnt in many ways. In a typical introductory course, students get familiar with the shortcomings of classical physics in the microscopic domain and the groundbreaking solutions to these problems found in the 1920s. Through careful attention to rigorous mathematics, logics, formalism and the rules and postulates of quantum theory, students learn how to navigate a world of highly non-intuitive phenomenas. This is an excellent approach, which has fostered generations of highly skilled scientists, pushing the boundaries of science and digging deeper into nature. 
+
+This is not the only pathway into the quantum world, however. With increased coding-literacy and availability of computational resources, it is natural to explore how computational thinking may aid students in mastering quantum theory.
+
+BraketLab is just this; an attempt to shape many computational aids such as numerics and approximative techniques, visualization, object-oriented and high-level programming and interactivity into an environment tailored for learning quantum theory by means of exploration and creativity. 
+
+Powered by sympy and numpy, BraketLab aims to allow students to easily stray outside of the conventional routes, with a simple syntax closely resembling the one you’ll find in most books on the subject and no complicated integrals to stop them in their tracks.
 
 ## Dependencies
 
