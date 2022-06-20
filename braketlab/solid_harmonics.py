@@ -187,11 +187,14 @@ def get_contracted(a,w,l,m, representation = "numeric"):
         return CGO
 
 
-def get_sto(a,w,l,m, representation = "sympy"):
+def get_sto(a,w,n,l,m, representation = "sympy"):
     S = np.sqrt(a**3/np.pi)
+    S = (2*a)**n *np.sqrt(2*a/np.math.factorial(2*n))
 
     x,y,z = sp.symbols("x y z")
-    sto = S*get_Slm(l,m)*sp.exp(-a*sp.sqrt(x**2 + y**2 + z**2))
+    r = sp.sqrt(x**2 + y**2 + z**2)
+
+    sto = S*get_Slm(l,m)*r**(n-1)*sp.exp(-a*r)
     if representation is "numeric":
         return sp.lambdify([x,y,z], sto, "numpy")
         

@@ -30,7 +30,7 @@ from scipy.interpolate import RegularGridInterpolator
 from scipy import integrate
 from scipy.stats import multivariate_normal
 from scipy.interpolate import interp1d
-from sympy.utilities.runtests import split_list
+#from sympy.utilities.runtests import split_list
 
 
 def locate(f):

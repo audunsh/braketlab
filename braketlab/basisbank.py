@@ -59,14 +59,14 @@ def get_gto(a,l,m, position = np.array([0,0,0])):
 
     return bk.ket(psi, name = "\chi_{%i,%i}^{%.2f}" % (l,m,a), position = position)
 
-def get_sto(a,w,l,m, position = np.array([0,0,0])):
+def get_sto(a,w,n,l,m, position = np.array([0,0,0])):
     """
     Returns a ket containing the slater type orbital with exponent a, 
     weight w,
     and solid harmonic gaussian angular part defined by l and m
     located at position
     """
-    psi = sh.get_sto(a,w,l,m)
+    psi = sh.get_sto(a,w,n,l,m)
 
     symbols = np.array(list(psi.free_symbols))
     l_symbols = np.argsort([i.name for i in symbols])
