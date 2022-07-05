@@ -463,7 +463,7 @@
 <p>Does the BraketLab-syntax erronously confine us to work in a <em>coordinate representation</em> by equating abstract vectors in Hilbert-space to functions in <span class="arithmatex">\(\mathbb{R}^3\)</span>? Not really.</p>
 <p>Note that there is a difference between the assignment operator <code>=</code> common to most modern code-languages (like the Python-case above) and mathematical equality. The mathematical equivalent to the BraketLab syntax is more comparable to the following</p>
 <div class="arithmatex">\[\begin{equation}
-\vert \Psi \rangle := \vert e^{-\mathbf{x}^2} \rangle \forall x \in \mathbb{R}^3
+\vert \Psi \rangle := \vert e^{-\mathbf{x}^2} \rangle \forall x \in \mathbb{R}^3,
 \end{equation}\]</div>
 <p>Now, <strong>the following is true:</strong> a wavefunction <span class="arithmatex">\(\Psi\)</span> is composed by the expansion coefficients in coordinate space <span class="arithmatex">\(\{ \delta(\mathbf{x}-\mathbf{x}')\} \forall x' \in \mathbb{R}\)</span> of a ket (or state vector) <span class="arithmatex">\(\vert \mathscr{S} \rangle\)</span> in Hilbert space. Thus,</p>
 <div class="arithmatex">\[\begin{equation}
@@ -472,15 +472,15 @@
 <p>The ket <span class="arithmatex">\(\vert \mathscr{S} \rangle\)</span> can be projected onto any basis (or be represented in any space), but that does not mean we are not allowed to instanciate it from a position space representation. Note that BraketLab is general, so you may just as well define</p>
 <p><code>psi = ket ( exp(-p**2) )</code>,</p>
 <p>and take <code>p</code> to signify a momentum representation.</p>
-<p>To state it explicitly; the take-home message is that if the definition above holds, i.e.
-\begin{equation}
+<p>To state it explicitly: if the definition above holds, i.e.</p>
+<div class="arithmatex">\[\begin{equation}
 \langle \mathbf{x} \vert \mathscr{S} \rangle  := \int_{\mathbb{R}^3} \delta(\mathbf{x}-\mathbf{x}') \mathscr{S}(\mathbf{x}') d\mathbf{x'},
-\end{equation}</p>
+\end{equation}\]</div>
 <p>then it does not seem so unreasonable to adopt the following convention:</p>
-<p>\begin{equation}
+<div class="arithmatex">\[\begin{equation}
  \vert \mathscr{S} \rangle := \vert \mathscr{S}(\mathbf{x}') \rangle,
-\end{equation}
-where a ket is defined from its (in this case) coordinate representation. </p>
+\end{equation}\]</div>
+<p>where a ket is defined from its (in this case) coordinate representation. </p>
 
               
             </article>
