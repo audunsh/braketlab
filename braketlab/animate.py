@@ -1,5 +1,6 @@
 from matplotlib.animation import FuncAnimation
 import bubblebox as bb
+from bubblebox.mdbox import colorscheme
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -15,7 +16,7 @@ class animated_system():
 
         
         self.fig, self.ax = plt.subplots()
-        self.col = bb.colorscheme()
+        self.col = colorscheme()
 
         self.scatterplot = False
         
@@ -32,7 +33,7 @@ class animated_system():
         x, p = self.system.x, self.system.p
         w = self.system.w
         
-        c1,c2,c3 = bb.colorscheme().getcol(np.random.uniform(0,1,3))
+        c1,c2,c3 = colorscheme().getcol(np.random.uniform(0,1,3))
         
         self.bubbles = self.ax.plot(x, p, "-", color = (0,0,0), markersize = 1, label = "$\\vert \Psi \\vert^2$")[0]
         

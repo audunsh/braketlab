@@ -38,7 +38,16 @@ def get_harmonic_oscillator_function(n, omega = 1, position = 0):
     Returns a ket containing the harmonic oscillator energy eigenfunction with quantum number n
     located at position
     """
-    return bk.ket(ho.psi_ho(n), name = "%i" % n, energy = [omega*(.5+n)], position = np.array([position]))
+    psi = ho.psi_ho(n)
+    symbols = np.array(list(psi.free_symbols))
+    l_symbols = np.argsort([i.name for i in symbols])
+    symbols = symbols[l_symbols]
+    #vars = list(psi.free_symbols)
+    vars = bk.get_default_variables(0, len(symbols))
+    for i in range(len(vars)):
+        psi = psi.subs(symbols[i], vars[i])
+
+    return bk.ket(psi, name = "%i" % n, energy = [omega*(.5+n)], position = np.array([position]))
 
 def get_gto(a,l,m, position = np.array([0,0,0])):
     """
