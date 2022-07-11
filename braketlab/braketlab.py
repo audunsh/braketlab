@@ -7,6 +7,7 @@ import sys
 import copy
 from scipy.interpolate.fitpack import splint 
 import py3Dmol
+import evince as ev
 
 
 
@@ -1156,17 +1157,44 @@ class ket(object):
         self.basis = new_basis
         self.coefficients = new_coefficients
         self.energy = new_energies
+
+    def get_ccode(self):
+        """
+        Generate a WebGL-shader code snippet
+        for Evince rendering (experimental)
+        """
+        code_snippets = []
+        for i in range(len(self.coefficients)):
+            if type(self.basis[i]) in [basisfunction, ket]:
+                # get term (with energy self.energy[i])
+                ret_i = self.coefficients[i]*self.basis[i].ket_sympy_expression 
+
+                # replace standard symbols with WebGL specific variables
+                symbol_list = get_ordered_symbols(ret_i)
+                for i in range(len(symbol_list)):
+                    ret_i = ret_i.replace(symbol_list[i], sp.symbols("tex[%i]" % i))
+
+                # substitute r^2 and pi with WebGL-friendly expressions
+                simp_ret = ret_i.subs(get_r2_sp(ret_i), sp.symbols("q")).simplify().subs(sp.pi, np.pi)
+
+                # generate C code
+                shadercode_i = sp.ccode(simp_ret)
+
+                # append vector component to code snippets
+                code_snippets.append(shadercode_i)
+            
+        return code_snippets 
         
     def get_ket_sympy_expression(self):
         ret = 0
         for i in range(len(self.coefficients)):
-            
             if type(self.basis[i]) in [basisfunction, ket]:
                 ret += self.coefficients[i]*self.basis[i].ket_sympy_expression
 
             else:
                 ret += self.coefficients[i]*self.basis[i]
         return ret
+        
     
     def get_bra_sympy_expression(self):
         ret = 0
@@ -1178,6 +1206,9 @@ class ket(object):
             else:
                 ret += np.conjugate(self.coefficients[i]*self.basis[i])
         return ret
+
+
+
     
     def __call__(self, *R, t = None):
 
@@ -1263,6 +1294,10 @@ class ket(object):
 
             distribution = discrete_metropolis_hastings(P, n_samples = repetitions)
             return observable.eigenvalues[distribution]
+
+    def view(self):
+       self.m = ev.braketview.BraketView(self)
+       return self.m
 
 
 def discrete_metropolis_hastings(P, n_samples = 10000, n_iterations = 10000, stepsize = None):
@@ -1360,6 +1395,25 @@ def split_variables(s1,s2):
         
     return s1*s2, get_ordered_symbols(s1*s2)
         
+def get_r2(p):
+    """
+    extract the r^2 equivalent term from the ket p
+    """
+    r_it = list(p.ket_sympy_expression.free_symbols)
+    r2 = 0
+    for i in r_it:
+        r2 += i**2.0
+    return r2
+
+def get_r2_sp(p):
+    """
+    extract the r^2 equivalent term from the sympy expression p
+    """
+    r_it = get_ordered_symbols(p)
+    r2 = 0
+    for i in r_it:
+        r2 += i**2.0
+    return r2
 
 def parse_symbol(x):
     """
