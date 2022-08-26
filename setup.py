@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
      name='BraketLab',  
-     version='1.0',
+     version='1.062',
      author="Audun Skau Hansen",
      author_email="a.s.hansen@kjemi.uio.no",
      description="Educational tool for learning quantum theory with Jupyter Notebooks",

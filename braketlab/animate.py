@@ -1,10 +1,34 @@
 from matplotlib.animation import FuncAnimation
 import bubblebox as bb
-from bubblebox.mdbox import colorscheme
 import numpy as np
 import matplotlib.pyplot as plt
 
+class colorscheme():
+    def __init__(self):
+        self.CC = np.array([[.1,  .3, .98],
+               [.1,  .1, .98],
+               [.3,  .1, 1]])
+        self.CC = np.array([[.6,  1, .1],
+               [.1,  .9, .1],
+               [.1,  .5, .1]])
 
+        colorx = np.zeros((3,5))
+
+        colorx[:,0] = np.array([0.44,0.7,.76])
+        colorx[:,1] = np.array([0.1,0.1,.2])
+        colorx[:,2] = np.array([0.97,0.9,.63])
+        colorx[:,3] = np.array([0.37,0.02,.13])
+        colorx[:,4] = np.array([0.41,0.87,.62])
+
+        colorx = colorx**1.1
+        #self.CC = colorx
+
+        #self.CC = np.random.uniform(0,1,(3,3))
+        self.c = interp1d(np.linspace(0,1,3), self.CC) #(np.linspace(0,1,800)).T
+    def getcol(self,i):
+        return self.c(i)
+
+        
 class animated_system():
     def __init__(self, system = None, n_steps_per_vis = 5, interval = 1):
         self.n_steps_per_vis = n_steps_per_vis

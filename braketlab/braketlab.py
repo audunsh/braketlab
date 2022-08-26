@@ -6,7 +6,6 @@ import os
 import sys
 import copy
 from scipy.interpolate.fitpack import splint 
-import py3Dmol
 import evince as ev
 
 
@@ -17,7 +16,9 @@ import sympy as sp
 
 #import braketlab.solid_harmonics as solid_harmonics
 #import braketlab.hydrogen as hydrogen
-import braketlab.basisbank as basisbank
+#import braketlab.basisbank as basisbank
+
+from braketlab.basisbank import get_hydrogen_function, get_harmonic_oscillator_function, get_gto, get_sto
 import braketlab.animate as anim
 
 
@@ -175,11 +176,12 @@ def show(*p, t=None):
 
     show(a, b)
     """
-    mpfig = False
+    mpfig = True
     maxvx_vals = []
     minvx_vals = []
     mvy_vals = []
     sigs = []
+    maxvx = 0.0
     for i in list(p):
         spe = i.get_ket_sympy_expression()
         if type(spe) in [np.array, list, np.ndarray]:
@@ -305,7 +307,7 @@ def show(*p, t=None):
     
 
 
-def show_old(*p, t=None):
+def view(*p, t=None):
     """
     all-purpose vector visualization
     
@@ -738,7 +740,10 @@ def translate_sympy_expression(sympy_expression, translation_vector):
     return_expression = sympy_expression*1
 
     for i in range(len(shifts)):
-        return_expression = return_expression.subs(shifts[i], shifts[i]-translation_vector[i])
+        if np.abs(translation_vector[i])>=20.0:
+            return_expression = return_expression.subs(shifts[i], shifts[i]-sp.UnevaluatedExpr(translation_vector[i]))
+        else:
+            return_expression = return_expression.subs(shifts[i], shifts[i]-translation_vector[i])
 
     return return_expression
 
@@ -798,7 +803,7 @@ def get_default_variables(p, n = 3):
 
 
 class onebody_coulomb_operator(operator):
-    def __init__(self, position = np.array([0.0,0,0]), Z = 1.0, p = None, variables = None):
+    def __init__(self, position = np.array([0.0,0.0,0.0]), Z = 1.0, p = None, variables = None):
         self.position = position
         self.Z = Z
         self.p = p
@@ -1169,16 +1174,29 @@ class ket(object):
                 # get term (with energy self.energy[i])
                 ret_i = self.coefficients[i]*self.basis[i].ket_sympy_expression 
 
+                
+
                 # replace standard symbols with WebGL specific variables
                 symbol_list = get_ordered_symbols(ret_i)
                 for i in range(len(symbol_list)):
+                    #ret_i = ret_i.replace(symbol_list[i], sp.UnevaluatedExpr(sp.symbols("tex[%i]" % i)))
                     ret_i = ret_i.replace(symbol_list[i], sp.symbols("tex[%i]" % i))
+
 
                 # substitute r^2 and pi with WebGL-friendly expressions
                 simp_ret = ret_i.subs(get_r2_sp(ret_i), sp.symbols("q")).simplify().subs(sp.pi, np.pi)
 
+                # replace all integers (up to 20) with floats
+                #for j in range(20):
+                #    simp_ret.subs(sp.Integer(j), sp.Float(j))
+
                 # generate C code
                 shadercode_i = sp.ccode(simp_ret)
+
+                # workaround (for now, fix later)
+                for j in range(20):
+                    shadercode_i = shadercode_i.replace(" %i)" %j, " %i.0)" %j)
+                    shadercode_i = shadercode_i.replace(" %i," %j, " %i.0," %j)
 
                 # append vector component to code snippets
                 code_snippets.append(shadercode_i)
@@ -1275,14 +1293,15 @@ class ket(object):
             sig = .1 #variance of initial distribution
 
 
-            r = np.random.multivariate_normal(np.zeros(nd), sig*np.eye(nd), repetitions )
-
+            r = np.random.multivariate_normal(np.zeros(nd), sig*np.eye(nd), repetitions ).T
             # Metropolis-Hastings 
             for i in range(1000):
-                dr = np.random.multivariate_normal(np.zeros(nd), 0.01*sig*np.eye(nd), repetitions)
-                
-                accept = P(r+dr)/P(r) > np.random.uniform(0,1,nd)
-                r[accept] += dr[accept]
+                dr = np.random.multivariate_normal(np.zeros(nd), 0.01*sig*np.eye(nd), repetitions).T
+                #print(dr.shape, r.shape,P(*(r+dr))/P(*r))
+
+                accept = P(*(r+dr))/P(*r) > np.random.uniform(0,1,repetitions)
+                #print(accept)
+                r[:,accept] += dr[:,accept]
             return r
         else:
             #assert(False), "Arbitrary measurements not yet implemented"

@@ -1,10 +1,10 @@
-<img src="https://raw.githubusercontent.com/audunsh/braketlab/master/graphics/braketlab_logo.png" width = 250pxi align=right>
+<img src="./discover_the_quantum.png" width = "100%" align=right>
 
-## Out-of-the-box outside-of-the-box thinking
+<img src="https://raw.githubusercontent.com/audunsh/braketlab/master/graphics/b_logo_3.png" width = 250pxi align=right>
 
-BraketLab is a Python-module for doing quantum theory in Jupyter Notebooks.
+BraketLab is a Python-module with extensions in Javascript for doing quantum theory in the Jupyter environment and beyond.
 
-BraketLab is being developed by Audun Skau Hansen (a.s.hansen@kjemi.uio.no) at the Department of Chemistry, Hylleraas Centre for Quantum Molecular Sciences, University of Oslo.
+BraketLab is being developed by Audun Skau Hansen (**a.s.hansen@kjemi.uio.no**) at the Department of Chemistry, Hylleraas Centre for Quantum Molecular Sciences, University of Oslo.
 
 ## Background
 
@@ -12,17 +12,16 @@ Quantum theory can be learnt in many ways. In a typical introductory course, stu
 
 This is not the only pathway into the quantum world, however. With increased coding-literacy and availability of computational resources, it is natural to explore how computational thinking may aid students in mastering quantum theory.
 
-BraketLab is just this; an attempt to shape many computational aids such as numerics and approximative techniques, visualization, object-oriented and high-level programming and interactivity into an environment tailored for learning quantum theory by means of exploration and creativity. 
+BraketLab is just this; an attempt to shape many computational aids such as numerics and approximative techniques, visualization, object-oriented and high-level programming and interactivity into an environment tailored for learning quantum theory by means of **exploration and creativity**. 
 
-Powered by sympy and numpy, BraketLab aims to allow students to easily stray outside of the conventional routes, with a simple syntax closely resembling the one you’ll find in most books on the subject and no complicated integrals to stop them in their tracks.
+Powered by sympy and numpy, and extended to metaverse using Evince, BraketLab aims to allow students to easily stray outside of the conventional routes, with a simple syntax closely resembling the one you’ll find in most books on the subject and no complicated integrals to stop them in their tracks.
 
 ## Dependencies
 
 - Numpy
 - Sympy
-- Matplotlib
 - Numba
-- Py3Dmol
+- Evince 
 
 ## Installation
 
