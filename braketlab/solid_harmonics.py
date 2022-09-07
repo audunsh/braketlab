@@ -185,27 +185,27 @@ def get_contracted(a,w,l,m, representation = "numeric"):
     for i in np.arange(a.shape[0]):
         CGO += w[i]*get_Nao(a[i],l,m)/np.sqrt(S)
     
-    if representation is "numeric":
+    if representation == "numeric":
         x,y,z = sp.symbols("x y z")
         
         return sp.lambdify([x,y,z], CGO, "numpy")
-    if representation is "sympy":
+    if representation == "sympy":
         return CGO
 
 
 def get_sto(a,w,n,l,m, representation = "sympy"):
     a = np.float(a)
     S = np.sqrt(a**3.0/np.pi)
-    S = (2.0*a)**n *np.sqrt(2.0*a/np.math.factorial(2.0*n))
+    S = (2.0*a)**n *np.sqrt(2.0*a/np.math.factorial(2*int(n)))
 
     x,y,z = sp.symbols("x y z")
     r = sp.sqrt(x**2.0 + y**2.0 + z**2.0)
 
     sto = S*get_Slm(l,m)*r**(n-1)*sp.exp(-sp.UnevaluatedExpr(a)*r)
-    if representation is "numeric":
+    if representation == "numeric":
         return sp.lambdify([x,y,z], sto, "numpy")
         
-    if representation is "sympy":
+    if representation == "sympy":
         return sto
 
 

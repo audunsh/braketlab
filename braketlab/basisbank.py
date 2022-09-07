@@ -5,7 +5,7 @@ import braketlab.solid_harmonics as sh
 import braketlab.hydrogen as hy
 import braketlab.harmonic_oscillator as ho
 
-from braketlab import ket, get_ordered_symbols, get_default_variables
+from braketlab.core import ket, get_ordered_symbols, get_default_variables
 
 
 def get_default_variables(p, n = 3):
