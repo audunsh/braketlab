@@ -1,0 +1,819 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.3">
+    
+    
+      
+        <title>Operators - BraketLab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6b80c2a2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#operators" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="BraketLab" class="md-header__button md-logo" aria-label="BraketLab" data-md-component="logo">
+      
+  <img src="https://raw.githubusercontent.com/audunsh/braketlab/master/graphics/b_logo_3.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BraketLab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Operators
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="BraketLab" class="md-nav__button md-logo" aria-label="BraketLab" data-md-component="logo">
+      
+  <img src="https://raw.githubusercontent.com/audunsh/braketlab/master/graphics/b_logo_3.png" alt="logo">
+
+    </a>
+    BraketLab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../vision/" class="md-nav__link">
+        Vision
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Flashcards
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Flashcards" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Flashcards
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../flashcards/installation/" class="md-nav__link">
+        Installing BraketLab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../flashcards/importing/" class="md-nav__link">
+        Importing BraketLab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../flashcards/creating_kets/" class="md-nav__link">
+        Creating a ket
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../flashcards/dimensionality/" class="md-nav__link">
+        Dimensionality and default coordinates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../flashcards/algebra/" class="md-nav__link">
+        Algebra
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../flashcards/operators/" class="md-nav__link">
+        Operators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../flashcards/measurement/" class="md-nav__link">
+        Measurement
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../flashcards/basisbank/" class="md-nav__link">
+        Basisbank
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gto_gallery/" class="md-nav__link">
+        A gallery of gaussian type orbitals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/hybridization/" class="md-nav__link">
+        Hybrid orbitals
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorial_2/" class="md-nav__link">
+        Tutorial
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kets/" class="md-nav__link">
+        A note on conventions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Code Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Code Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../braketlab-reference/" class="md-nav__link">
+        braketlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basisbank-reference/" class="md-nav__link">
+        basisbank
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../solid_harmonics-reference/" class="md-nav__link">
+        solid_harmonics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hydrogen-reference/" class="md-nav__link">
+        hydrogen
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../hamonic_oscillator-reference.md" class="md-nav__link">
+        harmonic_oscillator
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../gto_gallery_4.html" class="md-nav__link">
+        Evince demo
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identity" class="md-nav__link">
+    Identity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#translation" class="md-nav__link">
+    Translation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differentials" class="md-nav__link">
+    Differentials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cartesian-moments" class="md-nav__link">
+    Cartesian moments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coulomb-operator" class="md-nav__link">
+    Coulomb operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kinetic-operator" class="md-nav__link">
+    Kinetic operator
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="operators">Operators</h1>
+<hr />
+<p>Operators <span class="arithmatex">\(\hat{\Omega}\)</span> in quantum theory comes in many flavours, but in all cases they act on kets to produce new kets:</p>
+<div class="arithmatex">\[\begin{equation}
+\hat{\Omega} \vert p \rangle = \vert q \rangle.
+\end{equation}\]</div>
+<pre><code class="language-python">import braketlab as bk
+import numpy as np
+import sympy as sp
+
+x = sp.symbols(&quot;x&quot;) # we'll need a variable for the following examples
+</code></pre>
+<h2 id="identity">Identity</h2>
+<p>For a given space <span class="arithmatex">\(\mathbf{S}\)</span> spanned by a basis <span class="arithmatex">\(\{ \vert s \rangle \}\)</span>, the identity operator is</p>
+<div class="arithmatex">\[\begin{equation}
+\mathbb{1} := \sum_i \vert s_i \rangle \langle s_i \vert
+\end{equation}\]</div>
+<p>The corresponding operator </p>
+<h2 id="translation">Translation</h2>
+<pre><code class="language-python">psi = bk.ket( sp.exp(-1*x**2))
+
+psi.view(web = True)
+</code></pre>
+<pre><code>BraketView(additive=False, ao=[1], bg_color=[1.0, 1.0, 1.0], fragment_shader='uniform vec3 user_color;\nunifor…
+</code></pre>
+<pre><code class="language-python">T = bk.get_translation_operator(np.array([2.1]))
+
+(T*psi).view(web = True)
+</code></pre>
+<pre><code>BraketView(additive=False, ao=[1], bg_color=[1.0, 1.0, 1.0], fragment_shader='uniform vec3 user_color;\nunifor…
+</code></pre>
+<h2 id="differentials">Differentials</h2>
+<p>Differential operators <span class="arithmatex">\(\hat{D}^{o}_{\{ i \}}\)</span> of order <span class="arithmatex">\(o\)</span> with respect to variables <span class="arithmatex">\(i\)</span> acting on kets yields their derivatives of the given order with respect to the relevant variables:</p>
+<div class="arithmatex">\[\begin{equation}
+\hat{D}^o_{\{i \}} \vert p \rangle := \sum_i \big{(} \frac{\partial}{\partial x_i} \big{)}^o p(\mathbf{x})
+\end{equation}\]</div>
+<p>If no variables are provided when initializing the operator, BraketLab will assume that the differential operator acts on all variables in the ket (note that this can give inconsistent behavior - it just differentiates everything it encounters).</p>
+<pre><code class="language-python">a = bk.ket( sp.exp(-x**2), name = &quot;a(x)&quot;)
+a.view(web = True)
+</code></pre>
+<pre><code>BraketView(additive=False, ao=[1], bg_color=[1.0, 1.0, 1.0], fragment_shader='uniform vec3 user_color;\nunifor…
+</code></pre>
+<pre><code class="language-python">D = bk.get_differential_operator(order = [1])
+
+(D*a).view(web = True)
+</code></pre>
+<pre><code>BraketView(additive=False, ao=[1], bg_color=[1.0, 1.0, 1.0], fragment_shader='uniform vec3 user_color;\nunifor…
+</code></pre>
+<pre><code class="language-python">(D*(D*a)).view(web = True)
+</code></pre>
+<pre><code>BraketView(additive=False, ao=[1], bg_color=[1.0, 1.0, 1.0], fragment_shader='uniform vec3 user_color;\nunifor…
+</code></pre>
+<h2 id="cartesian-moments">Cartesian moments</h2>
+<p>The cartesian n'th moment operators <span class="arithmatex">\(\hat{X}^n_i\)</span> are</p>
+<div class="arithmatex">\[\begin{equation}
+\hat{X}^n_i = x_n^i
+\end{equation}\]</div>
+<p>Since BraketLab is largely based on sympy, they can be defined simply as</p>
+<pre><code class="language-python">x = bk.get_default_variables(0, 1)[0]
+X = x**1.0 # for n=1
+</code></pre>
+<p>Let's center a one dimensional Gaussian distribution in <span class="arithmatex">\(x_0 = .25\)</span>, normalize it, and compute the expectation value <span class="arithmatex">\(\langle x \rangle\)</span>:</p>
+<pre><code class="language-python">psi = bk.ket( sp.exp(-(x-.25)**2))
+
+psi = psi*(psi.bra@psi)**-.5 # normalize so that &lt;psi|psi&gt; = 1.0
+
+psi.bra@(X*psi) #should be zero for n=1
+</code></pre>
+<pre><code>0.25
+</code></pre>
+<p>You may then construct arbitrary higher order moments:</p>
+<pre><code class="language-python">x, y = bk.get_default_variables(0, 2)
+
+psi = bk.ket( sp.exp(-.5*((x-.25)**2 + (y+0.3)**2 )) )
+
+psi = psi*(psi.bra@psi)**-.5 # normalize so that &lt;psi|psi&gt; = 1.0
+
+X2Y = x**2*y
+
+psi.bra@(X2Y*psi) # will be computed using Monte-Carlo integration
+</code></pre>
+<pre><code>-0.1683970226816998
+</code></pre>
+<h2 id="coulomb-operator">Coulomb operator</h2>
+<p>The Coulomb operator is </p>
+<div class="arithmatex">\[\begin{equation}
+\hat{V} = \frac{1}{\hat{x}},
+\end{equation}\]</div>
+<p>and may be obtained in BraketLab from</p>
+<pre><code class="language-python">V = bk.get_onebody_coulomb_operator()
+psi.bra@(V*psi)
+</code></pre>
+<pre><code>-1.6408515032825146
+</code></pre>
+<h2 id="kinetic-operator">Kinetic operator</h2>
+<p>The kinetic operator is</p>
+<div class="arithmatex">\[\begin{equation}
+\hat{V} = - \frac{1}{2} \nabla^2,
+\end{equation}\]</div>
+<p>and may be obtained in BraketLab from</p>
+<pre><code class="language-python">T = bk.get_kinetic_operator()
+psi.bra@(T*psi)
+</code></pre>
+<pre><code>0.4996613505912549
+</code></pre>
+<pre><code class="language-python">
+</code></pre>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../javascripts/embed-amd.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
