@@ -582,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gto_gallery_4.html" class="md-nav__link">
+      <a href="../../gto_gallery.html" class="md-nav__link">
         Evince demo
       </a>
     </li>
@@ -1692,13 +1692,13 @@ Licensed under the Apache License, Version 2.0.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
@@ -1716,62 +1716,31 @@ Licensed under the Apache License, Version 2.0.
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">braketlab</span> <span class="k">as</span> <span class="nn">bk</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">bk</span><span class="o">.</span><span class="n">basisbank</span><span class="o">.</span><span class="n">get_gto</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">bk</span><span class="o">.</span><span class="n">basisbank</span><span class="o">.</span><span class="n">get_gto</span><span class="p">(</span><span class="mf">25.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+
 <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">pn</span> <span class="o">=</span> <span class="n">bk</span><span class="o">.</span><span class="n">basisbank</span><span class="o">.</span><span class="n">get_gto</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="mi">6</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">l</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">pn</span> <span class="o">=</span> <span class="n">bk</span><span class="o">.</span><span class="n">basisbank</span><span class="o">.</span><span class="n">get_gto</span><span class="p">(</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="p">,</span><span class="mi">2</span><span class="o">-</span><span class="n">l</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
         <span class="n">p</span> <span class="o">+=</span> <span class="n">pn</span>
         
-<span class="n">p</span><span class="o">.</span><span class="n">view</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">web</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 <div id="cell-1" class="clipboard-copy-txt">import braketlab as bk
 import numpy as np
 
-p = bk.basisbank.get_gto(5.0, 0,0, position = np.array([0,6,0]))
+p = bk.basisbank.get_gto(25.0, 0,0, position = np.array([0,2,0]))
+
 for l in range(1,4):
     for m in range(-l, l+1):
-        pn = bk.basisbank.get_gto(5.0, l,m, position = np.array([2*m,6-3*l,0]))
+        pn = bk.basisbank.get_gto(25.0, l,m, position = np.array([m,2-l,0]))
         p += pn
         
-p.view()</div>
+p.view(web= True)</div>
     
         </div>
     </div>
 
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-
-
-
-<div id="0c9f88e0-47e9-4ff8-a7e6-970c8e3965dc" class="jupyter-widgets jp-OutputArea-output ">
-<script type="text/javascript">
-var element = document.getElementById('0c9f88e0-47e9-4ff8-a7e6-970c8e3965dc');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "bc47e7b2fd104051afaaa5856961404a", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -1796,9 +1765,41 @@ var element = document.getElementById('0c9f88e0-47e9-4ff8-a7e6-970c8e3965dc');
                 </div>
             </clipboard-copy>
         </div>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;gto_gallery.html&quot;</span><span class="p">)</span>
+</pre></div>
+<div id="cell-2" class="clipboard-copy-txt">p.m.save("gto_gallery.html")</div>
+    
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+        <div class="zeroclipboard-container">
+            <clipboard-copy for="cell-3">
+            <div>
+                <span class="notice" hidden>Copied!</span>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                </svg>
+                </div>
+            </clipboard-copy>
+        </div>
             <div class="highlight-ipynb hl-python"><pre><span></span>
 </pre></div>
-<div id="cell-2" class="clipboard-copy-txt"></div>
+<div id="cell-3" class="clipboard-copy-txt"></div>
     
         </div>
     </div>
