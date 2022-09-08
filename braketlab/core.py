@@ -1353,7 +1353,7 @@ class ket(object):
 
     def view(self, web = False, squared = False):
         if web:
-            self.m = ev.BraketView(self, bg_color = [1.0, 1.0, 1.0], additive = False, blender = "vec4(csR + .06*csI, csR + .1*csI, .7*csR + .5*csI, 1.0)", squared = squared)
+            self.m = ev.BraketView(self, bg_color = [1.0, 1.0, 1.0], additive = False, blender = 'vec4(.2*csR, .1*csR + .1*csI, -.1*csR, .1)', squared = squared)
         else:
             self.m = ev.BraketView(self, squared = squared)
         return self.m

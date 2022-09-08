@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
      name='BraketLab',  
-     version='1.062',
+     version='1.069',
      author="Audun Skau Hansen",
      author_email="a.s.hansen@kjemi.uio.no",
      description="Educational tool for learning quantum theory with Jupyter Notebooks",
@@ -19,5 +19,5 @@ setuptools.setup(
          "License :: OSI Approved :: MIT License",
          "Operating System :: OS Independent",
      ],
-     install_requires = ["sympy", "numba", "py3Dmol", "bubblebox"],
+     install_requires = ["sympy", "numba", "evince", "bubblebox"],
  )
