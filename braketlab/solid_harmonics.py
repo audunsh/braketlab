@@ -55,7 +55,7 @@ def get_Slm(l, m):
         if m==-2:
             return x*y*z*sp.sqrt(15.0) 
         if m==-3:
-            return x*y*z*sp.sqrt(15.0) 
+            return .5*sp.sqrt(5.0/2.0)*(3*x**2 - y**2)*y
     
     
     if l==4:

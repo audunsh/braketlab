@@ -2,6 +2,7 @@ import braketlab.core
 import braketlab.basisbank
 import braketlab.hydrogen
 import braketlab.solid_harmonics
+import braketlab.real_solid_harmonics
 import braketlab.harmonic_oscillator
 
 

@@ -2,6 +2,7 @@ import sympy as sp
 import numpy as np
 
 import braketlab.solid_harmonics as sh
+import braketlab.real_solid_harmonics as rsh
 import braketlab.hydrogen as hy
 import braketlab.harmonic_oscillator as ho
 
@@ -56,7 +57,9 @@ def get_gto(a,l,m, position = np.array([0,0,0])):
     and solid harmonic gaussian angular part defined by l and m
     located at position
     """
-    psi = sh.get_Nao(a,l,m)
+    psi = rsh.get_gto(a,l,m)
+
+    
 
     symbols = np.array(list(psi.free_symbols))
     l_symbols = np.argsort([i.name for i in symbols])
@@ -65,6 +68,7 @@ def get_gto(a,l,m, position = np.array([0,0,0])):
     vars = get_default_variables(0, len(symbols))
     for i in range(len(vars)):
         psi = psi.subs(symbols[i], vars[i])
+    
 
 
     return ket(psi, name = "\chi_{%i,%i}^{%.2f}" % (l,m,a), position = position)

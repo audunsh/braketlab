@@ -1,4 +1,4 @@
-<iframe src="gto_gallery_4.html" frameBorder = "0" width = "400px" height = "300px"></iframe>
+<iframe src="gto_gallery.html" frameBorder = "0" width = "600px" height = "450px"></iframe>
 
 <img src="./discover_the_quantum.png" width = "100%" align=right>
 

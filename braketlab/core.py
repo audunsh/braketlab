@@ -1,4 +1,5 @@
 from operator import ne
+from tempfile import gettempdir
 import matplotlib.pyplot as plt
 
 import numpy as np
@@ -1352,10 +1353,22 @@ class ket(object):
             return observable.eigenvalues[distribution]
 
     def view(self, web = False, squared = False):
+        """
+        Create an Evince viewer (using ipywidgets) 
+
+        """
+        nd = len(self.bra_sympy_expression.free_symbols)
+        blend_factor = 1.0
+        if nd>2:
+            blend_factor = 0.1
         if web:
-            self.m = ev.BraketView(self, bg_color = [1.0, 1.0, 1.0], additive = False, blender = 'vec4(.2*csR, .1*csR + .1*csI, -.1*csR, .1)', squared = squared)
+            self.m = ev.BraketView(self, additive = False, bg_color = [1.0, 1.0, 1.0], blender='    gl_FragColor = vec4(.9*csR - csI,  .9*abs(csR) + csI, -1.0*csR - csI, %f)' % blend_factor, squared = squared) 
+
+            #self.m = ev.BraketView(self, bg_color = [1.0, 1.0, 1.0], additive = False, blender = '    gl_FragColor = gl_FragColor + vec4(.2*csR, .1*csR + .1*csI, -.1*csR, .1)', squared = squared)
         else:
-            self.m = ev.BraketView(self, squared = squared)
+            self.m = ev.BraketView(self, additive = True, bg_color = [0.0,0.0,0.0], blender='    gl_FragColor = vec4(.9*csR ,  csI, -1.0*csR, %f)' % blend_factor, squared = squared) 
+
+            #self.m = ev.BraketView(self, additive = True, squared = squared)
         return self.m
 
 def discrete_metropolis_hastings(P, n_samples = 10000, n_iterations = 100000, stepsize = None, T = 0.001):
