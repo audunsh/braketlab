@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<!-- Load require.js. Delete this if your page already loads require.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+<script type="application/vnd.jupyter.widget-state+json">
+{
+  "version_major": 2,
+  "version_minor": 0,
+  "state": {
+    "b1fac81e4def492983e56edb2adcfd99": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "1.2.0",
+      "state": {}
+    },
+    "bda01c2585f4497cba288070f84eb8ff": {
+      "model_name": "BraketModel",
+      "model_module": "evince",
+      "model_module_version": "0.39.0",
+      "state": {
+        "_dom_classes": [],
+        "ao": [
+          1
+        ],
+        "additive": true,
+        "bg_color": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "fragment_shader": "uniform vec3 user_color;\nuniform float time;\n\nvarying vec2 vUv;\nvarying vec3 pos;\nvarying vec3 tex;\nvarying vec3 col;\nvarying float q;\nvarying float csI;\nvarying float csR;\nvarying float cs0;\nvarying float cs;\n\nvoid main() {\n\n    vec2 p = vUv;\n    vec3 col;\n    float q = tex[0]*tex[0] +tex[1]*tex[1] +tex[2]*tex[2] ;\n    \n    float csI = -0.02 ;\n    \n    for(int i=0;i<3;i++) {\n        col[i] = pow(.08/length(mod(tex,1.)-csI-.5), 2.0);\n        csI += .02;\n    }\n    gl_FragColor = vec4(col, .2);\n}",
+        "layout": "IPY_MODEL_b1fac81e4def492983e56edb2adcfd99",
+        "n_concentric": 60,
+        "pos": [],
+        "surf": []
+      }
+    }
+  }
+}
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "bda01c2585f4497cba288070f84eb8ff"}
+</script>
+
+</body>
+</html>

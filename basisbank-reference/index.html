@@ -648,6 +648,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crystal.html" class="md-nav__link">
+        Crystal demo
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -762,8 +777,7 @@ located at position</p>
 
       <details class="quote">
         <summary>Source code in <code>braketlab/basisbank.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">53</span>
-<span class="normal">54</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">54</span>
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
@@ -779,13 +793,19 @@ located at position</p>
 <span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
-<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_gto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_gto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a ket containing the gaussian type primitive orbital with exponent a, </span>
 <span class="sd">    and solid harmonic gaussian angular part defined by l and m</span>
 <span class="sd">    located at position</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">psi</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">get_Nao</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">rsh</span><span class="o">.</span><span class="n">get_gto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+
+
 
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">psi</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">))</span>
     <span class="n">l_symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">])</span>
@@ -794,6 +814,7 @@ located at position</p>
     <span class="nb">vars</span> <span class="o">=</span> <span class="n">get_default_variables</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">symbols</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">vars</span><span class="p">)):</span>
         <span class="n">psi</span> <span class="o">=</span> <span class="n">psi</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">symbols</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">vars</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
 
 
     <span class="k">return</span> <span class="n">ket</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;\chi_{</span><span class="si">%i</span><span class="s2">,</span><span class="si">%i</span><span class="s2">}^{</span><span class="si">%.2f</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">a</span><span class="p">),</span> <span class="n">position</span> <span class="o">=</span> <span class="n">position</span><span class="p">)</span>
@@ -820,8 +841,7 @@ located at position</p>
 
       <details class="quote">
         <summary>Source code in <code>braketlab/basisbank.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">37</span>
-<span class="normal">38</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
@@ -834,7 +854,8 @@ located at position</p>
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_harmonic_oscillator_function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_harmonic_oscillator_function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a ket containing the harmonic oscillator energy eigenfunction with quantum number n</span>
 <span class="sd">    located at position</span>
@@ -872,8 +893,7 @@ located at position</p>
 
       <details class="quote">
         <summary>Source code in <code>braketlab/basisbank.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">19</span>
-<span class="normal">20</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
@@ -888,7 +908,8 @@ located at position</p>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_hydrogen_function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_hydrogen_function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a ket containing the hydrogen eigenfunction with quantum numbers n,l,m</span>
 <span class="sd">    located at position</span>
@@ -930,11 +951,7 @@ located at position</p>
 
       <details class="quote">
         <summary>Source code in <code>braketlab/basisbank.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span>
 <span class="normal">79</span>
@@ -951,7 +968,11 @@ located at position</p>
 <span class="normal">90</span>
 <span class="normal">91</span>
 <span class="normal">92</span>
-<span class="normal">93</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_sto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_sto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a ket containing the slater type orbital with exponent a, </span>
 <span class="sd">    weight w,</span>
