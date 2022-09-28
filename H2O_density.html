@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<!-- Load require.js. Delete this if your page already loads require.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+<script type="application/vnd.jupyter.widget-state+json">
+{
+  "version_major": 2,
+  "version_minor": 0,
+  "state": {
+    "7271f13dd6524ae085ae44c54da66858": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "e31698a3d76a4c6799c7f556c6255a99": {
+      "model_name": "BraketModel",
+      "model_module": "evince",
+      "model_module_version": "^0.40.0",
+      "state": {
+        "_dom_classes": [],
+        "ao": [
+          1
+        ],
+        "bg_color": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "additive": true,
+        "fragment_shader": "uniform vec3 user_color;\nuniform float time;\n\nvarying vec2 vUv;\nvarying vec3 pos;\nvarying vec3 tex;\nvarying float q;\nvarying float csI;\nvarying float csR;\nvarying float cs0;\nvarying float cs1;\nvarying float cs2;\nvarying float cs;\n\nvoid main() {\n\n    vec2 p = vUv;\n    float q = tex[0]*tex[0] +tex[1]*tex[1] +tex[2]*tex[2] ;\n    float cs0 = 0.80633419372281845*exp(-4.0*pow(tex[1], 2.0) - 4.0*pow(tex[0] - 0.55000000000000004, 2.0) - 4.0*pow(tex[2] - 0.59999999999999998, 2.0));\n    float cs1 = 2.0158354843070461*exp(-4.0*q);\n    float cs2 = 0.80633419372281845*exp(-4.0*pow(tex[1], 2.0) - 4.0*pow(tex[0] - 0.55000000000000004, 2.0) - 4.0*pow(tex[2] + 0.59999999999999998, 2.0));\n    float csI = 0.0 ;\n    float csR = cs0 + cs1 + cs2 ;\n    csR = pow(csR, 2.0) + pow(csI, 2.0);\n    csI = 0.0;\n    gl_FragColor = vec4(.9*csR ,  csI, -1.0*csR, 0.100000);\n}",
+        "layout": "IPY_MODEL_7271f13dd6524ae085ae44c54da66858",
+        "n_concentric": 100,
+        "pos": [],
+        "surf": []
+      }
+    }
+  }
+}
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "e31698a3d76a4c6799c7f556c6255a99"}
+</script>
+
+</body>
+</html>

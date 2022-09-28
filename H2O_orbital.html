@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<!-- Load require.js. Delete this if your page already loads require.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+<script type="application/vnd.jupyter.widget-state+json">
+{
+  "version_major": 2,
+  "version_minor": 0,
+  "state": {
+    "ee2bb8392f644b4e9453bc612ad9fb76": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "11817607ec1c411c865fa2c65c987a45": {
+      "model_name": "BraketModel",
+      "model_module": "evince",
+      "model_module_version": "^0.40.0",
+      "state": {
+        "_dom_classes": [],
+        "ao": [
+          1
+        ],
+        "bg_color": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "additive": true,
+        "fragment_shader": "uniform vec3 user_color;\nuniform float time;\n\nvarying vec2 vUv;\nvarying vec3 pos;\nvarying vec3 tex;\nvarying float q;\nvarying float csI;\nvarying float csR;\nvarying float cs0;\nvarying float cs1;\nvarying float cs2;\nvarying float cs3;\nvarying float cs4;\nvarying float cs;\n\nvoid main() {\n\n    vec2 p = vUv;\n    float q = tex[0]*tex[0] +tex[1]*tex[1] +tex[2]*tex[2] ;\n    float cs0 = 0.80633419372281845*exp(-4.0*pow(tex[1], 2.0) - 4.0*pow(tex[0] - 0.55000000000000004, 2.0) - 4.0*pow(tex[2] - 0.59999999999999998, 2.0));\n    float cs1 = 2.0158354843070461*exp(-4.0*q);\n    float cs2 = (-1.8621490552106761*pow(tex[0], 2.0) - 1.8621490552106761*pow(tex[1], 2.0) + 3.7242981104213522*pow(tex[2], 2.0))*exp(-4.0*q);\n    float cs3 = 1.6126683874456369*tex[0]*exp(-4.0*q);\n    float cs4 = 0.80633419372281845*exp(-4.0*pow(tex[1], 2.0) - 4.0*pow(tex[0] - 0.55000000000000004, 2.0) - 4.0*pow(tex[2] + 0.59999999999999998, 2.0));\n    float csI = -1.0*cs0*sin(0.600000*time) + -1.0*cs1*sin(1.000000*time) + -1.0*cs2*sin(0.000000*time) + -1.0*cs3*sin(0.000000*time) + -1.0*cs4*sin(0.000000*time) ;\n    float csR = cs0*cos(0.600000*time) + cs1*cos(1.000000*time) + cs2*cos(0.000000*time) + cs3*cos(0.000000*time) + cs4*cos(0.000000*time) ;\n    gl_FragColor = vec4(.9*csR ,  csI, -1.0*csR, 0.100000);\n}",
+        "layout": "IPY_MODEL_ee2bb8392f644b4e9453bc612ad9fb76",
+        "n_concentric": 100,
+        "pos": [],
+        "surf": []
+      }
+    }
+  }
+}
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "11817607ec1c411c865fa2c65c987a45"}
+</script>
+
+</body>
+</html>
