@@ -1,0 +1,144 @@
+import numpy as np
+import braketlab as bk
+import evince as ev
+
+import ipywidgets as widgets
+import ipywidgets.embed as embed
+
+from traitlets import Unicode, validate
+import traitlets as tl
+from IPython.display import Javascript
+
+NPM_PACKAGE_RANGE = "0.39.0"
+
+def generate_webgl_shader(p, time_dependent = False, blender = None, squared = False):
+    s = """uniform vec3 user_color;
+uniform float time;
+
+varying vec2 vUv;
+varying vec3 pos;
+varying vec3 tex;
+varying vec3 col;
+varying vec3 lattice1;
+varying vec3 lattice2;
+varying vec3 lattice3;
+varying float q;
+varying float csI;
+varying float csR;
+varying float cs0;
+varying float cs;
+
+void main() {
+
+    vec2 p = vUv;
+    vec3 col;
+    //vec3 lattice;
+    vec3 lattice1 = vec3(1.0, 0.0,0.0);
+    vec3 lattice2 = vec3(0.0, 1.0,0.0);
+    vec3 lattice3 = vec3(0.0, 0.0,2.0);
+    
+    float q = tex[0]*tex[0] +tex[1]*tex[1] +tex[2]*tex[2] ;
+    
+    float csI = -0.02 ;
+    
+    for(int i=0;i<3;i++) {
+        //col[i] = smoothstep(0.0, 90.0, q)*smoothstep(0.7, 1.0, sin(dot(tex, lattice1)-csI)*sin(dot(tex, lattice2)-csI)*sin(dot(tex, lattice3) - csI));
+        //col[i] = (1.0 - smoothstep(.9*10000.0, 10000.0, q))*(1.0-smoothstep(0.7, 1.0, sin(tex[0]-csI) * sin(tex[1]-csI) *sin(tex[2]-csI)));
+        //col[i] = ( 1.0-smoothstep(0.7, 1.0, sin(tex[0]-csI) * sin(tex[1]-csI) *sin(tex[2]-csI)));
+        col[i] = smoothstep(-.01, 0.0, .05 + sin(tex[0]-csI) * sin(tex[1]-csI) *sin(tex[2]-csI))*smoothstep(.01, 0.0, .05 + sin(tex[0]-csI) * sin(tex[1]-csI) *sin(tex[2]-csI));
+        //col[i] = smoothstep(0.95, 1.0, sin((tex[0]-csI) * (.9*tex[1]-csI) * (tex[2]-csI)));
+        csI += .02;
+    }
+    gl_FragColor = vec4(col, .1);
+}"""
+    return s, 3
+
+#ev.braketview.generate_webgl_shader = gs
+
+
+@widgets.register
+class BraketView(widgets.DOMWidget):
+    # Name of the widget view class in front-end
+    _view_name = Unicode('BraketView').tag(sync=True)
+
+    # Name of the widget model class in front-end
+    _model_name = Unicode('BraketModel').tag(sync=True)
+
+    # Name of the front-end module containing widget view
+    _view_module = Unicode('evince').tag(sync=True)
+
+    # Name of the front-end module containing widget model
+    _model_module = Unicode('evince').tag(sync=True)
+
+    # Version of the front-end module containing widget view
+    #_view_module_version = Unicode('^0.30.0').tag(sync=True)
+
+    # Version of the front-end module containing widget model
+    #_model_module_version = Unicode('^0.30.0').tag(sync=True)
+
+    # Version of the front-end module containing widget view
+    _view_module_version = Unicode(NPM_PACKAGE_RANGE).tag(sync=True)
+    # Version of the front-end module containing widget model
+    _model_module_version = Unicode(NPM_PACKAGE_RANGE).tag(sync=True)
+    
+    
+
+
+
+    surf = tl.List([]).tag(sync=True)
+    pos = tl.List([]).tag(sync=True)
+    fragment_shader = tl.Unicode('').tag(sync=True)
+    ao = tl.List([]).tag(sync=True)
+    surface_view = tl.Bool(False).tag(sync=True)
+
+    n_concentric = tl.Int().tag(sync=True)
+
+    
+    #colorscheme
+    additive = tl.Bool(True).tag(sync=True)
+
+    bg_color = tl.List([]).tag(sync=True)
+
+    def __init__(self, ket_instance, surface_view = False, bg_color = [0.0,0.0,0.0], additive = True, blender = "    glFragColor = glFragColor + vec4(csR, csI, -1.0*csR, .1)", squared = False, n_concentric = 100):
+        
+
+        
+        super().__init__() # execute init of parent class, append:
+        #self.surf = extract_surface(p)
+        self.squared = squared
+
+        self.n_concentric = n_concentric
+        
+        self.surface_view = surface_view
+        self.bg_color = bg_color
+        self.additive = additive
+        
+        self.blender = blender
+        
+        self.init = True #trigger frontend init
+        self.ao = [1]
+        self.add_ket(ket_instance)
+        
+    def add_ket(self, ket_instance, time_dependent = False):
+        """
+        Initialize ket on scene
+        """
+
+        if np.sum(np.array(ket_instance.energy)**2.0)>1e-10:
+            time_dependent = True
+        self.fragment_shader, self.nd = generate_webgl_shader(ket_instance, time_dependent=time_dependent, blender = self.blender, squared = self.squared)
+
+        if self.nd<3:
+            self.surface_view = True
+
+    def save(self, filename, title = ""):
+        """
+        Save a standalone html embedding of the view
+        """
+        embed.embed_minimal_html(filename, [self], title)
+        
+p = bk.basisbank.get_gto(2.0, 5, -1)
+#p.view()
+
+m = BraketView(p, n_concentric = 120)
+m
