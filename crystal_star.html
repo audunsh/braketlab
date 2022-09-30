@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<!-- Load require.js. Delete this if your page already loads require.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+<script type="application/vnd.jupyter.widget-state+json">
+{
+  "version_major": 2,
+  "version_minor": 0,
+  "state": {
+    "f2ed2381f76946f0b2df5a3b324a92de": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "5f07521d5a4b42dfb9a9ebb0b3a962b1": {
+      "model_name": "BraketModel",
+      "model_module": "evince",
+      "model_module_version": "0.39.0",
+      "state": {
+        "_dom_classes": [],
+        "ao": [
+          1
+        ],
+        "additive": true,
+        "bg_color": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "fragment_shader": "uniform vec3 user_color;\nuniform float time;\n\nvarying vec2 vUv;\nvarying vec3 pos;\nvarying vec3 tex;\nvarying vec3 col;\nvarying vec3 lattice1;\nvarying vec3 lattice2;\nvarying vec3 lattice3;\nvarying float q;\nvarying float qq;\nvarying float csI;\nvarying float csR;\nvarying float cs0;\nvarying float cs;\n\nvoid main() {\n\n    vec2 p = vUv;\n    vec3 col;\n    //vec3 lattice;\n    vec3 lattice1 = vec3(1.0, 0.0,0.0);\n    vec3 lattice2 = vec3(0.0, 1.0,0.0);\n    \n    \n    \n    vec3 lattice3 = tex*2.0;\n    \n    lattice3[1] = lattice3[1] - 4.0;\n    \n    float q = lattice3[0]*lattice3[0] +lattice3[1]*lattice3[1] +lattice3[2]*lattice3[2] ;\n    //float qq = pow(q, 0.6 + .3*sin(.3*time));\n    float qq = pow(q, 0.5 + .4*sin(.1*time));\n    float csI = -0.008 ;\n    \n    for(int i=0;i<3;i++) {\n        //col[i] = pow(.5/length(qq*(1.0 - .7*sin(.3*time))*0.5*(mod(lattice3,qq*0.8)-.4*qq - qq*csI)), 4.0);\n        col[i] = pow(.1/length(mod(lattice3,qq*0.3)-qq*csI-qq*.15), 4.0);\n        csI += .008;\n    }\n    gl_FragColor = vec4(col, .1);\n}",
+        "layout": "IPY_MODEL_f2ed2381f76946f0b2df5a3b324a92de",
+        "n_concentric": 120,
+        "pos": [],
+        "surf": []
+      }
+    }
+  }
+}
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "5f07521d5a4b42dfb9a9ebb0b3a962b1"}
+</script>
+
+</body>
+</html>
