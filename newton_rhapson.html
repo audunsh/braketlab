@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<!-- Load require.js. Delete this if your page already loads require.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+<script type="application/vnd.jupyter.widget-state+json">
+{
+  "version_major": 2,
+  "version_minor": 0,
+  "state": {
+    "fbac39f390184008b0b192c80e788ef3": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "fb210dc951a04bf083ae4c5a102edcd3": {
+      "model_name": "BraketModel",
+      "model_module": "evince",
+      "model_module_version": "0.39.0",
+      "state": {
+        "_dom_classes": [],
+        "ao": [
+          1
+        ],
+        "additive": true,
+        "bg_color": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "fragment_shader": "uniform vec3 user_color;\nuniform float time;\n\nvarying vec2 vUv;\nvarying vec3 pos;\nvarying vec3 tex;\nvarying vec3 col;\nvarying vec3 lattice1;\nvarying vec3 lattice2;\nvarying vec3 lattice3;\nvarying float q;\nvarying float q1;\nvarying float q2;\nvarying float q3;\nvarying float qq;\nvarying float csI;\nvarying float csR;\nvarying float cs0;\nvarying float cs;\n\nvoid main() {\n\n    vec2 p = vUv;\n    vec3 col;\n    //vec3 lattice;\n    vec3 lattice1 = vec3(1.0, 0.0,0.0);\n    vec3 lattice2 = vec3(0.0, 1.0,0.0);\n    \n    \n    \n    vec3 lattice3 = tex*1.0;\n    \n    //lattice3[1] = lattice3[1] + 2.0;\n    \n    float q = 0.5 + .5*pow(lattice3[0]*lattice3[0] +lattice3[1]*lattice3[1] +lattice3[2]*lattice3[2], .5);\n    //float qq = pow(q, 0.6 + .3*sin(.3*time));\n    //float qq = exp(-2.0*lattice3[1]*lattice3[1]);\n    //float qq = sin(lattice3[0] + lattice3[2]); //*lattice3[0] + lattice3[2]*lattice3[2]); //pow(q, 0.5 + .4*sin(.1*time));\n    \n    //float q = lattice3[0]*lattice3[0] +lattice3[1]*lattice3[1] +lattice3[2]*lattice3[2] ;\n    float csI = -0.08 ;\n    \n    float q1 = (-(lattice3[0] + lattice3[1]*sin(lattice3[2]))*(lattice3[0]*sin(lattice3[0])*cos(lattice3[1]) - 1.0) + (lattice3[1] + lattice3[2]*sin(lattice3[0]))*(lattice3[0]*lattice3[1]*cos(lattice3[1])*cos(lattice3[2]) - sin(lattice3[2])) - (lattice3[0]*sin(lattice3[1]) + lattice3[2])*(lattice3[1]*cos(lattice3[2]) - sin(lattice3[0])*sin(lattice3[2])))/(lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0])*cos(lattice3[1])*cos(lattice3[2]) - lattice3[0]*sin(lattice3[0])*cos(lattice3[1]) - lattice3[1]*sin(lattice3[1])*cos(lattice3[2]) - lattice3[2]*sin(lattice3[2])*cos(lattice3[0]) + sin(lattice3[0])*sin(lattice3[1])*sin(lattice3[2]) + 1.0);\n    float q2 = (-(lattice3[0] + lattice3[1]*sin(lattice3[2]))*(lattice3[2]*cos(lattice3[0]) - sin(lattice3[0])*sin(lattice3[1])) - (lattice3[1] + lattice3[2]*sin(lattice3[0]))*(lattice3[1]*sin(lattice3[1])*cos(lattice3[2]) - 1.0) + (lattice3[0]*sin(lattice3[1]) + lattice3[2])*(lattice3[1]*lattice3[2]*cos(lattice3[0])*cos(lattice3[2]) - sin(lattice3[0])))/(lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0])*cos(lattice3[1])*cos(lattice3[2]) - lattice3[0]*sin(lattice3[0])*cos(lattice3[1]) - lattice3[1]*sin(lattice3[1])*cos(lattice3[2]) - lattice3[2]*sin(lattice3[2])*cos(lattice3[0]) + sin(lattice3[0])*sin(lattice3[1])*sin(lattice3[2]) + 1.0);\n    float q3 = ((lattice3[0] + lattice3[1]*sin(lattice3[2]))*(lattice3[0]*lattice3[2]*cos(lattice3[0])*cos(lattice3[1]) - sin(lattice3[1])) - (lattice3[1] + lattice3[2]*sin(lattice3[0]))*(lattice3[0]*cos(lattice3[1]) - sin(lattice3[1])*sin(lattice3[2])) - (lattice3[0]*sin(lattice3[1]) + lattice3[2])*(lattice3[2]*sin(lattice3[2])*cos(lattice3[0]) - 1.0))/(lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0])*cos(lattice3[1])*cos(lattice3[2]) - lattice3[0]*sin(lattice3[0])*cos(lattice3[1]) - lattice3[1]*sin(lattice3[1])*cos(lattice3[2]) - lattice3[2]*sin(lattice3[2])*cos(lattice3[0]) + sin(lattice3[0])*sin(lattice3[1])*sin(lattice3[2]) + 1.0);\n    \n    \n    //lattice3[0]*lattice3[1]*(lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0]*lattice3[1]*lattice3[2] + 1.0) - lattice3[0]*pow(lattice3[2], 2.0)*cos(lattice3[0]*lattice3[1]*lattice3[2] + 1.0) + sin(lattice3[0]*lattice3[1]*lattice3[2] + 1.0))/(lattice3[2]*(3.0*lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0]*lattice3[1]*lattice3[2] + 1.0) + 2.0*sin(lattice3[0]*lattice3[1]*lattice3[2] + 1.0)));\n    //float q2 = -pow(lattice3[1], 2.0)*(2.0*lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0]*lattice3[1]*lattice3[2] + 1.0) + lattice3[0]*pow(lattice3[2], 2.0)*cos(lattice3[0]*lattice3[1]*lattice3[2] + 1.0) + sin(lattice3[0]*lattice3[1]*lattice3[2] + 1.0))/(lattice3[2]*(3.0*lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0]*lattice3[1]*lattice3[2] + 1.0) + 2.0*sin(lattice3[0]*lattice3[1]*lattice3[2] + 1.0)));\n    //float q3 = (lattice3[1] + 2.0*lattice3[2])*(lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0]*lattice3[1]*lattice3[2] + 1.0) + sin(lattice3[0]*lattice3[1]*lattice3[2] + 1.0))/(3.0*lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0]*lattice3[1]*lattice3[2] + 1.0) + 2.0*sin(lattice3[0]*lattice3[1]*lattice3[2] + 1.0));\n    \n    \n    col[1] = 0.0;\n    for(int i=0;i<15;i++) {\n        lattice3 = lattice3 - vec3(q1,q2,q3);\n        if(abs(lattice3[0])+abs(lattice3[1])+abs(lattice3[2])<0.0000001){\n            //col[1] = i;\n            break;\n        }\n        col[1] += (.001*q3 + 0.005)/q;\n        col[0] += (.001*q1 + 0.005)/q;\n        col[2] += (.001*q2 + 0.005)/q;\n        q1 = (-(lattice3[0] + lattice3[1]*sin(lattice3[2]))*(lattice3[0]*sin(lattice3[0])*cos(lattice3[1]) - 1.0) + (lattice3[1] + lattice3[2]*sin(lattice3[0]))*(lattice3[0]*lattice3[1]*cos(lattice3[1])*cos(lattice3[2]) - sin(lattice3[2])) - (lattice3[0]*sin(lattice3[1]) + lattice3[2])*(lattice3[1]*cos(lattice3[2]) - sin(lattice3[0])*sin(lattice3[2])))/(lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0])*cos(lattice3[1])*cos(lattice3[2]) - lattice3[0]*sin(lattice3[0])*cos(lattice3[1]) - lattice3[1]*sin(lattice3[1])*cos(lattice3[2]) - lattice3[2]*sin(lattice3[2])*cos(lattice3[0]) + sin(lattice3[0])*sin(lattice3[1])*sin(lattice3[2]) + 1.0);\n        q2 = (-(lattice3[0] + lattice3[1]*sin(lattice3[2]))*(lattice3[2]*cos(lattice3[0]) - sin(lattice3[0])*sin(lattice3[1])) - (lattice3[1] + lattice3[2]*sin(lattice3[0]))*(lattice3[1]*sin(lattice3[1])*cos(lattice3[2]) - 1.0) + (lattice3[0]*sin(lattice3[1]) + lattice3[2])*(lattice3[1]*lattice3[2]*cos(lattice3[0])*cos(lattice3[2]) - sin(lattice3[0])))/(lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0])*cos(lattice3[1])*cos(lattice3[2]) - lattice3[0]*sin(lattice3[0])*cos(lattice3[1]) - lattice3[1]*sin(lattice3[1])*cos(lattice3[2]) - lattice3[2]*sin(lattice3[2])*cos(lattice3[0]) + sin(lattice3[0])*sin(lattice3[1])*sin(lattice3[2]) + 1.0);\n        q3 = ((lattice3[0] + lattice3[1]*sin(lattice3[2]))*(lattice3[0]*lattice3[2]*cos(lattice3[0])*cos(lattice3[1]) - sin(lattice3[1])) - (lattice3[1] + lattice3[2]*sin(lattice3[0]))*(lattice3[0]*cos(lattice3[1]) - sin(lattice3[1])*sin(lattice3[2])) - (lattice3[0]*sin(lattice3[1]) + lattice3[2])*(lattice3[2]*sin(lattice3[2])*cos(lattice3[0]) - 1.0))/(lattice3[0]*lattice3[1]*lattice3[2]*cos(lattice3[0])*cos(lattice3[1])*cos(lattice3[2]) - lattice3[0]*sin(lattice3[0])*cos(lattice3[1]) - lattice3[1]*sin(lattice3[1])*cos(lattice3[2]) - lattice3[2]*sin(lattice3[2])*cos(lattice3[0]) + sin(lattice3[0])*sin(lattice3[1])*sin(lattice3[2]) + 1.0);\n    }\n    \n    \n    \n    //for(int i=0;i<3;i++) {\n    //    col[i] = smoothstep(q1, q1+.1, lattice3[1]+.5)*smoothstep(q1, q1-.1, lattice3[1]-.5); //*smoothstep(-1.0*(q-.1), -1.0*q, -1.0*lattice3[1]-csI);\n    //    csI += .08;\n    //}\n    gl_FragColor = vec4(col, .1);\n}",
+        "layout": "IPY_MODEL_fbac39f390184008b0b192c80e788ef3",
+        "n_concentric": 60,
+        "pos": [],
+        "surf": []
+      }
+    }
+  }
+}
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "fb210dc951a04bf083ae4c5a102edcd3"}
+</script>
+
+</body>
+</html>
