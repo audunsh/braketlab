@@ -1352,7 +1352,7 @@ class ket(object):
 
             return observable.eigenvalues[distribution]
 
-    def view(self, web = False, squared = False):
+    def view(self, web = False, squared = False, n_concentric = 100):
         """
         Create an Evince viewer (using ipywidgets) 
 
@@ -1362,11 +1362,11 @@ class ket(object):
         if nd>2:
             blend_factor = 0.1
         if web:
-            self.m = ev.BraketView(self, additive = False, bg_color = [1.0, 1.0, 1.0], blender='    gl_FragColor = vec4(.9*csR - csI,  .9*abs(csR) + csI, -1.0*csR - csI, %f)' % blend_factor, squared = squared) 
+            self.m = ev.BraketView(self, additive = False, bg_color = [1.0, 1.0, 1.0], blender='    gl_FragColor = vec4(.9*csR - csI,  .9*abs(csR) + csI, -1.0*csR - csI, %f)' % blend_factor, squared = squared, n_concentric=n_concentric) 
 
             #self.m = ev.BraketView(self, bg_color = [1.0, 1.0, 1.0], additive = False, blender = '    gl_FragColor = gl_FragColor + vec4(.2*csR, .1*csR + .1*csI, -.1*csR, .1)', squared = squared)
         else:
-            self.m = ev.BraketView(self, additive = True, bg_color = [0.0,0.0,0.0], blender='    gl_FragColor = vec4(.9*csR ,  csI, -1.0*csR, %f)' % blend_factor, squared = squared) 
+            self.m = ev.BraketView(self, additive = True, bg_color = [0.0,0.0,0.0], blender='    gl_FragColor = vec4(.9*csR ,  csI, -1.0*csR, %f)' % blend_factor, squared = squared, n_concentric=n_concentric) 
 
             #self.m = ev.BraketView(self, additive = True, squared = squared)
         return self.m

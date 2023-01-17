@@ -1,4 +1,3 @@
-<iframe src="gto_gallery.html" frameBorder = "0" width = "600px" height = "450px"></iframe>
 
 <img src="./discover_the_quantum.png" width = "100%" align=right>
 
@@ -17,6 +16,8 @@ This is not the only pathway into the quantum world, however. With increased cod
 BraketLab is just this; an attempt to shape many computational aids such as numerics and approximative techniques, visualization, object-oriented and high-level programming and interactivity into an environment tailored for learning quantum theory by means of **exploration and creativity**. 
 
 Powered by sympy and numpy, and extended to the metaverse using <a href="github.com/audunsh/evince">Evince</a>, BraketLab aims to allow students to easily stray outside of the conventional routes, with a simple syntax closely resembling the one you’ll find in most books on the subject and no complicated integrals to stop them in their tracks.
+
+<iframe src="gto_gallery.html" frameBorder = "0" width = "600px" height = "450px"></iframe>
 
 ## Dependencies
 

@@ -8,6 +8,63 @@ import braketlab.harmonic_oscillator as ho
 
 from braketlab.core import ket, get_ordered_symbols, get_default_variables
 
+def extract_pyscf_basis(mo):
+    """
+    Get a braketlab basis from a pyscf mol object
+
+    ## Arguments 
+
+    |mo | pySCF molecule object |
+
+    ## Returns
+
+    A list containing braketlab basis functions
+
+
+    ## Example usage
+
+    ```python
+    from pyscf import gto
+    mol = gto.Mole()
+    mol.build(atom = '''O 0 0 0; H  0 1 0; H 0 0 1''',basis = 'sto-3g')
+    basis = extract_pyscf_basis(mol)
+    ```
+
+    """
+    contracted_aos = []
+    for contr in range(mo.nbas):
+        l = mo.bas_angular(contr)
+        contr_coeff = mo.bas_ctr_coeff(contr)
+        exponent = mo.bas_exp(contr)
+        #position = mo.
+        
+        if l == 1:
+            
+            for m in [1, -1,0]:
+                #for b in range(len(contr_coeff[a]))
+                #a = 0
+                for b in range(len(contr_coeff[0])):
+                    a = 0
+                    #print(l,m,"    ", exponent[a], contr_coeff[a][b], np.array(mo.bas_coord(contr)))
+                    chi_lm = contr_coeff[a][b]*bk.basisbank.get_gto(exponent[0], l, m, position = np.array(mo.bas_coord(contr)))
+                    for  a in range(1, len(exponent)):
+
+                        #print(l,m,"    ", exponent[a], "     ", contr_coeff[a][0])
+                        chi_lm += contr_coeff[a][b]*bk.basisbank.get_gto(exponent[a], l, m,  position = np.array(mo.bas_coord(contr)))
+                    contracted_aos.append(chi_lm)
+        else:
+            for m in range(-l, l+1):
+                for b in range(len(contr_coeff[0])):
+                    a = 0
+                    #print(l,m,"    ", exponent[a], contr_coeff[a][0], mo.bas_coord(contr))
+                    chi_lm = contr_coeff[a][b]*bk.basisbank.get_gto(exponent[0],l,m, position = np.array(mo.bas_coord(contr)))
+                    for  a in range(1, len(exponent)):
+                        #print(l,m,"    ", exponent[a], "     ", contr_coeff[a][0])
+                        chi_lm += contr_coeff[a][b]*bk.basisbank.get_gto(exponent[a], l,m, position = np.array(mo.bas_coord(contr)))
+
+                    contracted_aos.append(chi_lm)
+    return contracted_aos
+
 
 def get_default_variables(p, n = 3):
     variables = []
