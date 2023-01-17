@@ -1130,6 +1130,32 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Exported examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exported examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Exported examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../gto_gallery.html" class="md-nav__link">
         Evince demo
@@ -1137,11 +1163,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -1152,11 +1177,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -1167,11 +1191,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -1182,11 +1205,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -1197,11 +1219,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -1212,11 +1233,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -1224,6 +1244,13 @@
       <a href="../newton_rhapson_2.html" class="md-nav__link">
         Newton-Rhapson II
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1835,7 +1862,7 @@
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    return n!</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
@@ -1866,7 +1893,7 @@
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hermite</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The n-th order Hermite polynomial</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">n</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">f</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">sp</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span> <span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">f</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">z</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
@@ -1911,7 +1938,7 @@
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">psi_ho</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mass</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hbar</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The n-th normalized harmonic oscillator eigenfunction</span>
 <span class="sd">    (stationary state if time = false)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2194,7 +2221,7 @@ x2.normalize()
 <span class="normal">551</span>
 <span class="normal">552</span>
 <span class="normal">553</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">basisfunction</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    # A general class for a basis function in $\mathbb{R}^n$</span>
 
 <span class="sd">    ## Keyword arguments:</span>
@@ -2264,7 +2291,7 @@ x2.normalize()
 
 
     <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set normalization factor $N$ of self ($\chi$) so that $\langle \chi \\vert \chi \\rangle = 1$.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">s_12</span> <span class="o">=</span> <span class="n">inner_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
@@ -2272,7 +2299,7 @@ x2.normalize()
 
 
     <span class="k">def</span> <span class="nf">locate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Locate and determine spread of self</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decay</span> <span class="o">=</span> <span class="n">locate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket_sympy_expression</span><span class="p">)</span>
@@ -2303,7 +2330,7 @@ x2.normalize()
             <span class="k">return</span> <span class="n">domain</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluate function in coordinates ```*r``` (arbitrary dimensions).</span>
 
 <span class="sd">        ## Returns</span>
@@ -2316,7 +2343,7 @@ x2.normalize()
 
 
     <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a basisfunction $\chi_{a*b}(\mathbf{r})$, where</span>
 <span class="sd">        $\chi_{a*b}(\mathbf{r}) = \chi_a(\mathbf{r}) \chi_b(\mathbf{r})$</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2331,7 +2358,7 @@ x2.normalize()
 
 
     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a basisfunction  $\chi_{a+b}(\mathbf{r})$, where</span>
 <span class="sd">        $\chi_{a+b}(\mathbf{r}) = \chi_a(\mathbf{r}) + \chi_b(\mathbf{r})$</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2340,7 +2367,7 @@ x2.normalize()
                    <span class="n">domain</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_domain</span><span class="p">(</span><span class="n">other</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a basisfunction  $\chi_{a-b}(\mathbf{r})$, where</span>
 <span class="sd">        $\chi_{a-b}(\mathbf{r}) = \chi_a(\mathbf{r}) - \chi_b(\mathbf{r})$</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2350,7 +2377,7 @@ x2.normalize()
 
 
     <span class="k">def</span> <span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a latex-formatted string to display the mathematical expression of the basisfunction. </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s2">&quot;$ </span><span class="si">%s</span><span class="s2"> $&quot;</span> <span class="o">%</span> <span class="n">sp</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket_sympy_expression</span><span class="p">)</span>
@@ -2394,7 +2421,7 @@ x2.normalize()
 <span class="normal">535</span>
 <span class="normal">536</span>
 <span class="normal">537</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a basisfunction  $\chi_{a+b}(\mathbf{r})$, where</span>
 <span class="sd">    $\chi_{a+b}(\mathbf{r}) = \chi_a(\mathbf{r}) + \chi_b(\mathbf{r})$</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2436,7 +2463,7 @@ x2.normalize()
 <span class="normal">509</span>
 <span class="normal">510</span>
 <span class="normal">511</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">r</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluate function in coordinates ```*r``` (arbitrary dimensions).</span>
 
 <span class="sd">    ## Returns</span>
@@ -2476,7 +2503,7 @@ x2.normalize()
 <span class="normal">520</span>
 <span class="normal">521</span>
 <span class="normal">522</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a basisfunction $\chi_{a*b}(\mathbf{r})$, where</span>
 <span class="sd">    $\chi_{a*b}(\mathbf{r}) = \chi_a(\mathbf{r}) \chi_b(\mathbf{r})$</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2514,7 +2541,7 @@ x2.normalize()
 <span class="normal">544</span>
 <span class="normal">545</span>
 <span class="normal">546</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a basisfunction  $\chi_{a-b}(\mathbf{r})$, where</span>
 <span class="sd">    $\chi_{a-b}(\mathbf{r}) = \chi_a(\mathbf{r}) - \chi_b(\mathbf{r})$</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2548,7 +2575,7 @@ x2.normalize()
 <span class="normal">473</span>
 <span class="normal">474</span>
 <span class="normal">475</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">locate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Locate and determine spread of self</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decay</span> <span class="o">=</span> <span class="n">locate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ket_sympy_expression</span><span class="p">)</span>
@@ -2580,7 +2607,7 @@ x2.normalize()
 <span class="normal">466</span>
 <span class="normal">467</span>
 <span class="normal">468</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set normalization factor $N$ of self ($\chi$) so that $\langle \chi \\vert \chi \\rangle = 1$.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">s_12</span> <span class="o">=</span> <span class="n">inner_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
@@ -3115,7 +3142,7 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
 <span class="normal">1370</span>
 <span class="normal">1371</span>
 <span class="normal">1372</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ket</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class for vectors defined on general vector spaces</span>
 <span class="sd">    Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</span>
 
@@ -3146,7 +3173,7 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generic_input</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">basis</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">energy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">autoflatten</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        ## Initialization of a ket</span>
 
 
@@ -3184,7 +3211,7 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
 
 
 
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Algebraic operators</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
@@ -3255,7 +3282,7 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
         <span class="k">return</span> <span class="n">ket</span><span class="p">([</span><span class="n">i</span><span class="o">/</span><span class="n">other</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">],</span> <span class="n">basis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Inner- and Cartesian products</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
@@ -3330,7 +3357,7 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
 
 
     <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Remove redundancies in the expansion of self</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">new_coefficients</span> <span class="o">=</span> <span class="p">[]</span>
@@ -3360,7 +3387,7 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">energy</span> <span class="o">=</span> <span class="n">new_energies</span>
 
     <span class="k">def</span> <span class="nf">get_ccode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generate a WebGL-shader code snippet</span>
 <span class="sd">        for Evince rendering (experimental)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3470,11 +3497,11 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
     <span class="c1">#    anim_s = anim.system(self, x, t, dt)</span>
     <span class="c1">#    anim_s.run()</span>
 
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Measurement</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observable</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">repetitions</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Make a mesaurement of the observable (hermitian operator)</span>
 
 <span class="sd">        Measures by default the continuous distribution as defined by self.bra*self</span>
@@ -3511,8 +3538,8 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
 
             <span class="k">return</span> <span class="n">observable</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">[</span><span class="n">distribution</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">web</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">web</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">n_concentric</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create an Evince viewer (using ipywidgets) </span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -3521,11 +3548,11 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
         <span class="k">if</span> <span class="n">nd</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
             <span class="n">blend_factor</span> <span class="o">=</span> <span class="mf">0.1</span>
         <span class="k">if</span> <span class="n">web</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">BraketView</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additive</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">bg_color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="n">blender</span><span class="o">=</span><span class="s1">&#39;    gl_FragColor = vec4(.9*csR - csI,  .9*abs(csR) + csI, -1.0*csR - csI, </span><span class="si">%f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">blend_factor</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="n">squared</span><span class="p">)</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">BraketView</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additive</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">bg_color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="n">blender</span><span class="o">=</span><span class="s1">&#39;    gl_FragColor = vec4(.9*csR - csI,  .9*abs(csR) + csI, -1.0*csR - csI, </span><span class="si">%f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">blend_factor</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="n">squared</span><span class="p">,</span> <span class="n">n_concentric</span><span class="o">=</span><span class="n">n_concentric</span><span class="p">)</span> 
 
             <span class="c1">#self.m = ev.BraketView(self, bg_color = [1.0, 1.0, 1.0], additive = False, blender = &#39;    gl_FragColor = gl_FragColor + vec4(.2*csR, .1*csR + .1*csI, -.1*csR, .1)&#39;, squared = squared)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">BraketView</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">bg_color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">blender</span><span class="o">=</span><span class="s1">&#39;    gl_FragColor = vec4(.9*csR ,  csI, -1.0*csR, </span><span class="si">%f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">blend_factor</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="n">squared</span><span class="p">)</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">BraketView</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">bg_color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">blender</span><span class="o">=</span><span class="s1">&#39;    gl_FragColor = vec4(.9*csR ,  csI, -1.0*csR, </span><span class="si">%f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">blend_factor</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="n">squared</span><span class="p">,</span> <span class="n">n_concentric</span><span class="o">=</span><span class="n">n_concentric</span><span class="p">)</span> 
 
             <span class="c1">#self.m = ev.BraketView(self, additive = True, squared = squared)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span>
@@ -3595,7 +3622,7 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
 <span class="normal">1021</span>
 <span class="normal">1022</span>
 <span class="normal">1023</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">generic_input</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">basis</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">energy</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">autoflatten</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ## Initialization of a ket</span>
 
 
@@ -3719,7 +3746,7 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
 <span class="normal">1163</span>
 <span class="normal">1164</span>
 <span class="normal">1165</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Inner- and Cartesian products</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
@@ -3837,7 +3864,7 @@ Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)</p>
 <span class="normal">1199</span>
 <span class="normal">1200</span>
 <span class="normal">1201</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Remove redundancies in the expansion of self</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">new_coefficients</span> <span class="o">=</span> <span class="p">[]</span>
@@ -3927,7 +3954,7 @@ for Evince rendering (experimental)</p>
 <span class="normal">1239</span>
 <span class="normal">1240</span>
 <span class="normal">1241</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_ccode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a WebGL-shader code snippet</span>
 <span class="sd">    for Evince rendering (experimental)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4025,7 +4052,7 @@ for Evince rendering (experimental)</p>
 <span class="normal">1351</span>
 <span class="normal">1352</span>
 <span class="normal">1353</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observable</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">repetitions</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make a mesaurement of the observable (hermitian operator)</span>
 
 <span class="sd">    Measures by default the continuous distribution as defined by self.bra*self</span>
@@ -4072,7 +4099,7 @@ for Evince rendering (experimental)</p>
 
 
 <h3 id="braketlab.core.ket.view" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">view</span><span class="p">(</span><span class="n">web</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">view</span><span class="p">(</span><span class="n">web</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_concentric</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span></code>
 
 </h3>
 
@@ -4100,8 +4127,8 @@ for Evince rendering (experimental)</p>
 <span class="normal">1369</span>
 <span class="normal">1370</span>
 <span class="normal">1371</span>
-<span class="normal">1372</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">web</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="normal">1372</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">web</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">n_concentric</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create an Evince viewer (using ipywidgets) </span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4110,11 +4137,11 @@ for Evince rendering (experimental)</p>
     <span class="k">if</span> <span class="n">nd</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
         <span class="n">blend_factor</span> <span class="o">=</span> <span class="mf">0.1</span>
     <span class="k">if</span> <span class="n">web</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">BraketView</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additive</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">bg_color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="n">blender</span><span class="o">=</span><span class="s1">&#39;    gl_FragColor = vec4(.9*csR - csI,  .9*abs(csR) + csI, -1.0*csR - csI, </span><span class="si">%f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">blend_factor</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="n">squared</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">BraketView</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additive</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">bg_color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="n">blender</span><span class="o">=</span><span class="s1">&#39;    gl_FragColor = vec4(.9*csR - csI,  .9*abs(csR) + csI, -1.0*csR - csI, </span><span class="si">%f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">blend_factor</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="n">squared</span><span class="p">,</span> <span class="n">n_concentric</span><span class="o">=</span><span class="n">n_concentric</span><span class="p">)</span> 
 
         <span class="c1">#self.m = ev.BraketView(self, bg_color = [1.0, 1.0, 1.0], additive = False, blender = &#39;    gl_FragColor = gl_FragColor + vec4(.2*csR, .1*csR + .1*csI, -.1*csR, .1)&#39;, squared = squared)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">BraketView</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">bg_color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">blender</span><span class="o">=</span><span class="s1">&#39;    gl_FragColor = vec4(.9*csR ,  csI, -1.0*csR, </span><span class="si">%f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">blend_factor</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="n">squared</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="n">BraketView</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">bg_color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">blender</span><span class="o">=</span><span class="s1">&#39;    gl_FragColor = vec4(.9*csR ,  csI, -1.0*csR, </span><span class="si">%f</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="n">blend_factor</span><span class="p">,</span> <span class="n">squared</span> <span class="o">=</span> <span class="n">squared</span><span class="p">,</span> <span class="n">n_concentric</span><span class="o">=</span><span class="n">n_concentric</span><span class="p">)</span> 
 
         <span class="c1">#self.m = ev.BraketView(self, additive = True, squared = squared)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span>
@@ -4159,7 +4186,7 @@ for Evince rendering (experimental)</p>
 <span class="normal">676</span>
 <span class="normal">677</span>
 <span class="normal">678</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">operator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parent class for operators</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -4324,7 +4351,7 @@ for Evince rendering (experimental)</p>
 <span class="normal">669</span>
 <span class="normal">670</span>
 <span class="normal">671</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">operator_expression</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    # A class for algebraic operator manipulations</span>
 
 <span class="sd">    instantiate with a list of list of operators</span>
@@ -4344,7 +4371,7 @@ for Evince rendering (experimental)</p>
             <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ops</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        # Operator multiplication</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="n">operator</span><span class="p">:</span>
@@ -4357,7 +4384,7 @@ for Evince rendering (experimental)</p>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        # Operator addition</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">new_ops</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ops</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">ops</span>
@@ -4365,7 +4392,7 @@ for Evince rendering (experimental)</p>
         <span class="k">return</span> <span class="n">operator_expression</span><span class="p">(</span><span class="n">new_ops</span><span class="p">,</span> <span class="n">new_coeffs</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        # Operator subtraction</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">new_ops</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ops</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">ops</span>
@@ -4373,7 +4400,7 @@ for Evince rendering (experimental)</p>
         <span class="k">return</span> <span class="n">operator_expression</span><span class="p">(</span><span class="n">new_ops</span><span class="p">,</span> <span class="n">new_coeffs</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        # Remove redundant terms</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">new_ops</span> <span class="o">=</span> <span class="p">[]</span>
@@ -4393,7 +4420,7 @@ for Evince rendering (experimental)</p>
         <span class="k">return</span> <span class="n">operator_expression</span><span class="p">(</span><span class="n">new_ops</span><span class="p">,</span> <span class="n">new_coeffs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_ket</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        # Apply operator to ket</span>
 
 <span class="sd">        $\hat{\Omega} \vert a \rangle =  \vert a&#39; \rangle $</span>
@@ -4415,7 +4442,7 @@ for Evince rendering (experimental)</p>
         <span class="k">return</span> <span class="n">ret</span>
 
     <span class="k">def</span> <span class="nf">_repr_html_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a latex-formatted string to display the mathematical expression of the operator. </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -4474,7 +4501,7 @@ for Evince rendering (experimental)</p>
 <span class="normal">596</span>
 <span class="normal">597</span>
 <span class="normal">598</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    # Operator addition</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">new_ops</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ops</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">ops</span>
@@ -4514,7 +4541,7 @@ for Evince rendering (experimental)</p>
 <span class="normal">588</span>
 <span class="normal">589</span>
 <span class="normal">590</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    # Operator multiplication</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="n">operator</span><span class="p">:</span>
@@ -4554,7 +4581,7 @@ for Evince rendering (experimental)</p>
 <span class="normal">604</span>
 <span class="normal">605</span>
 <span class="normal">606</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    # Operator subtraction</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">new_ops</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ops</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">ops</span>
@@ -4608,7 +4635,7 @@ angle $</p>
 <span class="normal">646</span>
 <span class="normal">647</span>
 <span class="normal">648</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_ket</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    # Apply operator to ket</span>
 
 <span class="sd">    $\hat{\Omega} \vert a \rangle =  \vert a&#39; \rangle $</span>
@@ -4669,7 +4696,7 @@ angle $</p>
 <span class="normal">624</span>
 <span class="normal">625</span>
 <span class="normal">626</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    # Remove redundant terms</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">new_ops</span> <span class="o">=</span> <span class="p">[]</span>
@@ -4726,7 +4753,7 @@ angle $</p>
 <span class="normal">1548</span>
 <span class="normal">1549</span>
 <span class="normal">1550</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">apply_twobody_operator</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate the sympy expression </span>
 
 <span class="sd">    sympy_expression / | x_p1 - x_p2 |</span>
@@ -4790,7 +4817,7 @@ corresponding to the AO-basis
 <span class="normal">1684</span>
 <span class="normal">1685</span>
 <span class="normal">1686</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">compose_basis</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    generate a list of basis functions </span>
 <span class="sd">    corresponding to the AO-basis </span>
 <span class="sd">    (same ordering and so on)</span>
@@ -4869,7 +4896,7 @@ corresponding to the AO-basis
 <span class="normal">380</span>
 <span class="normal">381</span>
 <span class="normal">382</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">construct_basis</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Build basis from prism object</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -4946,7 +4973,7 @@ corresponding to the AO-basis
 <span class="normal">1403</span>
 <span class="normal">1404</span>
 <span class="normal">1405</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">discrete_metropolis_hastings</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">n_iterations</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span> <span class="n">stepsize</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Perform a random walk in the discrete distribution P (array)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#ensure normality</span>
@@ -5087,7 +5114,7 @@ corresponding to the AO-basis
             <span class="n">auto</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
             <span class="n">control_variate</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">x3</span><span class="p">,</span><span class="n">x4</span><span class="p">,</span><span class="n">x5</span><span class="p">,</span><span class="n">x6</span> <span class="p">:</span> <span class="mi">0</span><span class="p">):</span>
 
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Electron repulsion integral estimate using zero-variance Monte Carlo</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -5213,7 +5240,7 @@ grid         -- number of grid points</p>
 <span class="normal">1720</span>
 <span class="normal">1721</span>
 <span class="normal">1722</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_control_variate</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">.6</span><span class="p">,</span> <span class="n">tmin</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="mi">101</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate an nd interpolated control variate</span>
 
 <span class="sd">    returns RegularGridInterpolator, definite integral on mesh, mesh points</span>
@@ -5276,7 +5303,7 @@ grid         -- number of grid points</p>
 <span class="normal">1477</span>
 <span class="normal">1478</span>
 <span class="normal">1479</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_r2</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    extract the r^2 equivalent term from the ket p</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">r_it</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">ket_sympy_expression</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)</span>
@@ -5315,7 +5342,7 @@ grid         -- number of grid points</p>
 <span class="normal">1487</span>
 <span class="normal">1488</span>
 <span class="normal">1489</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_r2_sp</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    extract the r^2 equivalent term from the sympy expression p</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">r_it</span> <span class="o">=</span> <span class="n">get_ordered_symbols</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
@@ -5366,7 +5393,7 @@ where x_i is the cartesian vector component</p>
 <span class="normal">1537</span>
 <span class="normal">1538</span>
 <span class="normal">1539</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_twobody_denominator</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    For a sympy_expression of arbitrary dimensionality,</span>
 <span class="sd">    generate the coulomb operator</span>
 
@@ -5464,7 +5491,7 @@ grid      -- number of grid-points in every direction for the
 <span class="normal">1650</span>
 <span class="normal">1651</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">inner_product</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">operator</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e6</span><span class="p">),</span> <span class="n">grid</span> <span class="o">=</span> <span class="mi">101</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the inner product &lt; b1 | b2 &gt;, where bn are instances of basisfunction</span>
 
 <span class="sd">    Keyword arguments:</span>
@@ -5503,7 +5530,7 @@ grid      -- number of grid-points in every direction for the
         <span class="c1">#print(&quot;R, sigma:&quot;, R, sigma)</span>
 
         <span class="k">return</span> <span class="n">onebody</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">))</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span> <span class="c1">#, control_variate = &quot;spline&quot;, grid = grid) </span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    else:</span>
 
 <span class="sd">        R, sigma = locate(b1.bra_sympy_expression*b2.ket_sympy_expression)</span>
@@ -5636,7 +5663,7 @@ standard deviation (numpy.array)</p>
 <span class="normal">136</span>
 <span class="normal">137</span>
 <span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">locate</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine (numerically) the center and spread of a sympy function</span>
 
 <span class="sd">    ## Returns </span>
@@ -5779,7 +5806,7 @@ x is their cartesian component</p>
 <span class="normal">1519</span>
 <span class="normal">1520</span>
 <span class="normal">1521</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">map_expression</span><span class="p">(</span><span class="n">sympy_expression</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x2</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Map out the free symbols of sympy_expressions</span>
 <span class="sd">    in order to determine </span>
 
@@ -5831,7 +5858,7 @@ x is their cartesian component</p>
 <span class="normal">1417</span>
 <span class="normal">1418</span>
 <span class="normal">1419</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">metropolis_hastings</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Metropolis-Hastings random walk in the function f</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
@@ -5905,7 +5932,7 @@ I0              -- analytical integral of control variate</p>
 <span class="normal">1821</span>
 <span class="normal">1822</span>
 <span class="normal">1823</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">onebody</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">control_variate</span> <span class="o">=</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">r</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="mi">101</span><span class="p">,</span> <span class="n">I0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Monte Carlo (MC) estimate of integral</span>
 
 <span class="sd">    Keyword arguments:</span>
@@ -5972,7 +5999,7 @@ I0              -- analytical integral of control variate</p>
 <span class="normal">1500</span>
 <span class="normal">1501</span>
 <span class="normal">1502</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">parse_symbol</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parse a symbol of the form </span>
 
 <span class="sd">    x_{i;j}</span>
@@ -6021,7 +6048,7 @@ I0              -- analytical integral of control variate</p>
 <span class="normal">1739</span>
 <span class="normal">1740</span>
 <span class="normal">1741</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rgrid_integrate_3d</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    regular grid integration, 3D</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># volume per cell</span>
@@ -6095,7 +6122,7 @@ values     -- values of integrand at gridpoints</p>
 <span class="normal">1774</span>
 <span class="normal">1775</span>
 <span class="normal">1776</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rgrid_integrate_nd</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Integrate over n dimensions as linear polynomials on a grid</span>
 
 <span class="sd">    Keyword arguments:</span>
@@ -6291,7 +6318,7 @@ b = ket( ... )</p>
 <span class="normal">303</span>
 <span class="normal">304</span>
 <span class="normal">305</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    all-purpose vector visualization</span>
 
 <span class="sd">    Example usage to show the vectors as an image</span>
@@ -6357,7 +6384,7 @@ b = ket( ... )</p>
 
 
             <span class="k">if</span> <span class="n">nd</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-                <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">                cube, cm, cmax, cmin = get_cubefile(i)</span>
 <span class="sd">                v = py3Dmol.view()</span>
 <span class="sd">                #cm = cube.mean()</span>
@@ -6464,7 +6491,7 @@ b = ket( ... )</p>
 <span class="normal">1467</span>
 <span class="normal">1468</span>
 <span class="normal">1469</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">split_variables</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    make a product where </span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -6550,7 +6577,7 @@ b = ket( ... )</p>
 <span class="normal">354</span>
 <span class="normal">355</span>
 <span class="normal">356</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    all-purpose vector visualization</span>
 
 <span class="sd">    Example usage to show the vectors as an image</span>

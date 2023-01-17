@@ -549,6 +549,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#braketlab.basisbank.extract_pyscf_basis" class="md-nav__link">
+    extract_pyscf_basis()
+  </a>
+  
+    <nav class="md-nav" aria-label="extract_pyscf_basis()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.basisbank.extract_pyscf_basis--arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.basisbank.extract_pyscf_basis--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.basisbank.extract_pyscf_basis--example-usage" class="md-nav__link">
+    Example usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#braketlab.basisbank.get_gto" class="md-nav__link">
     get_gto()
   </a>
@@ -640,6 +674,32 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Exported examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exported examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Exported examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
       <a href="../gto_gallery.html" class="md-nav__link">
         Evince demo
@@ -647,11 +707,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -662,11 +721,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -677,11 +735,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -692,11 +749,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -707,11 +763,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -722,11 +777,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -734,6 +788,13 @@
       <a href="../newton_rhapson_2.html" class="md-nav__link">
         Newton-Rhapson II
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -768,6 +829,40 @@
   <a href="#braketlab.basisbank" class="md-nav__link">
     braketlab.basisbank
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braketlab.basisbank.extract_pyscf_basis" class="md-nav__link">
+    extract_pyscf_basis()
+  </a>
+  
+    <nav class="md-nav" aria-label="extract_pyscf_basis()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.basisbank.extract_pyscf_basis--arguments" class="md-nav__link">
+    Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.basisbank.extract_pyscf_basis--returns" class="md-nav__link">
+    Returns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#braketlab.basisbank.extract_pyscf_basis--example-usage" class="md-nav__link">
+    Example usage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -838,6 +933,149 @@
 
 
 
+<h2 id="braketlab.basisbank.extract_pyscf_basis" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">extract_pyscf_basis</span><span class="p">(</span><span class="n">mo</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Get a braketlab basis from a pyscf mol object</p>
+<h4 id="braketlab.basisbank.extract_pyscf_basis--arguments">Arguments</h4>
+<p>|mo | pySCF molecule object |</p>
+<h4 id="braketlab.basisbank.extract_pyscf_basis--returns">Returns</h4>
+<p>A list containing braketlab basis functions</p>
+<h4 id="braketlab.basisbank.extract_pyscf_basis--example-usage">Example usage</h4>
+<pre><code class="language-python">from pyscf import gto
+mol = gto.Mole()
+mol.build(atom = '''O 0 0 0; H  0 1 0; H 0 0 1''',basis = 'sto-3g')
+basis = extract_pyscf_basis(mol)
+</code></pre>
+
+      <details class="quote">
+        <summary>Source code in <code>braketlab/basisbank.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">extract_pyscf_basis</span><span class="p">(</span><span class="n">mo</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get a braketlab basis from a pyscf mol object</span>
+
+<span class="sd">    ## Arguments </span>
+
+<span class="sd">    |mo | pySCF molecule object |</span>
+
+<span class="sd">    ## Returns</span>
+
+<span class="sd">    A list containing braketlab basis functions</span>
+
+
+<span class="sd">    ## Example usage</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    from pyscf import gto</span>
+<span class="sd">    mol = gto.Mole()</span>
+<span class="sd">    mol.build(atom = &#39;&#39;&#39;O 0 0 0; H  0 1 0; H 0 0 1&#39;&#39;&#39;,basis = &#39;sto-3g&#39;)</span>
+<span class="sd">    basis = extract_pyscf_basis(mol)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">contracted_aos</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">contr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">nbas</span><span class="p">):</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">bas_angular</span><span class="p">(</span><span class="n">contr</span><span class="p">)</span>
+        <span class="n">contr_coeff</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">bas_ctr_coeff</span><span class="p">(</span><span class="n">contr</span><span class="p">)</span>
+        <span class="n">exponent</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">bas_exp</span><span class="p">(</span><span class="n">contr</span><span class="p">)</span>
+        <span class="c1">#position = mo.</span>
+
+        <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+
+            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="c1">#for b in range(len(contr_coeff[a]))</span>
+                <span class="c1">#a = 0</span>
+                <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contr_coeff</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="c1">#print(l,m,&quot;    &quot;, exponent[a], contr_coeff[a][b], np.array(mo.bas_coord(contr)))</span>
+                    <span class="n">chi_lm</span> <span class="o">=</span> <span class="n">contr_coeff</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span><span class="o">*</span><span class="n">bk</span><span class="o">.</span><span class="n">basisbank</span><span class="o">.</span><span class="n">get_gto</span><span class="p">(</span><span class="n">exponent</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">bas_coord</span><span class="p">(</span><span class="n">contr</span><span class="p">)))</span>
+                    <span class="k">for</span>  <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">exponent</span><span class="p">)):</span>
+
+                        <span class="c1">#print(l,m,&quot;    &quot;, exponent[a], &quot;     &quot;, contr_coeff[a][0])</span>
+                        <span class="n">chi_lm</span> <span class="o">+=</span> <span class="n">contr_coeff</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span><span class="o">*</span><span class="n">bk</span><span class="o">.</span><span class="n">basisbank</span><span class="o">.</span><span class="n">get_gto</span><span class="p">(</span><span class="n">exponent</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span>  <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">bas_coord</span><span class="p">(</span><span class="n">contr</span><span class="p">)))</span>
+                    <span class="n">contracted_aos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chi_lm</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">contr_coeff</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="c1">#print(l,m,&quot;    &quot;, exponent[a], contr_coeff[a][0], mo.bas_coord(contr))</span>
+                    <span class="n">chi_lm</span> <span class="o">=</span> <span class="n">contr_coeff</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span><span class="o">*</span><span class="n">bk</span><span class="o">.</span><span class="n">basisbank</span><span class="o">.</span><span class="n">get_gto</span><span class="p">(</span><span class="n">exponent</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">bas_coord</span><span class="p">(</span><span class="n">contr</span><span class="p">)))</span>
+                    <span class="k">for</span>  <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">exponent</span><span class="p">)):</span>
+                        <span class="c1">#print(l,m,&quot;    &quot;, exponent[a], &quot;     &quot;, contr_coeff[a][0])</span>
+                        <span class="n">chi_lm</span> <span class="o">+=</span> <span class="n">contr_coeff</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span><span class="o">*</span><span class="n">bk</span><span class="o">.</span><span class="n">basisbank</span><span class="o">.</span><span class="n">get_gto</span><span class="p">(</span><span class="n">exponent</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mo</span><span class="o">.</span><span class="n">bas_coord</span><span class="p">(</span><span class="n">contr</span><span class="p">)))</span>
+
+                    <span class="n">contracted_aos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chi_lm</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">contracted_aos</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
 <h2 id="braketlab.basisbank.get_gto" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">get_gto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span></code>
 
@@ -852,28 +1090,28 @@ located at position</p>
 
       <details class="quote">
         <summary>Source code in <code>braketlab/basisbank.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_gto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_gto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a ket containing the gaussian type primitive orbital with exponent a, </span>
 <span class="sd">    and solid harmonic gaussian angular part defined by l and m</span>
 <span class="sd">    located at position</span>
@@ -916,22 +1154,22 @@ located at position</p>
 
       <details class="quote">
         <summary>Source code in <code>braketlab/basisbank.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_harmonic_oscillator_function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_harmonic_oscillator_function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">omega</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a ket containing the harmonic oscillator energy eigenfunction with quantum number n</span>
 <span class="sd">    located at position</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -968,24 +1206,24 @@ located at position</p>
 
       <details class="quote">
         <summary>Source code in <code>braketlab/basisbank.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_hydrogen_function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_hydrogen_function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a ket containing the hydrogen eigenfunction with quantum numbers n,l,m</span>
 <span class="sd">    located at position</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1026,29 +1264,29 @@ located at position</p>
 
       <details class="quote">
         <summary>Source code in <code>braketlab/basisbank.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span>
-<span class="normal">97</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_sto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_sto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a ket containing the slater type orbital with exponent a, </span>
 <span class="sd">    weight w,</span>
 <span class="sd">    and solid harmonic gaussian angular part defined by l and m</span>
