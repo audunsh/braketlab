@@ -1,3 +1,5 @@
 /venv
 /build
 /BraketLab.egg-info
+/braketlab/__pycache__
+/test/__pycache__
