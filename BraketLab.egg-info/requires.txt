@@ -1,4 +1,0 @@
-sympy
-numba
-evince
-bubblebox
