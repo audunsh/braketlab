@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-
 import sympy as sp
 
     
 
-def get_Slm(l, m):
+def get_Slm(l: int, m: int):
     """
     return the sympy real solid harmonic gaussian S_{lm}(r) 
     as presented in table 6.3 of Helgaker, Jørgensen and Olsen
