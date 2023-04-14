@@ -1,0 +1,4 @@
+sympy
+numba
+evince
+bubblebox
