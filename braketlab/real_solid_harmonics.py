@@ -7,10 +7,10 @@ import sympy as sp
 import numpy as np
 
 
-def get_default_variables(p: int, n: int = 3) -> list:
+def get_default_variables(main_index: int, n_dimentsions : int = 3) -> list:
     """
-    Generates sympy variables with indices $\{p,n\}$ of the kind
-    ```[x_{p; 0}, x_{p; 1}, ..., x_{p; n-1}]```
+    Generates sympy variables with indices $\{main_index,n_dimentsions\}$ of the kind
+    ```[x_{main_index; 0}, x_{main_index; 1}, ..., x_{main_index; n_dimentsions-1}]```
 
     Example
     ===
@@ -19,8 +19,8 @@ def get_default_variables(p: int, n: int = 3) -> list:
     ```[x_{3; 0}, x_{3; 1}, x_{3; 2}]```
     """
     variables = []
-    for i in range(n):
-        variables.append(sp.Symbol("x_{%i; %i}" % (p, i)))
+    for i in range(n_dimentsions):
+        variables.append(sp.Symbol("x_{%i; %i}" % (main_index, i)))
     return variables
 
 

@@ -28,5 +28,5 @@ def test_3d_gto_off_center_orthogonality():
     psi_1 = bk.basisbank.get_gto(1.0, 1, 0)
     psi_2 = bk.basisbank.get_gto(1.0, 2, 0, position = np.array([1.0, 0.6, 0.3]))
     inner = psi_1.bra@psi_2
-    assert np.abs(inner + .217)<=1e-2, f"GTO off center overlap is {inner}, but should be close to -.2."
+    assert np.abs(inner + .217)<=1e-2, f"GTO off center overlap is {inner}, but should be close to -.217."
     

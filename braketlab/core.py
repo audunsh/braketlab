@@ -153,10 +153,7 @@ def get_cubefile(p, Nx=60):
             for k in range(Nx):
                 cube += "%.4f     " % cubic[i, j, k].real
             cube += "\n"
-    # print(cube)
-    # f = open("cubeworld.cube", "w")
-    # f.write(cube)
-    # f.close()
+            
     return cube, cubic.mean(), cubic.max(), cubic.min()
 
 
