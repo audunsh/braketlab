@@ -125,12 +125,12 @@ def locate(f)->tuple:
     return mean_estimate, sig
 
 
-def plot(*p):
+def plot(*p)->None:
     warnings.warn("replaced by show( ... )", DeprecationWarning, stacklevel=2)
     show(*p)
 
 
-def get_cubefile(p, Nx=60):
+def get_cubefile(p, Nx=60)->tuple:
     t = np.linspace(-20, 20, Nx)
     cubic = p(t[:, None, None], t[None, :, None], t[None, None, :])
     if cubic.dtype == complex128:
@@ -153,11 +153,11 @@ def get_cubefile(p, Nx=60):
             for k in range(Nx):
                 cube += "%.4f     " % cubic[i, j, k].real
             cube += "\n"
-            
+
     return cube, cubic.mean(), cubic.max(), cubic.min()
 
 
-def show(*p, t=None):
+def show(*p, t=None)->None:
     """
     all-purpose vector visualization
 
@@ -287,7 +287,7 @@ def show(*p, t=None):
         plt.show()
 
 
-def view(*p, t=None):
+def view(*p, t=None)->None:
     """
     all-purpose vector visualization
 
