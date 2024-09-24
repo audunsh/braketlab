@@ -5,19 +5,27 @@ with open("README.md", "r") as fh:
 
 
 setuptools.setup(
-     name='BraketLab',  
-     version='1.8.0',
-     author="Audun Skau Hansen",
-     author_email="audunsh4@gmail.com",
-     description="Educational tool for learning quantum theory with Jupyter Notebooks",
-     long_description=long_description,
-   long_description_content_type="text/markdown",
-     url="https://github.uio.no/audunsh/braketlab",
-     packages=setuptools.find_packages(),
-     classifiers=[
-         "Programming Language :: Python :: 3",
-         "License :: OSI Approved :: MIT License",
-         "Operating System :: OS Independent",
-     ],
-     install_requires = ["sympy", "numba", "evince", "bubblebox"],
- )
+    name='BraketLab',
+    version='1.8.0',
+    author="Audun Skau Hansen",
+    author_email="audunsh4@gmail.com",
+    description="Educational tool for learning quantum theory with Jupyter Notebooks",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.uio.no/audunsh/braketlab",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    install_requires = [
+        "sympy",
+        "numba",
+        "numpy",
+        "matplotlib",
+        "scipy",
+        "evince",
+        "bubblebox"
+    ],
+)

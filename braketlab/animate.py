@@ -59,10 +59,10 @@ class animated_system():
         
         c1,c2,c3 = colorscheme().getcol(np.random.uniform(0,1,3))
         
-        self.bubbles = self.ax.plot(x, p, "-", color = (0,0,0), markersize = 1, label = "$\\vert \Psi \\vert^2$")[0]
+        self.bubbles = self.ax.plot(x, p, "-", color = (0,0,0), markersize = 1, label = r"$\\vert \Psi \\vert^2$")[0]
         
-        self.wf_imag = self.ax.plot(x, w.imag, "-", color = c1**.5, markersize = 1, label = "Im($\Psi$)")[0]
-        self.wf_real = self.ax.plot(x, w.real, "-", color = c2**.5, markersize = 1, label = "Re($\Psi$)")[0]
+        self.wf_imag = self.ax.plot(x, w.imag, "-", color = c1**.5, markersize = 1, label = r"Im($\Psi$)")[0]
+        self.wf_real = self.ax.plot(x, w.real, "-", color = c2**.5, markersize = 1, label = r"Re($\Psi$)")[0]
         
         self.ax.legend()
         

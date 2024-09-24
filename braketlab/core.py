@@ -363,7 +363,7 @@ def construct_basis(p):
 
 
 class basisfunction:
-    """
+    r"""
     # A general class for a basis function in $\mathbb{R}^n$
 
     ## Keyword arguments:
@@ -400,9 +400,9 @@ class basisfunction:
     position = None
     normalization = 1
     domain = None
-    __name__ = "\chi"
+    __name__ = r"\chi"
 
-    def __init__(self, sympy_expression, position=None, domain=None, name="\chi"):
+    def __init__(self, sympy_expression, position=None, domain=None, name=r"\chi"):
         self.__name__ = name
         self.dimension = len(sympy_expression.free_symbols)
 
@@ -440,7 +440,7 @@ class basisfunction:
         self.decay = 1.0
 
     def normalize(self, domain=None):
-        """
+        r"""
         Set normalization factor $N$ of self ($\chi$) so that $\langle \chi \\vert \chi \\rangle = 1$.
         """
         s_12 = inner_product(self, self)
@@ -483,7 +483,7 @@ class basisfunction:
             return domain
 
     def __call__(self, *r):
-        """
+        r"""
         Evaluate function in coordinates ```*r``` (arbitrary dimensions).
 
         ## Returns
@@ -494,7 +494,7 @@ class basisfunction:
         return self.normalization * self.ket_numeric_expression(*r)
 
     def __mul__(self, other):
-        """
+        r"""
         Returns a basisfunction $\chi_{a*b}(\mathbf{r})$, where
         $\chi_{a*b}(\mathbf{r}) = \chi_a(\mathbf{r}) \chi_b(\mathbf{r})$
         """
@@ -514,7 +514,7 @@ class basisfunction:
         )
 
     def __add__(self, other):
-        """
+        r"""
         Returns a basisfunction  $\chi_{a+b}(\mathbf{r})$, where
         $\chi_{a+b}(\mathbf{r}) = \chi_a(\mathbf{r}) + \chi_b(\mathbf{r})$
         """
@@ -525,7 +525,7 @@ class basisfunction:
         )
 
     def __sub__(self, other):
-        """
+        r"""
         Returns a basisfunction  $\chi_{a-b}(\mathbf{r})$, where
         $\chi_{a-b}(\mathbf{r}) = \chi_a(\mathbf{r}) - \chi_b(\mathbf{r})$
         """
@@ -617,7 +617,7 @@ class operator_expression(object):
         return operator_expression(new_ops, new_coeffs)
 
     def apply(self, other_ket):
-        """
+        r"""
         # Apply operator to ket
 
         $\hat{\Omega} \vert a \rangle =  \vert a' \rangle $
@@ -965,7 +965,7 @@ def get_standard_basis(n):
 
 
 class ket(object):
-    """
+    r"""
     A class for vectors defined on general vector spaces
     Author: Audun Skau Hansen (a.s.hansen@kjemi.uio.no)
 
