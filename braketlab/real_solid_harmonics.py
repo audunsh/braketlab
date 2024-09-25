@@ -3,6 +3,8 @@ Real solid harmonic Gaussian basis function,
 as presented in chapter 6 of the "Pink Bible" (*) Helgaker, T., Jorgensen, P., & Olsen, J. (2014). Molecular electronic-structure theory. John Wiley & Sons.
 Author: Audun Skau Hansen
 """
+import math
+
 import sympy as sp
 import numpy as np
 
@@ -29,8 +31,8 @@ def compute_binomial_coefficient(a: int, b: int) -> int:
     Compute the binomial coefficient ( a , b )
     [<a href="https://en.wikipedia.org/wiki/binomial_coefficient">Wikipedia</a>]
     """
-    return np.math.factorial(int(a)) // (
-        np.math.factorial(int(b)) * np.math.factorial(int(a - b))
+    return math.factorial(int(a)) // (
+        math.factorial(int(b)) * math.factorial(int(a - b))
     )
 
 
@@ -64,11 +66,11 @@ def N_factor(l: int, m: int) -> float:
     """
     return (
         1
-        / (2 ** abs(m) * np.math.factorial(l))
+        / (2 ** abs(m) * math.factorial(l))
         * np.sqrt(
             2
-            * np.math.factorial(l + abs(m))
-            * np.math.factorial(l - abs(m))
+            * math.factorial(l + abs(m))
+            * math.factorial(l - abs(m))
             * (2 ** (m == 0)) ** -1
         )
     )

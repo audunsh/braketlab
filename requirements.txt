@@ -1,6 +1,8 @@
 sympy
 evince
+bubblebox
 numba
 numpy
 matplotlib
 scipy
+pytest
