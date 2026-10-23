@@ -1,0 +1,14 @@
+{
+  "name": "braketlab-orbital-view",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild orbital.js --bundle --format=esm --outfile=../static/orbital.js"
+  },
+  "dependencies": {
+    "three": "0.162.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.24.2"
+  }
+}

@@ -10,9 +10,8 @@ from functools import lru_cache
 # third party
 import matplotlib.pyplot as plt
 import numpy as np
-import evince as ev
 import sympy as sp
-from scipy.interpolate import splint,LinearNDInterpolator, RegularGridInterpolator
+from scipy.interpolate import RegularGridInterpolator
 from scipy import integrate
 from scipy.stats import multivariate_normal
 from scipy.interpolate import interp1d
@@ -1402,37 +1401,16 @@ class ket(object):
 
     def view(self, web=False, squared=False, n_concentric=100):
         """
-        Create an Evince viewer (using ipywidgets)
+        Create a 3D viewer for this ket.
 
+        A normal Jupyter kernel gets an Evince BraketView. JupyterLite gets
+        the bundled anywidget orbital view.
         """
-        nd = len(self.bra_sympy_expression.free_symbols)
-        blend_factor = 1.0
-        if nd > 2:
-            blend_factor = 0.1
-        if web:
-            self.m = ev.BraketView(
-                self,
-                additive=False,
-                bg_color=[1.0, 1.0, 1.0],
-                blender="    gl_FragColor = vec4(.9*csR - csI,  .9*abs(csR) + csI, -1.0*csR - csI, %f)"
-                % blend_factor,
-                squared=squared,
-                n_concentric=n_concentric,
-            )
+        from braketlab.orbitalview import open_orbital_view
 
-            # self.m = ev.BraketView(self, bg_color = [1.0, 1.0, 1.0], additive = False, blender = '    gl_FragColor = gl_FragColor + vec4(.2*csR, .1*csR + .1*csI, -.1*csR, .1)', squared = squared)
-        else:
-            self.m = ev.BraketView(
-                self,
-                additive=True,
-                bg_color=[0.0, 0.0, 0.0],
-                blender="    gl_FragColor = vec4(.9*csR ,  csI, -1.0*csR, %f)"
-                % blend_factor,
-                squared=squared,
-                n_concentric=n_concentric,
-            )
-
-            # self.m = ev.BraketView(self, additive = True, squared = squared)
+        self.m = open_orbital_view(
+            self, web=web, squared=squared, n_concentric=n_concentric
+        )
         return self.m
 
 

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "braketlab"
+version = "1.9.0"
+description = "Educational tool for learning quantum theory with Jupyter Notebooks"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "Audun Skau Hansen", email = "audunsh4@gmail.com" }]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "evince>=0.58",
+    "sympy",
+    "numpy>=2.1",
+    "scipy",
+    "matplotlib",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.uio.no/audunsh/braketlab"
+
+[tool.setuptools.packages.find]
+include = ["braketlab", "braketlab.*"]
+
+[tool.setuptools.package-data]
+braketlab = ["static/orbital.js"]

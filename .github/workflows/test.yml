@@ -1,0 +1,58 @@
+name: Test Suite
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  test-legacy:
+    name: Test Original Braketlab
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: audunsh/evince
+          path: evince
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install -e evince
+          pip install -e ".[dev]"
+      - name: Run tests
+        run: python -m pytest test/ -v
+
+  test-core:
+    name: Test Braketlab Core (Pyodide-compatible)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install sympy numpy scipy anywidget pytest
+      - name: Run tests
+        working-directory: braketlab-web
+        run: python -m pytest tests/ -v
+
+  build-renderer:
+    name: Build Renderer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install and build
+        working-directory: braketlab-web/renderer
+        run: |
+          npm ci
+          npm run build

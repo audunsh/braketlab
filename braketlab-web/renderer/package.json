@@ -1,0 +1,21 @@
+{
+  "name": "@braketlab/orbital-renderer",
+  "version": "2.0.0-alpha.1",
+  "description": "WebGL/WebGPU orbital renderer with Gaussian splatting-inspired billboard rendering",
+  "type": "module",
+  "main": "dist/widget.js",
+  "scripts": {
+    "build": "esbuild src/widget.ts --bundle --format=esm --outfile=dist/widget.js --external:@jupyter-widgets/base",
+    "dev": "esbuild src/widget.ts --bundle --format=esm --outfile=dist/widget.js --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.170.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.6.0"
+  },
+  "license": "MIT"
+}

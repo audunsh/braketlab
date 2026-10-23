@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import math
+
 import numpy as np
 import sympy as sp
 
@@ -87,7 +89,7 @@ def get_ao(a, l, m):
     for quantum numbers l, m
     a = exponent
     """
-    a = np.float(a)
+    a = float(a)
     x,y,z = sp.symbols("x y z")
     slm = get_Slm(l,m)
     return slm*sp.exp(-sp.UnevaluatedExpr(a)*(x**2.0 + y**2.0 + z**2.0))
@@ -99,7 +101,7 @@ def get_ao_at(pos, a, l, m):
     for quantum numbers l, m
     a = exponent
     """
-    a = np.float(a)
+    a = float(a)
     x,y,z = sp.symbols("x y z")
     slm = get_Slm(l,m)
     
@@ -126,7 +128,7 @@ def get_Nao(a,l,m):
     m = magnetic quantum number
     """
 
-    a = np.float(a)
+    a = float(a)
     return get_ao(a,l,m)*get_Npi(a,l)*norm_extra(l)
     
 def get_Nao_at(pos, a,l,m):
@@ -136,7 +138,7 @@ def get_Nao_at(pos, a,l,m):
     l = angular quantum number
     m = magnetic quantum number
     """
-    a = np.float(a)
+    a = float(a)
     return get_ao_at(pos, a,l,m)*get_Npi(a,l)*norm_extra(l)
 
 
@@ -144,7 +146,7 @@ def f(m):
     """
     factorial m!
     """
-    return np.float(np.max([np.prod(np.arange(m)+1), 1]))
+    return float(np.max([np.prod(np.arange(m)+1), 1]))
 
 def norm_extra(l):
     """
@@ -178,7 +180,7 @@ def get_contracted(a,w,l,m, representation = "numeric"):
     Generates Solid Harmonic Gaussian lambda functions
     a = exponent
     """
-    a = np.float(a)
+    a = np.asarray(a, dtype=float)
     S = contracted_norm(a,w,l)
     CGO = 0
     for i in np.arange(a.shape[0]):
@@ -193,9 +195,9 @@ def get_contracted(a,w,l,m, representation = "numeric"):
 
 
 def get_sto(a,w,n,l,m, representation = "sympy"):
-    a = np.float(a)
+    a = float(a)
     S = np.sqrt(a**3.0/np.pi)
-    S = (2.0*a)**n *np.sqrt(2.0*a/np.math.factorial(2*int(n)))
+    S = (2.0*a)**n *np.sqrt(2.0*a/math.factorial(2*int(n)))
 
     x,y,z = sp.symbols("x y z")
     r = sp.sqrt(x**2.0 + y**2.0 + z**2.0)
@@ -215,7 +217,7 @@ def get_contracted_sympy(a,w,l,m):
     a = exponents
     
     """
-    a = np.float(a)
+    a = np.asarray(a, dtype=float)
     S = contracted_norm(a,w,l)
     CGO = 0
     for i in np.arange(a.shape[0]):

@@ -1,6 +1,5 @@
+-e ../evince
 sympy
-evince
-numba
-numpy
-matplotlib
+numpy>=2.1
 scipy
+matplotlib
